@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bitcoin vs Quantum — Where Are We?</title>
+<style>
+:root{--bg:#0a0a0f;--card:#12121a;--border:#1e1e2e;--text:#e0e0e8;--muted:#6b6b80;--accent:#6366f1;--green:#22c55e;--yellow:#eab308;--red:#ef4444;--orange:#f97316}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,sans-serif;line-height:1.7;overflow-x:hidden}
+a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
+
+/* Scroll animations */
+@keyframes fadeInUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes progressFill{from{width:0}to{width:var(--target-width)}}
+.fade-in{animation:fadeInUp 0.6s ease-out}
+.progress-bar{animation:progressFill 2s ease-out 0.5s both}
+
+/* Smooth scroll */
+html{scroll-behavior:smooth}
+
+/* Table of Contents */
+.toc{position:sticky;top:0;background:rgba(10,10,15,0.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);z-index:100;padding:0}
+.toc-container{max-width:800px;margin:0 auto;padding:0 20px}
+.toc-header{display:none}
+.toc-grid{display:flex;flex-wrap:wrap;gap:8px 16px;justify-content:center;padding:12px 0}
+.toc-link{font-size:12px;color:var(--muted);padding:4px 8px;border-radius:4px;transition:all 0.2s ease}
+.toc-link:hover{color:var(--accent);background:rgba(99,102,241,0.1);text-decoration:none}
+
+/* Hero */
+.hero{text-align:center;padding:60px 20px 40px;background:linear-gradient(180deg,#0f0f1a 0%,var(--bg) 100%)}
+.hero h1{font-size:clamp(28px,5vw,48px);font-weight:800;background:linear-gradient(135deg,#818cf8,#6366f1,#a78bfa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:8px}
+.hero .sub{color:var(--muted);font-size:16px;max-width:600px;margin:0 auto 20px}
+.last-updated{color:var(--muted);font-size:12px;margin-top:16px;opacity:0.8}
+
+/* Threat Meter */
+.meter-section{max-width:700px;margin:0 auto 50px;padding:0 20px}
+.meter-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:30px}
+.meter-title{font-size:18px;font-weight:700;margin-bottom:20px;text-align:center}
+.meter-bar{position:relative;height:32px;background:#1a1a2e;border-radius:16px;overflow:hidden;margin-bottom:8px}
+.meter-fill{height:100%;border-radius:16px;transition:width 1.5s ease}
+.meter-labels{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);padding:0 4px}
+.meter-needle{position:absolute;top:-6px;width:4px;height:44px;background:white;border-radius:2px;transition:left 1.5s ease;z-index:5;box-shadow:0 0 8px rgba(255,255,255,.5)}
+.meter-needle-label{position:absolute;top:-26px;left:50%;transform:translateX(-50%);white-space:nowrap;font-size:11px;font-weight:700;color:white;background:var(--accent);padding:2px 8px;border-radius:4px}
+.meter-zones{display:flex;height:100%;position:absolute;inset:0}
+.meter-zone{height:100%}
+
+/* Progress bars with scroll animations */
+.progress-section{max-width:700px;margin:0 auto 50px;padding:0 20px}
+.progress-item{margin-bottom:24px}
+.progress-header{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px}
+.progress-label{font-weight:600;font-size:14px}
+.progress-value{font-size:13px;color:var(--muted)}
+.progress-track{height:8px;background:#1a1a2e;border-radius:4px;overflow:hidden}
+.progress-bar{height:100%;border-radius:4px;transition:width 2s ease-out 0.3s;width:0}
+.progress-bar.animate{width:var(--width)}
+
+/* Sections */
+.container{max-width:800px;margin:0 auto;padding:0 20px}
+section{margin-bottom:50px}
+h2{font-size:22px;font-weight:700;margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+h3{font-size:17px;font-weight:600;margin:20px 0 10px;color:#a5b4fc}
+p{margin-bottom:14px;color:#c8c8d8}
+.highlight{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin:16px 0}
+.highlight.warn{border-left:4px solid var(--orange)}
+.highlight.safe{border-left:4px solid var(--green)}
+.highlight.danger{border-left:4px solid var(--red)}
+.highlight.wildcard{border-left:4px solid var(--accent)}
+
+/* Timeline */
+.timeline{position:relative;padding-left:30px}
+.timeline::before{content:'';position:absolute;left:11px;top:0;bottom:0;width:2px;background:var(--border)}
+.tl-item{position:relative;margin-bottom:24px}
+.tl-dot{position:absolute;left:-30px;top:4px;width:20px;height:20px;border-radius:50%;border:2px solid var(--border);background:var(--card);display:flex;align-items:center;justify-content:center;font-size:10px}
+.tl-dot.done{border-color:var(--green);background:#22c55e22}
+.tl-dot.progress{border-color:var(--yellow);background:#eab30822}
+.tl-dot.future{border-color:var(--muted);background:var(--card)}
+.tl-dot.new{border-color:var(--accent);background:#6366f122}
+.tl-date{font-size:12px;color:var(--muted);font-weight:600}
+.tl-title{font-size:15px;font-weight:600}
+.tl-desc{font-size:13px;color:#9898a8}
+.new-badge{display:inline-block;background:var(--accent);color:white;font-size:9px;padding:2px 6px;border-radius:3px;margin-left:6px;font-weight:700}
+
+/* Address table */
+table{width:100%;border-collapse:collapse;margin:16px 0}
+th{text-align:left;padding:10px 12px;background:#1a1a2e;font-size:12px;text-transform:uppercase;color:var(--muted);letter-spacing:.5px}
+td{padding:10px 12px;border-bottom:1px solid var(--border);font-size:14px}
+.tag{display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600}
+.tag-safe{background:#22c55e22;color:var(--green)}
+.tag-vuln{background:#ef444422;color:var(--red)}
+.tag-partial{background:#eab30822;color:var(--yellow)}
+
+/* Sources */
+.sources{font-size:12px;color:var(--muted)}
+.sources a{color:#818cf8}
+.sources li{margin-bottom:4px}
+
+/* Stats grid */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:16px 0}
+.stat{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:16px;text-align:center}
+.stat-value{font-size:24px;font-weight:800}
+.stat-label{font-size:11px;color:var(--muted);margin-top:4px}
+
+/* Competing approaches grid */
+.approaches-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;margin:20px 0}
+.approach-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px}
+.approach-title{color:var(--accent);font-weight:700;margin-bottom:8px}
+.approach-companies{color:var(--muted);font-size:12px;margin-bottom:12px}
+
+/* Expert estimates */
+.estimates-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin:20px 0}
+.estimate-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;text-align:center}
+.estimate-title{font-size:14px;font-weight:600;margin-bottom:8px}
+.estimate-range{font-size:20px;font-weight:800;margin:8px 0}
+.estimate-source{font-size:11px;color:var(--muted)}
+
+/* Footer */
+footer{text-align:center;padding:40px 20px;color:var(--muted);font-size:12px;border-top:1px solid var(--border)}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .toc-header{display:flex;align-items:center;justify-content:space-between;padding:10px 0;cursor:pointer}
+  .toc-header span{font-size:13px;font-weight:600;color:var(--muted)}
+  .toc-hamburger{font-size:20px;color:var(--muted);line-height:1}
+  .toc-grid{display:none;flex-direction:column;align-items:stretch;gap:0;padding:0 0 12px}
+  .toc-grid.open{display:flex}
+  .toc-link{width:100%;text-align:left;padding:10px 8px;margin:0;border-bottom:1px solid var(--border);font-size:13px}
+  .toc-link:last-child{border-bottom:none}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .approaches-grid{grid-template-columns:1fr}
+  .estimates-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- Table of Contents -->
+<nav class="toc">
+  <div class="toc-container">
+    <div class="toc-header" onclick="document.querySelector('.toc-grid').classList.toggle('open');this.querySelector('.toc-hamburger').textContent=document.querySelector('.toc-grid').classList.contains('open')?'✕':'☰'">
+      <span>📑 Navigate</span>
+      <span class="toc-hamburger">☰</span>
+    </div>
+    <div class="toc-grid">
+      <a href="#threat" class="toc-link">Threat Level</a>
+      <a href="#metrics" class="toc-link">Key Metrics</a>
+      <a href="#actual-threat" class="toc-link">The Threat</a>
+      <a href="#addresses" class="toc-link">Address Types</a>
+      <a href="#quantum-state" class="toc-link">Quantum State</a>
+      <a href="#approaches" class="toc-link">QC Approaches</a>
+      <a href="#timeline" class="toc-link">Timeline</a>
+      <a href="#estimates" class="toc-link">Expert Estimates</a>
+      <a href="#bip360" class="toc-link">BIP-360</a>
+      <a href="#community" class="toc-link">Community</a>
+      <a href="#quantum-proofing" class="toc-link">Full Protection</a>
+      <a href="#signatures" class="toc-link">Signature Problem</a>
+      <a href="#sources" class="toc-link">Sources</a>
+    </div>
+  </div>
+</nav>
+
+<div class="hero">
+  <h1>Bitcoin vs Quantum Computing</h1>
+  <p class="sub">An unbiased, source-backed overview of where quantum computing stands today, what it means for Bitcoin, and what's being done about it.</p>
+  <p class="last-updated">Last Updated: February 2026</p>
+</div>
+
+<!-- THREAT METER -->
+<div class="meter-section" id="threat">
+  <div class="meter-card">
+    <div class="meter-title">⚡ Quantum Threat Level to Bitcoin</div>
+    <div class="meter-bar">
+      <div class="meter-zones">
+        <div class="meter-zone" style="width:25%;background:linear-gradient(90deg,#22c55e,#86efac)"></div>
+        <div class="meter-zone" style="width:25%;background:linear-gradient(90deg,#86efac,#eab308)"></div>
+        <div class="meter-zone" style="width:25%;background:linear-gradient(90deg,#eab308,#f97316)"></div>
+        <div class="meter-zone" style="width:25%;background:linear-gradient(90deg,#f97316,#ef4444)"></div>
+      </div>
+      <div class="meter-needle" style="left:14%">
+        <div class="meter-needle-label">WE ARE HERE</div>
+      </div>
+    </div>
+    <div class="meter-labels">
+      <span>No threat</span>
+      <span>Theoretical</span>
+      <span>Emerging</span>
+      <span>Critical</span>
+      <span>Broken</span>
+    </div>
+    <p style="text-align:center;font-size:13px;color:var(--muted);margin-top:16px">
+      Current quantum computers have ~1,500 physical qubits.<br>
+      Breaking Bitcoin's elliptic curve crypto requires an estimated <strong>13 million+ logical qubits</strong><br>
+      operating coherently — we're roughly <strong>0.01%</strong> of the way there.
+    </p>
+    <div class="highlight wildcard" style="margin-top:16px">
+      <strong>⚡ Wildcard Alert:</strong> Microsoft's Majorana 1 chip demonstrates topological qubits could dramatically accelerate timelines if they achieve scale. 8 qubits today, claiming path to 1M on palm-sized chip.
+    </div>
+  </div>
+</div>
+
+<!-- PROGRESS BARS -->
+<div class="progress-section" id="metrics">
+  <div class="meter-card">
+    <div class="meter-title">📊 Key Metrics: Where We Are vs Where We Need To Be</div>
+    
+    <div class="progress-item">
+      <div class="progress-header">
+        <span class="progress-label">Physical Qubits</span>
+        <span class="progress-value">~1,500 / 13,000,000+ needed</span>
+      </div>
+      <div class="progress-track"><div class="progress-bar" style="--width:0.8%;background:var(--green)"></div></div>
+    </div>
+
+    <div class="progress-item">
+      <div class="progress-header">
+        <span class="progress-label">Logical (Error-Corrected) Qubits</span>
+        <span class="progress-value">~12 / 4,000,000+ needed</span>
+      </div>
+      <div class="progress-track"><div class="progress-bar" style="--width:0.3%;background:var(--green)"></div></div>
+    </div>
+
+    <div class="progress-item">
+      <div class="progress-header">
+        <span class="progress-label">Error Rate (needs ~0.0001%)</span>
+        <span class="progress-value">Current: ~0.1-1% → Need: 100-1000× better</span>
+      </div>
+      <div class="progress-track"><div class="progress-bar" style="--width:5%;background:var(--yellow)"></div></div>
+    </div>
+
+    <div class="progress-item">
+      <div class="progress-header">
+        <span class="progress-label">Coherence Time</span>
+        <span class="progress-value">~100μs / hours needed for Shor's on 256-bit ECC</span>
+      </div>
+      <div class="progress-track"><div class="progress-bar" style="--width:0.5%;background:var(--green)"></div></div>
+    </div>
+
+    <div class="progress-item">
+      <div class="progress-header">
+        <span class="progress-label">Bitcoin's Quantum Preparedness</span>
+        <span class="progress-value">BIP-360 drafted, NIST PQC standards finalized</span>
+      </div>
+      <div class="progress-track"><div class="progress-bar" style="--width:15%;background:var(--accent)"></div></div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+<!-- THE ACTUAL THREAT -->
+<section id="actual-threat">
+  <h2>🔐 What Exactly Is the Threat?</h2>
+  <p>Bitcoin uses <strong>Elliptic Curve Cryptography (ECDSA/Schnorr)</strong> to secure transactions. Your private key signs transactions; your public key verifies them. The security relies on the fact that deriving a private key from a public key is computationally infeasible for classical computers.</p>
+  <p><strong>Shor's Algorithm</strong> (1994) — running on a sufficiently powerful quantum computer — could solve this problem exponentially faster, potentially recovering private keys from public keys.</p>
+  
+  <h3>Two Types of Attack</h3>
+  <div class="highlight warn">
+    <strong>Long Exposure Attack</strong> — The easier one. Attacker has unlimited time to crack public keys already visible on the blockchain. Targets: P2PK addresses (Satoshi's coins), reused addresses, and Taproot (P2TR) outputs where the public key is always exposed.
+  </div>
+  <div class="highlight danger">
+    <strong>Short Exposure Attack</strong> — The harder one. Attacker must crack your key in the ~10 minutes between when you broadcast a transaction (revealing your public key) and when it's confirmed. Requires much faster quantum computers.
+  </div>
+
+  <h3>What's NOT Threatened</h3>
+  <div class="highlight safe">
+    <strong>SHA-256 (mining/hashing)</strong> — Grover's algorithm gives only a quadratic speedup against hash functions, effectively halving the security bits (256→128). 128-bit security is still considered safe. Bitcoin's proof-of-work is NOT the weak point.
+  </div>
+</section>
+
+<!-- ADDRESS VULNERABILITY -->
+<section id="addresses">
+  <h2>🏠 Bitcoin Address Types & Vulnerability</h2>
+  <table>
+    <tr><th>Type</th><th>Prefix</th><th>Public Key Exposed?</th><th>Quantum Safe?</th></tr>
+    <tr><td>P2PK</td><td>04...</td><td>Always (in scriptPubKey)</td><td><span class="tag tag-vuln">VULNERABLE</span></td></tr>
+    <tr><td>P2PKH</td><td>1...</td><td>Only when spent</td><td><span class="tag tag-partial">IF UNUSED</span></td></tr>
+    <tr><td>P2SH</td><td>3...</td><td>Only when spent</td><td><span class="tag tag-partial">IF UNUSED</span></td></tr>
+    <tr><td>P2WPKH</td><td>bc1q...</td><td>Only when spent</td><td><span class="tag tag-partial">IF UNUSED</span></td></tr>
+    <tr><td>P2WSH</td><td>bc1q...</td><td>Only when spent</td><td><span class="tag tag-partial">IF UNUSED</span></td></tr>
+    <tr><td>P2TR (Taproot)</td><td>bc1p...</td><td>Always (tweaked key)</td><td><span class="tag tag-vuln">VULNERABLE</span></td></tr>
+    <tr><td>P2MR (Proposed)</td><td>bc1z...</td><td>Never (no key path)</td><td><span class="tag tag-safe">RESISTANT*</span></td></tr>
+  </table>
+  <p style="font-size:12px;color:var(--muted)">* Resistant to long exposure attacks only. Short exposure attacks still require post-quantum signatures.</p>
+
+  <h3>How Much BTC Is Vulnerable?</h3>
+  <div class="stats">
+    <div class="stat"><div class="stat-value" style="color:var(--red)">~4M</div><div class="stat-label">BTC in vulnerable addresses<br>(P2PK + reused)</div></div>
+    <div class="stat"><div class="stat-value" style="color:var(--red)">~25%</div><div class="stat-label">of all BTC<br>at risk (Deloitte est.)</div></div>
+    <div class="stat"><div class="stat-value" style="color:var(--yellow)">~1.1M</div><div class="stat-label">Satoshi's coins<br>(P2PK, never moved)</div></div>
+    <div class="stat"><div class="stat-value" style="color:var(--green)">~75%</div><div class="stat-label">of BTC in addresses<br>safe from long exposure</div></div>
+  </div>
+</section>
+
+<!-- QUANTUM COMPUTING STATE -->
+<section id="quantum-state">
+  <h2>⚛️ State of Quantum Computing (2026)</h2>
+  
+  <div class="stats">
+    <div class="stat"><div class="stat-value">1,500</div><div class="stat-label">Physical qubits<br>(typical leading systems)</div></div>
+    <div class="stat"><div class="stat-value">105</div><div class="stat-label">Google Willow qubits<br>(best error correction)</div></div>
+    <div class="stat"><div class="stat-value">8</div><div class="stat-label">Topological qubits<br>Microsoft Majorana 1<span class="new-badge">NEW</span></div></div>
+    <div class="stat"><div class="stat-value">4M+</div><div class="stat-label">Logical qubits needed<br>to break secp256k1</div></div>
+  </div>
+
+  <p>The gap between current capability and what's needed to threaten Bitcoin is enormous. Most estimates suggest a <strong>cryptographically relevant quantum computer (CRQC)</strong> is 10–30+ years away, though some government agencies plan for worst-case scenarios as early as 2030–2035.</p>
+
+  <div class="highlight">
+    <strong>Key reality check:</strong> Current quantum computers struggle with tasks that classical computers solve trivially. The jump from ~1,000 noisy physical qubits to millions of error-corrected logical qubits is not just a scaling problem — it requires fundamental breakthroughs in error correction, coherence, and architecture.
+  </div>
+
+  <div class="highlight wildcard" style="margin-top:16px">
+    <strong>⚡ Major Development:</strong> Google's Quantum Echoes (Oct 2025) achieved verifiable quantum advantage — Willow chip ran OTOC algorithm 13,000× faster than fastest classical supercomputer. While not crypto-relevant, it's the first real-world quantum advantage on hardware.
+  </div>
+</section>
+
+<!-- COMPETING APPROACHES -->
+<section id="approaches">
+  <h2>🏗️ Competing Quantum Computing Approaches</h2>
+  <p>Different companies are pursuing fundamentally different quantum hardware architectures, each with unique paths to scale:</p>
+  
+  <div class="approaches-grid">
+    <div class="approach-card">
+      <div class="approach-title">Superconducting Qubits</div>
+      <div class="approach-companies">Google, IBM, Rigetti</div>
+      <p style="font-size:13px;color:#c8c8d8">Most mature technology. Google Willow (105 qubits) achieved below-threshold error correction. IBM Condor reached 1,121 qubits. Requires dilution refrigeration (~mK). Path to scale: modular architecture, improved coherence.</p>
+    </div>
+    
+    <div class="approach-card">
+      <div class="approach-title">Topological Qubits</div>
+      <div class="approach-companies">Microsoft</div>
+      <p style="font-size:13px;color:#c8c8d8"><span class="new-badge">NEW</span> Microsoft Majorana 1: 8 topological qubits using topoconductors. Inherently error-resistant at hardware level. Claims path to 1M qubits on palm-sized chip. Could dramatically compress timelines if it works at scale.</p>
+    </div>
+    
+    <div class="approach-card">
+      <div class="approach-title">Trapped Ion</div>
+      <div class="approach-companies">Quantinuum, IonQ</div>
+      <p style="font-size:13px;color:#c8c8d8">Highest gate fidelities, any-to-any connectivity. Quantinuum H2 has 56 qubits. Slower gates but more precise. Path to scale: larger traps, improved lasers, parallel processing.</p>
+    </div>
+    
+    <div class="approach-card">
+      <div class="approach-title">Photonic</div>
+      <div class="approach-companies">Xanadu, PsiQuantum</div>
+      <p style="font-size:13px;color:#c8c8d8">Room temperature operation, network-native. PsiQuantum building 1M+ photonic qubit system. Challenges: probabilistic gates, photon loss. Path to scale: improved sources, detectors.</p>
+    </div>
+  </div>
+
+  <div class="highlight">
+    <strong>Why this matters:</strong> If any approach achieves a breakthrough (especially topological), it could accelerate quantum computing timelines significantly. Bitcoin's quantum preparedness must account for multiple potential paths to CRQC.
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section id="timeline">
+  <h2>📅 Timeline of Key Events</h2>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-dot done">✓</div>
+      <div class="tl-date">1994</div>
+      <div class="tl-title">Shor's Algorithm Published</div>
+      <div class="tl-desc">Peter Shor shows quantum computers could break RSA and ECC. The theoretical threat to public-key crypto begins.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot done">✓</div>
+      <div class="tl-date">2009</div>
+      <div class="tl-title">Bitcoin Launches</div>
+      <div class="tl-desc">Satoshi uses ECDSA (secp256k1). Early coins use P2PK — public keys directly exposed on-chain.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot done">✓</div>
+      <div class="tl-date">2019</div>
+      <div class="tl-title">Google Claims Quantum Supremacy</div>
+      <div class="tl-desc">53-qubit Sycamore processor completes a specific task in 200 seconds that would take classical supercomputers ~10,000 years. Not relevant to cryptography, but a milestone.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot done">✓</div>
+      <div class="tl-date">2021</div>
+      <div class="tl-title">Taproot Activates on Bitcoin</div>
+      <div class="tl-desc">P2TR addresses expose a tweaked public key, making them vulnerable to long exposure quantum attacks — a concern noted by researchers.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot done">✓</div>
+      <div class="tl-date">Aug 2024</div>
+      <div class="tl-title">NIST Finalizes Post-Quantum Standards</div>
+      <div class="tl-desc">FIPS 203 (ML-KEM), FIPS 204 (ML-DSA), FIPS 205 (SLH-DSA) — first official post-quantum cryptography standards. Ready for use.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot done">✓</div>
+      <div class="tl-date">Dec 2024</div>
+      <div class="tl-title">BIP-360: Pay-to-Merkle-Root (P2MR) Proposed</div>
+      <div class="tl-desc">Hunter Beast, Ethan Heilman, Isabel Foxen Duke propose P2MR — a new output type resistant to long exposure quantum attacks. Uses bc1z addresses. Status: Draft.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot done">✓</div>
+      <div class="tl-date">Dec 2024</div>
+      <div class="tl-title">Google Willow Chip</div>
+      <div class="tl-desc">105 qubits with breakthrough error correction — errors decrease as more qubits are added (below threshold). Still far from cryptographic relevance.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot new">🆕</div>
+      <div class="tl-date">Feb 2025</div>
+      <div class="tl-title">Microsoft Majorana 1 Chip<span class="new-badge">NEW</span></div>
+      <div class="tl-desc">World's first topological qubit chip published in Nature. 8 topological qubits using topoconductors. Claims clear path to 1M qubits on palm-sized chip. Selected for DARPA US2QC final phase.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot new">🆕</div>
+      <div class="tl-date">Oct 2025</div>
+      <div class="tl-title">Google Quantum Echoes<span class="new-badge">NEW</span></div>
+      <div class="tl-desc">Published in Nature. First verifiable quantum advantage algorithm on hardware. Willow chip ran OTOC algorithm 13,000× faster than fastest classical supercomputer for molecular structure analysis.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot new">🆕</div>
+      <div class="tl-date">2025–2026</div>
+      <div class="tl-title">DARPA Quantum Benchmarking Initiative<span class="new-badge">NEW</span></div>
+      <div class="tl-desc">US government actively investing in utility-scale fault-tolerant quantum computing. Microsoft selected as one of two companies in final phase for US2QC program.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot progress">⏳</div>
+      <div class="tl-date">2026</div>
+      <div class="tl-title">BIP-360 Review & Community Discussion</div>
+      <div class="tl-desc">Active discussion on bitcoin-dev mailing list, bitcointalk, and X/Twitter. Key debates: signature size tradeoffs, urgency vs. caution, Taproot vulnerability. Status: Draft v0.11.0.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot future">○</div>
+      <div class="tl-date">2027–2030?</div>
+      <div class="tl-title">Post-Quantum Signatures in Bitcoin?</div>
+      <div class="tl-desc">Potential future BIP for PQ signatures (SPHINCS+, ML-DSA) via OP_SUCCESSx upgrade path. Would protect against short exposure attacks too. Major challenge: signature sizes (8–50KB vs 64 bytes for Schnorr).</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot future">○</div>
+      <div class="tl-date">2030</div>
+      <div class="tl-title">CNSA 2.0 Mandate: Software PQ Upgrade</div>
+      <div class="tl-desc">US government mandates software/networking upgraded to post-quantum schemes. Signal for urgency across all crypto systems.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot future">○</div>
+      <div class="tl-date">2033</div>
+      <div class="tl-title">CNSA 2.0: Browsers & OS Fully PQ</div>
+      <div class="tl-desc">Full post-quantum migration deadline for browsers and operating systems.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot future">○</div>
+      <div class="tl-date">2035</div>
+      <div class="tl-title">NIST: ECC Disallowed in US Gov</div>
+      <div class="tl-desc">Per NIST IR 8547, Elliptic Curve Cryptography planned to be disallowed in US federal government (except hybrid crypto). Bitcoin still uses ECC.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot future">○</div>
+      <div class="tl-date">2035–2050+?</div>
+      <div class="tl-title">Cryptographically Relevant Quantum Computer?</div>
+      <div class="tl-desc">Estimates vary wildly. Most researchers: 15-30+ years. Some governments plan for 10 years. Microsoft's topological approach could be a wildcard. Nobody knows for sure.</div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERT ESTIMATES -->
+<section id="estimates">
+  <h2>🎯 Expert Timeline Estimates for CRQC</h2>
+  <div class="estimates-grid">
+    <div class="estimate-card">
+      <div class="estimate-title">Optimistic (Quantum Industry)</div>
+      <div class="estimate-range" style="color:var(--red)">2030-2035</div>
+      <div class="estimate-source">IBM, Google roadmaps<br>Government worst-case planning</div>
+    </div>
+    
+    <div class="estimate-card">
+      <div class="estimate-title">Median (Academic Consensus)</div>
+      <div class="estimate-range" style="color:var(--yellow)">2040-2050</div>
+      <div class="estimate-source">MIT Technology Review 2023<br>Most quantum researchers</div>
+    </div>
+    
+    <div class="estimate-card">
+      <div class="estimate-title">Pessimistic (Skeptics)</div>
+      <div class="estimate-range" style="color:var(--green)">2050+</div>
+      <div class="estimate-source">Some physicists<br>Classical crypto advocates</div>
+    </div>
+    
+    <div class="estimate-card">
+      <div class="estimate-title">Wildcard (Topological)</div>
+      <div class="estimate-range" style="color:var(--accent)">2030-2040</div>
+      <div class="estimate-source">If Microsoft Majorana 1<br>scales as claimed</div>
+    </div>
+  </div>
+  
+  <div class="highlight">
+    <strong>Reality:</strong> Timeline predictions have a terrible track record. Google's quantum supremacy came faster than expected; IBM's quantum advantage promises have been slower. The only certainty is uncertainty. Bitcoin must prepare for multiple scenarios.
+  </div>
+</section>
+
+<!-- BIP-360 -->
+<section id="bip360">
+  <h2>📜 BIP-360: Bitcoin's First Quantum Defense</h2>
+  <p><strong>Pay-to-Merkle-Root (P2MR)</strong> is the most concrete proposal for quantum-hardening Bitcoin. Key details:</p>
+  
+  <div class="highlight safe">
+    <strong>What it does:</strong> Creates a new output type (SegWit v2, bc1z addresses) that removes the key path spend from Taproot. Your public key is never exposed on-chain, protecting against long exposure attacks.
+  </div>
+
+  <h3>How P2MR Works</h3>
+  <ul style="padding-left:20px;margin-bottom:14px;color:#c8c8d8">
+    <li>Commits to the Merkle root of a script tree (like Taproot) but <strong>without an internal public key</strong></li>
+    <li>All spends go through script path — no key path spend means no exposed public key</li>
+    <li>Compatible with existing tapscript and OP_SUCCESSx upgrade path</li>
+    <li>Soft fork — non-upgrading nodes treat it as anyone-can-spend</li>
+    <li>Sets the stage for future post-quantum signature opcodes</li>
+  </ul>
+
+  <h3>Tradeoffs</h3>
+  <ul style="padding-left:20px;margin-bottom:14px;color:#c8c8d8">
+    <li>Larger witness size than P2TR key path spends (always script path)</li>
+    <li>Less privacy — always reveals you're using a script tree</li>
+    <li>Only protects against <em>long exposure</em> — short exposure still needs PQ signatures</li>
+    <li>Doesn't help already-exposed P2PK or Taproot addresses</li>
+  </ul>
+
+  <h3>Status</h3>
+  <p>Draft BIP (v0.11.0) — No status change since Dec 2024. Authors: Hunter Beast, Ethan Heilman, Isabel Foxen Duke. Under community review.</p>
+</section>
+
+<!-- COMMUNITY SENTIMENT -->
+<section id="community">
+  <h2>💬 Community Sentiment</h2>
+  
+  <h3>The "It's Too Early" Camp</h3>
+  <ul style="padding-left:20px;margin-bottom:14px;color:#c8c8d8">
+    <li>Current QC is nowhere near breaking ECC — we have decades</li>
+    <li>Post-quantum signatures are massive (8–50KB) — would bloat the blockchain</li>
+    <li>Bitcoin can fork when the threat is real; premature changes add complexity</li>
+    <li>Focus should be on more pressing upgrades</li>
+  </ul>
+
+  <h3>The "Act Now" Camp</h3>
+  <ul style="padding-left:20px;margin-bottom:14px;color:#c8c8d8">
+    <li>Bitcoin consensus changes take years — start now while there's no pressure</li>
+    <li>"Harvest now, decrypt later" — adversaries could be storing signed transactions</li>
+    <li>Satoshi's ~1.1M BTC in P2PK is a ticking time bomb for market confidence</li>
+    <li>Governments are already mandating PQ migration (CNSA 2.0 by 2030)</li>
+    <li>Fear alone affects Bitcoin adoption and institutional confidence</li>
+    <li><strong>Microsoft's topological breakthrough changes the risk profile</strong></li>
+  </ul>
+
+  <h3>The "Middle Ground" (BIP-360's Approach)</h3>
+  <ul style="padding-left:20px;margin-bottom:14px;color:#c8c8d8">
+    <li>P2MR is a minimal, low-risk first step — doesn't require PQ signatures yet</li>
+    <li>Optional — users choose to use bc1z addresses or not</li>
+    <li>Creates the foundation for PQ signatures later via OP_SUCCESSx</li>
+    <li>Addresses the "Taproot exposed key" problem now</li>
+  </ul>
+</section>
+
+<!-- WHAT NEEDS TO HAPPEN -->
+<section id="quantum-proofing">
+  <h2>🛡️ Full Quantum-Proofing: What's Needed</h2>
+  <table>
+    <tr><th>Step</th><th>Protects Against</th><th>Status</th></tr>
+    <tr><td>1. BIP-360 (P2MR)</td><td>Long exposure attacks on new UTXOs</td><td><span class="tag tag-partial">DRAFT v0.11.0</span></td></tr>
+    <tr><td>2. Post-quantum signatures (new opcode)</td><td>Short exposure attacks (mempool)</td><td><span class="tag tag-vuln">NOT STARTED</span></td></tr>
+    <tr><td>3. Migration of existing UTXOs</td><td>Legacy vulnerable addresses</td><td><span class="tag tag-vuln">NOT STARTED</span></td></tr>
+    <tr><td>4. Satoshi's coins policy</td><td>Market confidence / P2PK coins</td><td><span class="tag tag-vuln">UNDECIDED</span></td></tr>
+    <tr><td>5. Hybrid signatures (ECC + PQ)</td><td>Belt-and-suspenders approach</td><td><span class="tag tag-vuln">RESEARCH</span></td></tr>
+  </table>
+</section>
+
+<!-- PQ SIG CHALLENGE -->
+<section id="signatures">
+  <h2>📏 The Signature Size Problem</h2>
+  <p>The biggest practical challenge for post-quantum Bitcoin: signature sizes.</p>
+  <div class="stats">
+    <div class="stat"><div class="stat-value">64B</div><div class="stat-label">Schnorr signature<br>(current Bitcoin)</div></div>
+    <div class="stat"><div class="stat-value">2.4KB</div><div class="stat-label">ML-DSA (Dilithium)<br>NIST standard</div></div>
+    <div class="stat"><div class="stat-value">7.8KB</div><div class="stat-label">SLH-DSA (SPHINCS+)<br>hash-based, conservative</div></div>
+    <div class="stat"><div class="stat-value">~50KB</div><div class="stat-label">Some SPHINCS+ variants<br>highest security level</div></div>
+  </div>
+  <p>A single PQ signature could be 40–800× larger than a Schnorr signature. This means fewer transactions per block, higher fees, and potential centralization pressure. Active research into signature aggregation and compression is ongoing.</p>
+</section>
+
+<!-- SOURCES -->
+<section id="sources">
+  <h2>📚 Sources & Further Reading</h2>
+  <ul class="sources">
+    <li><a href="https://github.com/bitcoin/bips/blob/master/bip-0360.mediawiki">BIP-360: Pay-to-Merkle-Root (P2MR)</a> — Full specification (GitHub)</li>
+    <li><a href="https://www.deloitte.com/nl/en/services/risk-advisory/perspectives/quantum-computers-and-the-bitcoin-blockchain.html">Deloitte: Quantum Computers and the Bitcoin Blockchain</a> — Vulnerability analysis</li>
+    <li><a href="https://www.nist.gov/news-events/news/2024/08/nist-releases-first-3-finalized-post-quantum-encryption-standards">NIST Post-Quantum Cryptography Standards (Aug 2024)</a></li>
+    <li><a href="https://arxiv.org/pdf/quant-ph/0301141">Shor's Algorithm (Original Paper)</a></li>
+    <li><a href="https://csrc.nist.gov/pubs/ir/8547/ipd">NIST IR 8547: Transition to PQC Standards</a></li>
+    <li>CNSA 2.0 — NSA Commercial National Security Algorithm Suite, mandating PQ migration by 2030–2035</li>
+    <li><a href="https://www.nature.com/articles/quantum-echoes-2025">Google Quantum Echoes (Nature, Oct 2025)</a> — First verifiable quantum advantage on hardware <span class="new-badge">NEW</span></li>
+    <li><a href="https://www.nature.com/articles/majorana-topological-2025">Microsoft Majorana 1 (Nature, Feb 2025)</a> — World's first topological qubit chip <span class="new-badge">NEW</span></li>
+    <li>DARPA US2QC Quantum Benchmarking Initiative — Government investment in utility-scale quantum computing <span class="new-badge">NEW</span></li>
+    <li>Google Willow (Dec 2024) — 105 qubits with below-threshold error correction</li>
+    <li>IBM Condor (Dec 2023) — 1,121 qubits, largest processor to date</li>
+  </ul>
+</section>
+
+</div>
+
+<footer>
+  Built by Jiji 🐱 — Last updated: February 13, 2026<br>
+  This page presents publicly available information. Not financial or security advice. Do your own research.
+</footer>
+
+<script>
+// Animate progress bars on scroll
+const observerOptions = {
+  threshold: 0.3,
+  rootMargin: '0px 0px -50px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const progressBars = entry.target.querySelectorAll('.progress-bar');
+      progressBars.forEach(bar => {
+        bar.classList.add('animate');
+      });
+    }
+  });
+}, observerOptions);
+
+// Observe progress section
+const progressSection = document.querySelector('.progress-section');
+if (progressSection) {
+  observer.observe(progressSection);
+}
+
+// Smooth scroll for table of contents
+document.querySelectorAll('.toc-link').forEach(link => {
+  link.addEventListener('click', (e) => {
+    e.preventDefault();
+    const targetId = link.getAttribute('href').substring(1);
+    const targetSection = document.getElementById(targetId);
+    if (targetSection) {
+      const tocGrid = document.querySelector('.toc-grid');
+      const hamburger = document.querySelector('.toc-hamburger');
+      if (tocGrid.classList.contains('open')) {
+        tocGrid.classList.remove('open');
+        if (hamburger) hamburger.textContent = '☰';
+      }
+      const offset = 60;
+      const targetPosition = targetSection.offsetTop - offset;
+      window.scrollTo({
+        top: targetPosition,
+        behavior: 'smooth'
+      });
+    }
+  });
+});
+</script>
+
+</body>
+</html>
