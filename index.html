@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Bitcoin vs Quantum — Where Are We?</title>
 <style>
-:root{--bg:#0a0a0f;--card:#12121a;--border:#1e1e2e;--text:#e0e0e8;--muted:#6b6b80;--accent:#6366f1;--green:#22c55e;--yellow:#eab308;--red:#ef4444;--orange:#f97316}
+:root{--bg:#0a0a0f;--card:#12121a;--border:#1e1e2e;--text:#e0e0e8;--muted:#6b6b80;--body-text:#c8c8d8;--accent:#6366f1;--green:#22c55e;--yellow:#eab308;--red:#ef4444;--orange:#f97316}
 
 /* Light mode variables */
-body.light{--bg:#f5f5f7;--card:#ffffff;--border:#d8d8e0;--text:#1a1a2e;--muted:#4a4a5c;--accent:#6366f1;--green:#16a34a;--yellow:#ca8a04;--red:#dc2626;--orange:#ea580c}
+body.light{--bg:#f5f5f7;--card:#ffffff;--border:#d8d8e0;--text:#1a1a2e;--muted:#4a4a5c;--body-text:#3a3a4a;--accent:#6366f1;--green:#16a34a;--yellow:#ca8a04;--red:#dc2626;--orange:#ea580c}
 body.light p{color:#3a3a4a}
 body.light .tl-desc{color:#4a4a5c}
 body.light th{background:#eeeef2}
@@ -76,7 +76,7 @@ body.light .progress-track{background:linear-gradient(90deg,#e0e0e8 0%,#d0d0d8 1
 section{margin-bottom:50px}
 h2{font-size:22px;font-weight:700;margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid var(--border)}
 h3{font-size:17px;font-weight:600;margin:20px 0 10px;color:#a5b4fc}
-p{margin-bottom:14px;color:#c8c8d8}
+p{margin-bottom:14px;color:var(--body-text)}
 .highlight{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin:16px 0;transition:all 0.3s ease}
 .highlight.warn{border-left:4px solid var(--orange)}
 .highlight.safe{border-left:4px solid var(--green)}
@@ -94,7 +94,7 @@ p{margin-bottom:14px;color:#c8c8d8}
 .tl-dot.new{border-color:var(--accent);background:#6366f122}
 .tl-date{font-size:12px;color:var(--muted);font-weight:600}
 .tl-title{font-size:15px;font-weight:600}
-.tl-desc{font-size:13px;color:#9898a8}
+.tl-desc{font-size:13px;color:var(--body-text)}
 .new-badge{display:inline-block;background:var(--accent);color:white;font-size:9px;padding:2px 6px;border-radius:3px;margin-left:6px;font-weight:700}
 
 /* Address table */
@@ -353,7 +353,7 @@ footer{text-align:center;padding:40px 20px;color:var(--muted);font-size:12px;bor
           <div style="font-size:12px;color:var(--muted)">August 2024 — The cryptographic building blocks are ready</div>
         </div>
       </div>
-      <div style="font-size:12px;color:#c8c8d8;padding-left:36px">Three quantum-proof encryption standards are now official (ML-KEM, ML-DSA, SLH-DSA). These are the replacement algorithms Bitcoin could adopt. The US government is already mandating their use by 2030–2035.</div>
+      <div style="font-size:12px;color:var(--body-text);padding-left:36px">Three quantum-proof encryption standards are now official (ML-KEM, ML-DSA, SLH-DSA). These are the replacement algorithms Bitcoin could adopt. The US government is already mandating their use by 2030–2035.</div>
     </div>
 
     <div class="progress-item" style="margin-bottom:20px">
@@ -364,7 +364,7 @@ footer{text-align:center;padding:40px 20px;color:var(--muted);font-size:12px;bor
           <div style="font-size:12px;color:var(--muted)">December 2024 — First concrete Bitcoin proposal, currently in review</div>
         </div>
       </div>
-      <div style="font-size:12px;color:#c8c8d8;padding-left:36px">Creates new <code style="background:#1a1a2e;padding:2px 5px;border-radius:3px;font-size:11px">bc1z</code> addresses that never expose your public key on-chain. Protects against "long exposure" attacks where someone has unlimited time to crack your key. Doesn't need new crypto — just hides the key better. Status: <strong>Draft v0.11.0</strong>, under community review.</div>
+      <div style="font-size:12px;color:var(--body-text);padding-left:36px">Creates new <code style="background:#1a1a2e;padding:2px 5px;border-radius:3px;font-size:11px">bc1z</code> addresses that never expose your public key on-chain. Protects against "long exposure" attacks where someone has unlimited time to crack your key. Doesn't need new crypto — just hides the key better. Status: <strong>Draft v0.11.0</strong>, under community review.</div>
     </div>
 
     <div class="progress-item" style="margin-bottom:20px">
@@ -375,7 +375,7 @@ footer{text-align:center;padding:40px 20px;color:var(--muted);font-size:12px;bor
           <div style="font-size:12px;color:var(--muted)">February 2026 — Wallet-level quantum insurance, working today</div>
         </div>
       </div>
-      <div style="font-size:12px;color:#c8c8d8;padding-left:36px">Developer Emiliano Solazzi built a hybrid wallet that dual-signs transactions with both classical (Schnorr) and post-quantum (ML-DSA/Falcon) keys. If Bitcoin ever forks to PQ, your ownership is already proven. 136 tests passing, 0.5ms overhead. Not a consensus change — works at the wallet layer right now.</div>
+      <div style="font-size:12px;color:var(--body-text);padding-left:36px">Developer Emiliano Solazzi built a hybrid wallet that dual-signs transactions with both classical (Schnorr) and post-quantum (ML-DSA/Falcon) keys. If Bitcoin ever forks to PQ, your ownership is already proven. 136 tests passing, 0.5ms overhead. Not a consensus change — works at the wallet layer right now.</div>
     </div>
 
     <div class="progress-item" style="margin-bottom:20px">
@@ -386,7 +386,7 @@ footer{text-align:center;padding:40px 20px;color:var(--muted);font-size:12px;bor
           <div style="font-size:12px;color:var(--muted)">November 2025 — QuantumRoot live on Chipnet</div>
         </div>
       </div>
-      <div style="font-size:12px;color:#c8c8d8;padding-left:36px">Bitcoin Cash (a Bitcoin fork) has post-quantum vaults running on its test network. While not Bitcoin itself, it serves as a real-world proving ground for PQ approaches that Bitcoin could adopt later.</div>
+      <div style="font-size:12px;color:var(--body-text);padding-left:36px">Bitcoin Cash (a Bitcoin fork) has post-quantum vaults running on its test network. While not Bitcoin itself, it serves as a real-world proving ground for PQ approaches that Bitcoin could adopt later.</div>
     </div>
 
     <div class="progress-item" style="margin-bottom:20px">
@@ -397,7 +397,7 @@ footer{text-align:center;padding:40px 20px;color:var(--muted);font-size:12px;bor
           <div style="font-size:12px;color:var(--muted)">Not started — The final piece of the puzzle</div>
         </div>
       </div>
-      <div style="font-size:12px;color:#c8c8d8;padding-left:36px">The ultimate fix: a new Bitcoin opcode that verifies quantum-proof signatures (SPHINCS+, ML-DSA) directly on-chain. Would protect against both long and short exposure attacks. Major challenge: PQ signatures are 40–800× larger than current ones (see Signature Size Problem). BIP-360 lays the groundwork via <code style="background:#1a1a2e;padding:2px 5px;border-radius:3px;font-size:11px">OP_SUCCESSx</code> upgrade path.</div>
+      <div style="font-size:12px;color:var(--body-text);padding-left:36px">The ultimate fix: a new Bitcoin opcode that verifies quantum-proof signatures (SPHINCS+, ML-DSA) directly on-chain. Would protect against both long and short exposure attacks. Major challenge: PQ signatures are 40–800× larger than current ones (see Signature Size Problem). BIP-360 lays the groundwork via <code style="background:#1a1a2e;padding:2px 5px;border-radius:3px;font-size:11px">OP_SUCCESSx</code> upgrade path.</div>
     </div>
 
     <div class="progress-item">
@@ -408,7 +408,7 @@ footer{text-align:center;padding:40px 20px;color:var(--muted);font-size:12px;bor
           <div style="font-size:12px;color:var(--muted)">Undecided — The hardest political question in Bitcoin</div>
         </div>
       </div>
-      <div style="font-size:12px;color:#c8c8d8;padding-left:36px">~4M BTC sit in vulnerable P2PK/reused addresses (including Satoshi's ~1.1M BTC). Even with new quantum-safe address types, these old coins remain exposed. Options: forced migration deadline, coin burning, or accepting the risk. Each option has massive philosophical implications for Bitcoin's "immutable property rights" ethos. No consensus exists.</div>
+      <div style="font-size:12px;color:var(--body-text);padding-left:36px">~4M BTC sit in vulnerable P2PK/reused addresses (including Satoshi's ~1.1M BTC). Even with new quantum-safe address types, these old coins remain exposed. Options: forced migration deadline, coin burning, or accepting the risk. Each option has massive philosophical implications for Bitcoin's "immutable property rights" ethos. No consensus exists.</div>
     </div>
 
   </div>
@@ -491,25 +491,25 @@ footer{text-align:center;padding:40px 20px;color:var(--muted);font-size:12px;bor
     <div class="approach-card">
       <div class="approach-title">Superconducting Qubits</div>
       <div class="approach-companies">Google, IBM, Rigetti</div>
-      <p style="font-size:13px;color:#c8c8d8">Most mature technology. Google Willow (105 qubits) achieved below-threshold error correction. IBM Condor reached 1,121 qubits. Requires dilution refrigeration (~mK). Path to scale: modular architecture, improved coherence.</p>
+      <p style="font-size:13px;color:var(--body-text)">Most mature technology. Google Willow (105 qubits) achieved below-threshold error correction. IBM Condor reached 1,121 qubits. Requires dilution refrigeration (~mK). Path to scale: modular architecture, improved coherence.</p>
     </div>
     
     <div class="approach-card">
       <div class="approach-title">Topological Qubits</div>
       <div class="approach-companies">Microsoft</div>
-      <p style="font-size:13px;color:#c8c8d8"><span class="new-badge">NEW</span> Microsoft Majorana 1: 8 topological qubits using topoconductors. Inherently error-resistant at hardware level. Claims path to 1M qubits on palm-sized chip. Could dramatically compress timelines if it works at scale.</p>
+      <p style="font-size:13px;color:var(--body-text)"><span class="new-badge">NEW</span> Microsoft Majorana 1: 8 topological qubits using topoconductors. Inherently error-resistant at hardware level. Claims path to 1M qubits on palm-sized chip. Could dramatically compress timelines if it works at scale.</p>
     </div>
     
     <div class="approach-card">
       <div class="approach-title">Trapped Ion</div>
       <div class="approach-companies">Quantinuum, IonQ</div>
-      <p style="font-size:13px;color:#c8c8d8">Highest gate fidelities, any-to-any connectivity. Quantinuum H2 has 56 qubits. Slower gates but more precise. Path to scale: larger traps, improved lasers, parallel processing.</p>
+      <p style="font-size:13px;color:var(--body-text)">Highest gate fidelities, any-to-any connectivity. Quantinuum H2 has 56 qubits. Slower gates but more precise. Path to scale: larger traps, improved lasers, parallel processing.</p>
     </div>
     
     <div class="approach-card">
       <div class="approach-title">Photonic</div>
       <div class="approach-companies">Xanadu, PsiQuantum</div>
-      <p style="font-size:13px;color:#c8c8d8">Room temperature operation, network-native. PsiQuantum building 1M+ photonic qubit system. Challenges: probabilistic gates, photon loss. Path to scale: improved sources, detectors.</p>
+      <p style="font-size:13px;color:var(--body-text)">Room temperature operation, network-native. PsiQuantum building 1M+ photonic qubit system. Challenges: probabilistic gates, photon loss. Path to scale: improved sources, detectors.</p>
     </div>
   </div>
 
@@ -665,7 +665,7 @@ footer{text-align:center;padding:40px 20px;color:var(--muted);font-size:12px;bor
   </div>
 
   <h3>How P2MR Works</h3>
-  <ul style="padding-left:20px;margin-bottom:14px;color:#c8c8d8">
+  <ul style="padding-left:20px;margin-bottom:14px;color:var(--body-text)">
     <li>Commits to the Merkle root of a script tree (like Taproot) but <strong>without an internal public key</strong></li>
     <li>All spends go through script path — no key path spend means no exposed public key</li>
     <li>Compatible with existing tapscript and OP_SUCCESSx upgrade path</li>
@@ -674,7 +674,7 @@ footer{text-align:center;padding:40px 20px;color:var(--muted);font-size:12px;bor
   </ul>
 
   <h3>Tradeoffs</h3>
-  <ul style="padding-left:20px;margin-bottom:14px;color:#c8c8d8">
+  <ul style="padding-left:20px;margin-bottom:14px;color:var(--body-text)">
     <li>Larger witness size than P2TR key path spends (always script path)</li>
     <li>Less privacy — always reveals you're using a script tree</li>
     <li>Only protects against <em>long exposure</em> — short exposure still needs PQ signatures</li>
@@ -690,7 +690,7 @@ footer{text-align:center;padding:40px 20px;color:var(--muted);font-size:12px;bor
   <h2>💬 Community Sentiment</h2>
   
   <h3>The "It's Too Early" Camp</h3>
-  <ul style="padding-left:20px;margin-bottom:14px;color:#c8c8d8">
+  <ul style="padding-left:20px;margin-bottom:14px;color:var(--body-text)">
     <li>Current QC is nowhere near breaking ECC — we have decades</li>
     <li>Post-quantum signatures are massive (8–50KB) — would bloat the blockchain</li>
     <li>Bitcoin can fork when the threat is real; premature changes add complexity</li>
@@ -698,7 +698,7 @@ footer{text-align:center;padding:40px 20px;color:var(--muted);font-size:12px;bor
   </ul>
 
   <h3>The "Act Now" Camp</h3>
-  <ul style="padding-left:20px;margin-bottom:14px;color:#c8c8d8">
+  <ul style="padding-left:20px;margin-bottom:14px;color:var(--body-text)">
     <li>Bitcoin consensus changes take years — start now while there's no pressure</li>
     <li>"Harvest now, decrypt later" — adversaries could be storing signed transactions</li>
     <li>Satoshi's ~1.1M BTC in P2PK is a ticking time bomb for market confidence</li>
@@ -708,7 +708,7 @@ footer{text-align:center;padding:40px 20px;color:var(--muted);font-size:12px;bor
   </ul>
 
   <h3>The "Middle Ground" (BIP-360's Approach)</h3>
-  <ul style="padding-left:20px;margin-bottom:14px;color:#c8c8d8">
+  <ul style="padding-left:20px;margin-bottom:14px;color:var(--body-text)">
     <li>P2MR is a minimal, low-risk first step — doesn't require PQ signatures yet</li>
     <li>Optional — users choose to use bc1z addresses or not</li>
     <li>Creates the foundation for PQ signatures later via OP_SUCCESSx</li>
