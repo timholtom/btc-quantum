@@ -136,7 +136,22 @@ td{padding:10px 12px;border-bottom:1px solid var(--border);font-size:14px;transi
 .tweet-tab{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:8px 16px;color:var(--muted);font-size:13px;font-weight:600;cursor:pointer;transition:all 0.2s;font-family:inherit}
 .tweet-tab:hover{border-color:var(--accent);color:var(--text)}
 .tweet-tab.active{background:var(--accent);border-color:var(--accent);color:white}
-.tweet-embed-wrapper{border-radius:12px;overflow:hidden}
+
+/* Trending section */
+.trending-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.trending-column{display:flex;flex-direction:column;gap:16px}
+.trending-section-header{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.hn-posts-container{display:flex;flex-direction:column;gap:12px}
+.hn-post{background:var(--card);border:1px solid var(--border);border-left:4px solid var(--orange);border-radius:8px;padding:16px;transition:all 0.2s ease}
+.hn-post:hover{border-color:var(--orange);background:rgba(249,115,22,0.05)}
+.hn-post-title{font-size:14px;font-weight:600;line-height:1.4;margin-bottom:8px}
+.hn-post-title a{color:var(--text);text-decoration:none}
+.hn-post-title a:hover{color:var(--orange);text-decoration:underline}
+.hn-post-meta{display:flex;align-items:center;gap:12px;font-size:11px;color:var(--muted)}
+.hn-post-meta span{display:flex;align-items:center;gap:4px}
+.hn-loading{text-align:center;padding:40px 20px;background:var(--card);border:1px solid var(--border);border-radius:8px}
+.hn-no-results{text-align:center;padding:32px 20px;background:var(--card);border:1px solid var(--border);border-radius:8px;font-size:14px;color:var(--muted)}
+.twitter-placeholder{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:32px 20px;text-align:center}
 
 /* Footer */
 footer{text-align:center;padding:40px 20px;color:var(--muted);font-size:12px;border-top:1px solid var(--border);transition:all 0.3s ease}
@@ -153,6 +168,8 @@ footer{text-align:center;padding:40px 20px;color:var(--muted);font-size:12px;bor
   .stats{grid-template-columns:repeat(2,1fr) !important}
   .approaches-grid{grid-template-columns:1fr}
   .estimates-grid{grid-template-columns:1fr}
+  .trending-grid{grid-template-columns:1fr;gap:20px}
+  .trending-section-header{flex-direction:column;align-items:flex-start;gap:4px}
 }
 </style>
 </head>
@@ -743,10 +760,10 @@ footer{text-align:center;padding:40px 20px;color:var(--muted);font-size:12px;bor
   <p>A single PQ signature could be 40–800× larger than a Schnorr signature. This means fewer transactions per block, higher fees, and potential centralization pressure. Active research into signature aggregation and compression is ongoing.</p>
 </section>
 
-<!-- TRENDING TWEETS -->
+<!-- TRENDING -->
 <section id="trending">
-  <h2>🐦 Trending on X</h2>
-  <p>Live posts about Bitcoin and quantum computing from X/Twitter.</p>
+  <h2>📈 Trending Discussions</h2>
+  <p>Live posts from Hacker News and curated tweets about Bitcoin and quantum computing.</p>
   
   <div style="display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap">
     <button class="tweet-tab active" onclick="switchTweetTab('24h',this)">Last 24h</button>
@@ -754,28 +771,96 @@ footer{text-align:center;padding:40px 20px;color:var(--muted);font-size:12px;bor
     <button class="tweet-tab" onclick="switchTweetTab('30d',this)">30 days</button>
   </div>
 
-  <div id="tweet-container">
-    <div class="tweet-embed-wrapper" id="tweets-24h" style="display:block;text-align:center;padding:60px 20px;background:var(--card);border:1px solid var(--border);border-radius:12px;margin:20px 0">
-      <div style="font-size:48px;margin-bottom:16px;opacity:0.7">🔄</div>
-      <div style="font-size:18px;font-weight:600;margin-bottom:8px;color:var(--text)">Tweet feed updating</div>
-      <div style="font-size:14px;color:var(--muted);margin-bottom:24px">Check back shortly for the latest Bitcoin quantum discussions</div>
-      <div style="font-size:12px;color:var(--muted);opacity:0.8">Sourcing real-time conversations from crypto researchers, developers, and analysts</div>
+  <div id="trending-container">
+    <!-- 24h Content -->
+    <div id="content-24h" style="display:block">
+      <div class="trending-grid">
+        <div class="trending-column">
+          <div class="trending-section-header">
+            <h3 style="color:var(--orange);margin:0;font-size:16px;font-weight:700;">🔶 Hacker News</h3>
+            <span style="font-size:12px;color:var(--muted);">Live from HN Algolia API</span>
+          </div>
+          <div id="hn-posts-24h" class="hn-posts-container">
+            <div class="hn-loading">
+              <div style="font-size:24px;margin-bottom:8px;opacity:0.7">🔄</div>
+              <div style="font-size:14px;color:var(--muted)">Loading posts...</div>
+            </div>
+          </div>
+        </div>
+        <div class="trending-column">
+          <div class="trending-section-header">
+            <h3 style="color:#1da1f2;margin:0;font-size:16px;font-weight:700;">🐦 X/Twitter</h3>
+            <span style="font-size:12px;color:var(--muted);">Curated selections</span>
+          </div>
+          <div class="twitter-placeholder">
+            <div style="font-size:32px;margin-bottom:12px;opacity:0.6">🚧</div>
+            <div style="font-size:16px;font-weight:600;margin-bottom:8px;color:var(--text)">Curated tweets coming soon</div>
+            <div style="font-size:13px;color:var(--muted);line-height:1.5">We're working on sourcing the best Bitcoin quantum discussions from crypto researchers, developers, and analysts.</div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="tweet-embed-wrapper" id="tweets-7d" style="display:none;text-align:center;padding:60px 20px;background:var(--card);border:1px solid var(--border);border-radius:12px;margin:20px 0">
-      <div style="font-size:48px;margin-bottom:16px;opacity:0.7">🔄</div>
-      <div style="font-size:18px;font-weight:600;margin-bottom:8px;color:var(--text)">Tweet feed updating</div>
-      <div style="font-size:14px;color:var(--muted);margin-bottom:24px">Check back shortly for the latest Bitcoin quantum discussions</div>
-      <div style="font-size:12px;color:var(--muted);opacity:0.8">Sourcing real-time conversations from crypto researchers, developers, and analysts</div>
+
+    <!-- 7d Content -->
+    <div id="content-7d" style="display:none">
+      <div class="trending-grid">
+        <div class="trending-column">
+          <div class="trending-section-header">
+            <h3 style="color:var(--orange);margin:0;font-size:16px;font-weight:700;">🔶 Hacker News</h3>
+            <span style="font-size:12px;color:var(--muted);">Live from HN Algolia API</span>
+          </div>
+          <div id="hn-posts-7d" class="hn-posts-container">
+            <div class="hn-loading">
+              <div style="font-size:24px;margin-bottom:8px;opacity:0.7">🔄</div>
+              <div style="font-size:14px;color:var(--muted)">Loading posts...</div>
+            </div>
+          </div>
+        </div>
+        <div class="trending-column">
+          <div class="trending-section-header">
+            <h3 style="color:#1da1f2;margin:0;font-size:16px;font-weight:700;">🐦 X/Twitter</h3>
+            <span style="font-size:12px;color:var(--muted);">Curated selections</span>
+          </div>
+          <div class="twitter-placeholder">
+            <div style="font-size:32px;margin-bottom:12px;opacity:0.6">🚧</div>
+            <div style="font-size:16px;font-weight:600;margin-bottom:8px;color:var(--text)">Curated tweets coming soon</div>
+            <div style="font-size:13px;color:var(--muted);line-height:1.5">We're working on sourcing the best Bitcoin quantum discussions from crypto researchers, developers, and analysts.</div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="tweet-embed-wrapper" id="tweets-30d" style="display:none;text-align:center;padding:60px 20px;background:var(--card);border:1px solid var(--border);border-radius:12px;margin:20px 0">
-      <div style="font-size:48px;margin-bottom:16px;opacity:0.7">🔄</div>
-      <div style="font-size:18px;font-weight:600;margin-bottom:8px;color:var(--text)">Tweet feed updating</div>
-      <div style="font-size:14px;color:var(--muted);margin-bottom:24px">Check back shortly for the latest Bitcoin quantum discussions</div>
-      <div style="font-size:12px;color:var(--muted);opacity:0.8">Sourcing real-time conversations from crypto researchers, developers, and analysts</div>
+
+    <!-- 30d Content -->
+    <div id="content-30d" style="display:none">
+      <div class="trending-grid">
+        <div class="trending-column">
+          <div class="trending-section-header">
+            <h3 style="color:var(--orange);margin:0;font-size:16px;font-weight:700;">🔶 Hacker News</h3>
+            <span style="font-size:12px;color:var(--muted);">Live from HN Algolia API</span>
+          </div>
+          <div id="hn-posts-30d" class="hn-posts-container">
+            <div class="hn-loading">
+              <div style="font-size:24px;margin-bottom:8px;opacity:0.7">🔄</div>
+              <div style="font-size:14px;color:var(--muted)">Loading posts...</div>
+            </div>
+          </div>
+        </div>
+        <div class="trending-column">
+          <div class="trending-section-header">
+            <h3 style="color:#1da1f2;margin:0;font-size:16px;font-weight:700;">🐦 X/Twitter</h3>
+            <span style="font-size:12px;color:var(--muted);">Curated selections</span>
+          </div>
+          <div class="twitter-placeholder">
+            <div style="font-size:32px;margin-bottom:12px;opacity:0.6">🚧</div>
+            <div style="font-size:16px;font-weight:600;margin-bottom:8px;color:var(--text)">Curated tweets coming soon</div>
+            <div style="font-size:13px;color:var(--muted);line-height:1.5">We're working on sourcing the best Bitcoin quantum discussions from crypto researchers, developers, and analysts.</div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
   
-  <p style="font-size:11px;color:var(--muted);margin-top:12px">Auto-updating with curated tweets from Bitcoin and quantum computing experts.</p>
+  <p style="font-size:11px;color:var(--muted);margin-top:16px;text-align:center;">Updates every few minutes • <span style="color:var(--orange)">HN</span> posts are fetched live • <span style="color:#1da1f2">Twitter</span> content coming soon</p>
 </section>
 
 <!-- SOURCES -->
@@ -969,15 +1054,124 @@ async function sendChat(){
 }
 function escHtml(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
 
-// Tweet tab switching
+// Trending tab switching
 function switchTweetTab(period, btn){
   document.querySelectorAll('.tweet-tab').forEach(t=>t.classList.remove('active'));
   btn.classList.add('active');
-  document.querySelectorAll('.tweet-embed-wrapper').forEach(w=>w.style.display='none');
-  document.getElementById('tweets-'+period).style.display='block';
-  // Re-render twitter embeds
-  if(window.twttr&&window.twttr.widgets){window.twttr.widgets.load()}
+  document.querySelectorAll('[id^="content-"]').forEach(w=>w.style.display='none');
+  document.getElementById('content-'+period).style.display='block';
+  
+  // Fetch HN posts if not already loaded for this period
+  if (!window.hnPostsLoaded) window.hnPostsLoaded = {};
+  if (!window.hnPostsLoaded[period]) {
+    fetchHNPosts(period);
+  }
 }
+
+// Hacker News API functions
+async function fetchHNPosts(period) {
+  const container = document.getElementById(`hn-posts-${period}`);
+  if (!container) return;
+  
+  try {
+    const now = Math.floor(Date.now() / 1000);
+    let timestamp;
+    switch(period) {
+      case '24h': timestamp = now - 86400; break;
+      case '7d': timestamp = now - 604800; break;
+      case '30d': timestamp = now - 2592000; break;
+      default: timestamp = now - 86400;
+    }
+    
+    const apiUrl = `https://hn.algolia.com/api/v1/search?query=bitcoin+quantum&tags=story&hitsPerPage=2&numericFilters=created_at_i>${timestamp}`;
+    const response = await fetch(apiUrl);
+    const data = await response.json();
+    
+    if (data.hits && data.hits.length > 0) {
+      renderHNPosts(data.hits, period);
+      window.hnPostsLoaded[period] = true;
+    } else {
+      showNoHNResults(period);
+    }
+  } catch (error) {
+    console.error('Failed to fetch HN posts:', error);
+    showHNError(period);
+  }
+}
+
+function renderHNPosts(posts, period) {
+  const container = document.getElementById(`hn-posts-${period}`);
+  if (!container) return;
+  
+  const html = posts.map(post => {
+    const url = post.url || `https://news.ycombinator.com/item?id=${post.objectID}`;
+    const timeAgo = formatTimeAgo(post.created_at_i);
+    const points = post.points || 0;
+    const comments = post.num_comments || 0;
+    
+    return `
+      <div class="hn-post">
+        <div class="hn-post-title">
+          <a href="${escapeHtml(url)}" target="_blank" rel="noopener">${escapeHtml(post.title)}</a>
+        </div>
+        <div class="hn-post-meta">
+          <span>▲ ${points}</span>
+          <span>💬 ${comments}</span>
+          <span>⏰ ${timeAgo}</span>
+        </div>
+      </div>
+    `;
+  }).join('');
+  
+  container.innerHTML = html;
+}
+
+function showNoHNResults(period) {
+  const container = document.getElementById(`hn-posts-${period}`);
+  if (!container) return;
+  
+  container.innerHTML = `
+    <div class="hn-no-results">
+      <div style="font-size:24px;margin-bottom:8px;opacity:0.6">🔍</div>
+      <div>No recent posts found</div>
+      <div style="font-size:12px;margin-top:4px;opacity:0.8">Try a different timeframe</div>
+    </div>
+  `;
+}
+
+function showHNError(period) {
+  const container = document.getElementById(`hn-posts-${period}`);
+  if (!container) return;
+  
+  container.innerHTML = `
+    <div class="hn-no-results">
+      <div style="font-size:24px;margin-bottom:8px;opacity:0.6">⚠️</div>
+      <div>Failed to load posts</div>
+      <div style="font-size:12px;margin-top:4px;opacity:0.8">Check connection and try again</div>
+    </div>
+  `;
+}
+
+function formatTimeAgo(timestamp) {
+  const now = Math.floor(Date.now() / 1000);
+  const diff = now - timestamp;
+  
+  if (diff < 3600) return `${Math.floor(diff / 60)}m ago`;
+  if (diff < 86400) return `${Math.floor(diff / 3600)}h ago`;
+  return `${Math.floor(diff / 86400)}d ago`;
+}
+
+function escapeHtml(text) {
+  const div = document.createElement('div');
+  div.textContent = text;
+  return div.innerHTML;
+}
+
+// Load HN posts on page load
+document.addEventListener('DOMContentLoaded', () => {
+  // Fetch posts for the default active tab (24h)
+  setTimeout(() => fetchHNPosts('24h'), 100);
+});
 </script>
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 </body>
