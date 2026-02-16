@@ -765,102 +765,15 @@ footer{text-align:center;padding:40px 20px;color:var(--muted);font-size:12px;bor
 
 <!-- TRENDING -->
 <section id="trending">
-  <h2>📈 Trending Discussions</h2>
-  <p>Live posts from Hacker News and curated tweets about Bitcoin and quantum computing.</p>
+  <h2>🐦 Trending on X</h2>
+  <p>Curated tweets about Bitcoin and quantum computing, updated daily.</p>
   
-  <div style="display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap">
-    <button class="tweet-tab active" onclick="switchTweetTab('24h',this)">Last 24h</button>
-    <button class="tweet-tab" onclick="switchTweetTab('7d',this)">7 days</button>
-    <button class="tweet-tab" onclick="switchTweetTab('30d',this)">30 days</button>
-  </div>
-
-  <div id="trending-container">
-    <!-- 24h Content -->
-    <div id="content-24h" style="display:block">
-      <div class="trending-grid">
-        <div class="trending-column">
-          <div class="trending-section-header">
-            <h3 style="color:var(--orange);margin:0;font-size:16px;font-weight:700;">🔶 Hacker News</h3>
-            
-          </div>
-          <div id="hn-posts-24h" class="hn-posts-container">
-            <div class="hn-loading">
-              <div style="font-size:24px;margin-bottom:8px;opacity:0.7">🔄</div>
-              <div style="font-size:14px;color:var(--muted)">Loading posts...</div>
-            </div>
-          </div>
-        </div>
-        <div class="trending-column">
-          <div class="trending-section-header">
-            <h3 style="color:#1da1f2;margin:0;font-size:16px;font-weight:700;">🐦 X/Twitter</h3>
-            <span style="font-size:12px;color:var(--muted);">Curated selections</span>
-          </div>
-          <div class="twitter-embeds">
-          <blockquote class="twitter-tweet" data-theme="dark"><a href="https://twitter.com/willywoo/status/2023258901379183029"></a></blockquote>
-          <blockquote class="twitter-tweet" data-theme="dark"><a href="https://twitter.com/willywoo/status/2023258908320760128"></a></blockquote>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 7d Content -->
-    <div id="content-7d" style="display:none">
-      <div class="trending-grid">
-        <div class="trending-column">
-          <div class="trending-section-header">
-            <h3 style="color:var(--orange);margin:0;font-size:16px;font-weight:700;">🔶 Hacker News</h3>
-            
-          </div>
-          <div id="hn-posts-7d" class="hn-posts-container">
-            <div class="hn-loading">
-              <div style="font-size:24px;margin-bottom:8px;opacity:0.7">🔄</div>
-              <div style="font-size:14px;color:var(--muted)">Loading posts...</div>
-            </div>
-          </div>
-        </div>
-        <div class="trending-column">
-          <div class="trending-section-header">
-            <h3 style="color:#1da1f2;margin:0;font-size:16px;font-weight:700;">🐦 X/Twitter</h3>
-            <span style="font-size:12px;color:var(--muted);">Curated selections</span>
-          </div>
-          <div class="twitter-embeds">
-          <blockquote class="twitter-tweet" data-theme="dark"><a href="https://twitter.com/willywoo/status/2023258901379183029"></a></blockquote>
-          <blockquote class="twitter-tweet" data-theme="dark"><a href="https://twitter.com/willywoo/status/2023258908320760128"></a></blockquote>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 30d Content -->
-    <div id="content-30d" style="display:none">
-      <div class="trending-grid">
-        <div class="trending-column">
-          <div class="trending-section-header">
-            <h3 style="color:var(--orange);margin:0;font-size:16px;font-weight:700;">🔶 Hacker News</h3>
-            
-          </div>
-          <div id="hn-posts-30d" class="hn-posts-container">
-            <div class="hn-loading">
-              <div style="font-size:24px;margin-bottom:8px;opacity:0.7">🔄</div>
-              <div style="font-size:14px;color:var(--muted)">Loading posts...</div>
-            </div>
-          </div>
-        </div>
-        <div class="trending-column">
-          <div class="trending-section-header">
-            <h3 style="color:#1da1f2;margin:0;font-size:16px;font-weight:700;">🐦 X/Twitter</h3>
-            <span style="font-size:12px;color:var(--muted);">Curated selections</span>
-          </div>
-          <div class="twitter-embeds">
-          <blockquote class="twitter-tweet" data-theme="dark"><a href="https://twitter.com/willywoo/status/2023258901379183029"></a></blockquote>
-          <blockquote class="twitter-tweet" data-theme="dark"><a href="https://twitter.com/willywoo/status/2023258908320760128"></a></blockquote>
-          </div>
-        </div>
-      </div>
-    </div>
+  <div class="twitter-embeds" style="max-width:550px">
+    <blockquote class="twitter-tweet" data-theme="dark"><a href="https://twitter.com/willywoo/status/2023258901379183029"></a></blockquote>
+    <blockquote class="twitter-tweet" data-theme="dark"><a href="https://twitter.com/willywoo/status/2023258908320760128"></a></blockquote>
   </div>
   
-  <p style="font-size:11px;color:var(--muted);margin-top:16px;text-align:center;">Updates daily • <span style="color:var(--orange)">HN</span> posts fetched live • <span style="color:#1da1f2">Tweets</span> curated from crypto researchers</p>
+  <p style="font-size:11px;color:var(--muted);margin-top:16px">Updated daily • Curated from crypto researchers and analysts</p>
 </section>
 
 <!-- SOURCES -->
