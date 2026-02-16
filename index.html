@@ -30,14 +30,15 @@ a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
 html{scroll-behavior:smooth}
 
 /* Theme Toggle */
-.theme-toggle{position:absolute;top:20px;right:20px;width:44px;height:44px;border-radius:50%;border:none;background:transparent;color:#6b6b80;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.2s ease;z-index:50;padding:0;line-height:0}
+.theme-toggle{width:36px;height:36px;border-radius:50%;border:none;background:transparent;color:#6b6b80;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.2s ease;padding:0;line-height:0;flex-shrink:0}
 .theme-toggle:hover{background:rgba(107,107,128,0.2);color:var(--text)}
 .theme-toggle svg{display:block}
 
 /* Table of Contents */
 .toc{position:sticky;top:0;background:rgba(10,10,15,0.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);z-index:100;padding:0;transition:all 0.3s ease}
 .toc-container{max-width:800px;margin:0 auto;padding:0 20px}
-.toc-header{display:none}
+.toc-header{display:flex;align-items:center;gap:8px;padding:8px 0}
+.toc-header .toc-hamburger{display:none}
 .toc-grid{display:flex;flex-wrap:wrap;gap:8px 16px;justify-content:center;padding:12px 0}
 .toc-link{font-size:12px;color:var(--muted);padding:4px 8px;border-radius:4px;transition:all 0.3s ease}
 .toc-link:hover{color:var(--accent);background:rgba(99,102,241,0.1);text-decoration:none}
@@ -158,7 +159,8 @@ footer{text-align:center;padding:40px 20px;color:var(--muted);font-size:12px;bor
 
 /* Mobile responsive */
 @media (max-width: 768px) {
-  .toc-header{display:flex;align-items:center;justify-content:space-between;padding:16px 0;cursor:pointer;min-height:56px}
+  .toc-header{display:flex;align-items:center;justify-content:space-between;padding:16px 0;cursor:pointer;min-height:56px;gap:8px}
+  .toc-header .toc-hamburger{display:block}
   .toc-header span{font-size:15px;font-weight:600;color:var(--muted)}
   .toc-hamburger{font-size:28px;color:var(--text);line-height:1;padding:4px 8px}
   .toc-grid{display:none;flex-direction:column;align-items:stretch;gap:0;padding:0 0 12px}
@@ -178,9 +180,12 @@ footer{text-align:center;padding:40px 20px;color:var(--muted);font-size:12px;bor
 <!-- Table of Contents -->
 <nav class="toc">
   <div class="toc-container">
-    <div class="toc-header" onclick="document.querySelector('.toc-grid').classList.toggle('open');this.querySelector('.toc-hamburger').textContent=document.querySelector('.toc-grid').classList.contains('open')?'✕':'☰'">
-      <span>📑 Navigate</span>
-      <span class="toc-hamburger">☰</span>
+    <div class="toc-header">
+      <span style="cursor:pointer;flex:1" onclick="document.querySelector('.toc-grid').classList.toggle('open');document.querySelector('.toc-hamburger').textContent=document.querySelector('.toc-grid').classList.contains('open')?'✕':'☰'">📑 Navigate</span>
+      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark/light mode">
+        <span class="theme-icon"></span>
+      </button>
+      <span class="toc-hamburger" onclick="document.querySelector('.toc-grid').classList.toggle('open');this.textContent=document.querySelector('.toc-grid').classList.contains('open')?'✕':'☰'">☰</span>
     </div>
     <div class="toc-grid">
       <a href="#threat" class="toc-link">Threat Level</a>
@@ -204,9 +209,7 @@ footer{text-align:center;padding:40px 20px;color:var(--muted);font-size:12px;bor
 </nav>
 
 <div class="hero">
-  <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark/light mode">
-    <span class="theme-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.166a.75.75 0 00-1.06-1.06l-1.591 1.59a.75.75 0 101.06 1.061l1.591-1.59zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zM17.834 18.894a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 10-1.061 1.06l1.59 1.591zM12 18a.75.75 0 01.75.75V21a.75.75 0 01-1.5 0v-2.25A.75.75 0 0112 18zM7.758 17.303a.75.75 0 00-1.061-1.06l-1.591 1.59a.75.75 0 001.06 1.061l1.591-1.59zM6 12a.75.75 0 01-.75.75H3a.75.75 0 010-1.5h2.25A.75.75 0 016 12zM6.697 7.757a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 00-1.061 1.06l1.59 1.591z"/></svg></span>
-  </button>
+<!-- theme toggle moved to nav -->
   <h1>Bitcoin vs Quantum Computing</h1>
   <p class="sub">An unbiased, source-backed overview of where quantum computing stands today, what it means for Bitcoin, and what's being done about it.</p>
   <p class="last-updated">Last Updated: February 2026</p>
