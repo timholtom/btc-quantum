@@ -51,9 +51,10 @@ html{scroll-behavior:smooth}
 .progress-header{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px}
 .progress-label{font-weight:600;font-size:14px}
 .progress-value{font-size:13px;color:var(--muted)}
-.progress-track{height:8px;background:#1a1a2e;border-radius:4px;overflow:hidden}
-.progress-bar{height:100%;border-radius:4px;transition:width 2s ease-out 0.3s;width:0}
+.progress-track{height:10px;background:#1a1a2e;border-radius:5px;overflow:visible;position:relative}
+.progress-bar{height:100%;border-radius:5px;transition:width 2s ease-out 0.3s;width:0;background:var(--accent);position:relative;min-width:6px}
 .progress-bar.animate{width:var(--width)}
+.progress-bar::after{content:'';position:absolute;right:-7px;top:50%;transform:translateY(-50%);width:14px;height:14px;background:white;border-radius:50%;box-shadow:0 0 8px rgba(99,102,241,0.6),0 0 2px rgba(255,255,255,0.8)}
 
 /* Sections */
 .container{max-width:800px;margin:0 auto;padding:0 20px}
@@ -275,7 +276,7 @@ footer{text-align:center;padding:40px 20px;color:var(--muted);font-size:12px;bor
         <span class="progress-label">🔩 Physical Qubits <span style="font-weight:400;font-size:12px;color:var(--muted)">— raw processing units</span></span>
         <span class="progress-value">~1,500 today · need 13M+</span>
       </div>
-      <div class="progress-track"><div class="progress-bar" style="--width:0.8%;background:var(--green)"></div></div>
+      <div class="progress-track"><div class="progress-bar" style="--width:2%;background:var(--accent)"></div></div>
       <div style="font-size:11px;color:var(--muted);margin-top:4px">Like having 1,500 workers when you need 13 million. Not even close.</div>
     </div>
 
@@ -284,7 +285,7 @@ footer{text-align:center;padding:40px 20px;color:var(--muted);font-size:12px;bor
         <span class="progress-label">🧠 Logical Qubits <span style="font-weight:400;font-size:12px;color:var(--muted)">— error-free computing units</span></span>
         <span class="progress-value">~12 today · need 4M+</span>
       </div>
-      <div class="progress-track"><div class="progress-bar" style="--width:0.3%;background:var(--green)"></div></div>
+      <div class="progress-track"><div class="progress-bar" style="--width:1.5%;background:var(--accent)"></div></div>
       <div style="font-size:11px;color:var(--muted);margin-top:4px">Physical qubits are noisy. You need thousands of them to make one reliable "logical" qubit. We have ~12.</div>
     </div>
 
@@ -293,7 +294,7 @@ footer{text-align:center;padding:40px 20px;color:var(--muted);font-size:12px;bor
         <span class="progress-label">🎯 Error Rate <span style="font-weight:400;font-size:12px;color:var(--muted)">— how often qubits make mistakes</span></span>
         <span class="progress-value">~0.1–1% today · need 0.0001%</span>
       </div>
-      <div class="progress-track"><div class="progress-bar" style="--width:5%;background:var(--yellow)"></div></div>
+      <div class="progress-track"><div class="progress-bar" style="--width:5%;background:var(--accent)"></div></div>
       <div style="font-size:11px;color:var(--muted);margin-top:4px">Current qubits fail 1 in 100–1,000 operations. Breaking Bitcoin needs them to fail 1 in 1,000,000. Best progress so far.</div>
     </div>
 
@@ -302,7 +303,7 @@ footer{text-align:center;padding:40px 20px;color:var(--muted);font-size:12px;bor
         <span class="progress-label">⏱️ Coherence Time <span style="font-weight:400;font-size:12px;color:var(--muted)">— how long qubits stay stable</span></span>
         <span class="progress-value">~100μs today · need hours</span>
       </div>
-      <div class="progress-track"><div class="progress-bar" style="--width:0.5%;background:var(--green)"></div></div>
+      <div class="progress-track"><div class="progress-bar" style="--width:1.5%;background:var(--accent)"></div></div>
       <div style="font-size:11px;color:var(--muted);margin-top:4px">Qubits currently survive ~0.0001 seconds. Cracking Bitcoin's keys would take hours of sustained computation.</div>
     </div>
 
