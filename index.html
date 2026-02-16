@@ -127,6 +127,12 @@ td{padding:10px 12px;border-bottom:1px solid var(--border);font-size:14px;transi
 .estimate-range{font-size:20px;font-weight:800;margin:8px 0}
 .estimate-source{font-size:11px;color:var(--muted)}
 
+/* Tweet tabs */
+.tweet-tab{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:8px 16px;color:var(--muted);font-size:13px;font-weight:600;cursor:pointer;transition:all 0.2s;font-family:inherit}
+.tweet-tab:hover{border-color:var(--accent);color:var(--text)}
+.tweet-tab.active{background:var(--accent);border-color:var(--accent);color:white}
+.tweet-embed-wrapper{border-radius:12px;overflow:hidden}
+
 /* Footer */
 footer{text-align:center;padding:40px 20px;color:var(--muted);font-size:12px;border-top:1px solid var(--border);transition:all 0.3s ease}
 
@@ -169,6 +175,7 @@ footer{text-align:center;padding:40px 20px;color:var(--muted);font-size:12px;bor
       <a href="#community" class="toc-link">Community</a>
       <a href="#quantum-proofing" class="toc-link">Full Protection</a>
       <a href="#signatures" class="toc-link">Signature Problem</a>
+      <a href="#trending" class="toc-link">Trending</a>
       <a href="#sources" class="toc-link">Sources</a>
     </div>
   </div>
@@ -731,6 +738,53 @@ footer{text-align:center;padding:40px 20px;color:var(--muted);font-size:12px;bor
   <p>A single PQ signature could be 40–800× larger than a Schnorr signature. This means fewer transactions per block, higher fees, and potential centralization pressure. Active research into signature aggregation and compression is ongoing.</p>
 </section>
 
+<!-- TRENDING TWEETS -->
+<section id="trending">
+  <h2>🐦 Trending on X</h2>
+  <p>Live posts about Bitcoin and quantum computing from X/Twitter.</p>
+  
+  <div style="display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap">
+    <button class="tweet-tab active" onclick="switchTweetTab('24h',this)">Last 24h</button>
+    <button class="tweet-tab" onclick="switchTweetTab('7d',this)">7 days</button>
+    <button class="tweet-tab" onclick="switchTweetTab('30d',this)">30 days</button>
+  </div>
+
+  <div id="tweet-container">
+    <div class="tweet-embed-wrapper" id="tweets-24h" style="display:block">
+      <a class="twitter-timeline" 
+         data-theme="dark" 
+         data-chrome="noheader nofooter noborders transparent" 
+         data-tweet-limit="2"
+         data-height="500"
+         href="https://twitter.com/search?q=bitcoin%20quantum%20-filter%3Areplies%20min_faves%3A5%20since%3A2026-02-15">
+        Loading tweets...
+      </a>
+    </div>
+    <div class="tweet-embed-wrapper" id="tweets-7d" style="display:none">
+      <a class="twitter-timeline" 
+         data-theme="dark" 
+         data-chrome="noheader nofooter noborders transparent" 
+         data-tweet-limit="2"
+         data-height="500"
+         href="https://twitter.com/search?q=bitcoin%20quantum%20-filter%3Areplies%20min_faves%3A10%20since%3A2026-02-09">
+        Loading tweets...
+      </a>
+    </div>
+    <div class="tweet-embed-wrapper" id="tweets-30d" style="display:none">
+      <a class="twitter-timeline" 
+         data-theme="dark" 
+         data-chrome="noheader nofooter noborders transparent" 
+         data-tweet-limit="2"
+         data-height="500"
+         href="https://twitter.com/search?q=bitcoin%20quantum%20-filter%3Areplies%20min_faves%3A20%20since%3A2026-01-16">
+        Loading tweets...
+      </a>
+    </div>
+  </div>
+  
+  <p style="font-size:11px;color:var(--muted);margin-top:12px">Powered by X embed. Tweets filtered for engagement to show the most relevant posts.</p>
+</section>
+
 <!-- SOURCES -->
 <section id="sources">
   <h2>📚 Sources & Further Reading</h2>
@@ -934,6 +988,17 @@ async function sendChat(){
   msgs.scrollTop=msgs.scrollHeight;
 }
 function escHtml(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
+
+// Tweet tab switching
+function switchTweetTab(period, btn){
+  document.querySelectorAll('.tweet-tab').forEach(t=>t.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.tweet-embed-wrapper').forEach(w=>w.style.display='none');
+  document.getElementById('tweets-'+period).style.display='block';
+  // Re-render twitter embeds
+  if(window.twttr&&window.twttr.widgets){window.twttr.widgets.load()}
+}
 </script>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 </body>
 </html>
