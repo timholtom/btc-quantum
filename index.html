@@ -213,6 +213,7 @@ footer{text-align:center;padding:40px 20px;color:var(--muted);font-size:12px;bor
       <a href="#signatures" class="toc-link">Signature Problem</a>
       <a href="#trending" class="toc-link">Trending</a>
       <a href="#whos-building" class="toc-link">Who's Building</a>
+      <a href="#podcasts" class="toc-link">Podcasts</a>
       <a href="#sources" class="toc-link">Sources</a>
     </div>
   </div>
@@ -883,6 +884,58 @@ footer{text-align:center;padding:40px 20px;color:var(--muted);font-size:12px;bor
 
 </section>
 
+<!-- PODCASTS & TALKS -->
+<section id="podcasts">
+  <h2>🎙️ Podcasts & Talks</h2>
+  <p>Key discussions from researchers, analysts, and developers on Bitcoin's quantum future.</p>
+  
+  <div style="display:flex;flex-direction:column;gap:20px;margin:24px 0">
+    
+    <!-- Card 1: Delphi Digital - Nic Carter -->
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px;transition:all 0.3s ease">
+      <div style="font-size:12px;color:var(--muted);margin-bottom:8px">Delphi Digital</div>
+      <h3 style="color:var(--accent);margin:0 0 6px 0;font-size:17px">Nic Carter: Quantum Threatens $600B of Bitcoin</h3>
+      <div style="font-size:12px;color:var(--muted);margin-bottom:16px">Feb 11, 2026</div>
+      <ul style="font-size:13px;line-height:1.5;margin:0 0 16px 0;padding-left:16px;color:var(--body-text)">
+        <li>70-80% probability of quantum break by 2035</li>
+        <li>Scores Bitcoin Core developers' preparedness at 1/100</li>
+        <li>~2M BTC in Satoshi's P2PK wallets directly vulnerable</li>
+        <li>Compares quantum race to 1939 atomic bomb research (US-China rivalry)</li>
+        <li>ETH and Solana may have easier upgrade paths than Bitcoin</li>
+      </ul>
+      <a href="https://members.delphidigital.io/media/nic-carter-quantum-threatens-600b-of-bitcoin" style="color:var(--accent);font-size:12px;text-decoration:none" target="_blank" rel="noopener">→ Listen to Episode</a>
+    </div>
+
+    <!-- Card 2: CoinDesk Blockspace Pod -->
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px;transition:all 0.3s ease">
+      <div style="font-size:12px;color:var(--muted);margin-bottom:8px">CoinDesk Blockspace Pod</div>
+      <h3 style="color:var(--accent);margin:0 0 6px 0;font-size:17px">Quantum: The Next Battleground For Bitcoin</h3>
+      <div style="font-size:12px;color:var(--muted);margin-bottom:16px">Feb 7, 2026</div>
+      <ul style="font-size:13px;line-height:1.5;margin:0 0 16px 0;padding-left:16px;color:var(--body-text)">
+        <li>Deep dive into Bitcoin's quantum attack surface</li>
+        <li>Discussion of migration timelines and governance challenges</li>
+      </ul>
+      <a href="https://podcasts.musixmatch.com/podcast/coindesk-podcast-network-01hwzqrj085knpw0ttbbpmhjk7/episode/the-blockspace-pod-quantum-the-next-battleground-for-01kgw60e5041hb0tag32jva0bp" style="color:var(--accent);font-size:12px;text-decoration:none" target="_blank" rel="noopener">→ Listen to Episode</a>
+    </div>
+
+    <!-- Card 3: PQ-Bitcoin.org -->
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px;transition:all 0.3s ease">
+      <div style="font-size:12px;color:var(--muted);margin-bottom:8px">PQ-Bitcoin.org</div>
+      <h3 style="color:var(--accent);margin:0 0 6px 0;font-size:17px">Bitcoin's CRQC Response Playbook</h3>
+      <div style="font-size:12px;color:var(--muted);margin-bottom:16px">Sep 18, 2025</div>
+      <ul style="font-size:13px;line-height:1.5;margin:0 0 16px 0;padding-left:16px;color:var(--body-text)">
+        <li>6.51M BTC (32.7% of supply) vulnerable to quantum attacks as of block 900,000</li>
+        <li>Almost 70% of at-risk BTC is due to address reuse</li>
+        <li>Published a CRQC Response Playbook for rapid quantum resistance</li>
+        <li>Clara and Anthony presenting at TabConf 2025, CCE 2025</li>
+      </ul>
+      <a href="https://www.pq-bitcoin.org/posts/bitcoins-crqc-response" style="color:var(--accent);font-size:12px;text-decoration:none" target="_blank" rel="noopener">→ Read Research</a>
+    </div>
+
+  </div>
+
+</section>
+
 <!-- TRENDING -->
 <section id="trending">
   <h2>🐦 Trending on X</h2>
@@ -1043,7 +1096,10 @@ const SYSTEM_CTX=`You are a helpful assistant embedded on a Bitcoin vs Quantum C
 - Quantum computing threat to Bitcoin (Shor's algorithm, ECC vulnerability)
 - BIP-360 (P2MR) proposal - Draft v0.11.0, bc1z addresses, removes key path spend
 - Address vulnerability: P2PK (vulnerable), P2TR/Taproot (vulnerable), P2PKH/P2WPKH (safe if unused)
-- ~4M BTC (~25%) in vulnerable addresses including ~1.1M Satoshi coins
+- Nic Carter quantum assessment: According to Nic Carter (Castle Island Ventures), after 6 months of research and discussions with Nobel Prize-winning physicists, he estimates a 70-80% probability of a quantum break by 2035. He scores Bitcoin Core developers' quantum preparedness at 1/100. He notes that ~2M BTC in Satoshi's original P2PK wallets are directly vulnerable, and compares the quantum computing race to the 1939 atomic bomb race between nations.
+- Vulnerable BTC updated figure: Research from pq-bitcoin.org shows that as of block 900,000, approximately 6.51 million BTC (32.7% of total supply) is vulnerable to quantum attacks, worth over $700 billion. Almost 70% of this at-risk Bitcoin is due to address reuse.
+- CRQC Response Playbook: PQ-Bitcoin.org has published a CRQC Response Playbook outlining how Bitcoin can rapidly achieve quantum resistance once cryptographically relevant quantum computers appear to be within striking distance. The key message: plan now while there's time.
+- Podcast resources: Key podcasts covering Bitcoin quantum risk: Delphi Digital's interview with Nic Carter (Feb 2026), CoinDesk Blockspace Pod 'Quantum: The Next Battleground' (Feb 2026), and PQ-Bitcoin.org's research by Clara and Anthony presented at TabConf 2025.
 - Current QC state: ~1,500 physical qubits, need 13M+ to break Bitcoin. ~12 logical qubits, need 4M+
 - Google Willow (105 qubits, Dec 2024), Quantum Echoes (Oct 2025, first verifiable quantum advantage, NOT crypto-relevant)
 - Microsoft Majorana 1 (Feb 2025, topological qubits, path to 1M qubits, wildcard)
