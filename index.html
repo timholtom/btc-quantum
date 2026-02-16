@@ -121,7 +121,7 @@ footer{text-align:center;padding:40px 20px;color:var(--muted);font-size:12px;bor
 @media (max-width: 768px) {
   .toc-header{display:flex;align-items:center;justify-content:space-between;padding:16px 0;cursor:pointer;min-height:56px}
   .toc-header span{font-size:15px;font-weight:600;color:var(--muted)}
-  .toc-hamburger{font-size:36px;color:var(--text);line-height:1;padding:8px 12px}
+  .toc-hamburger{font-size:28px;color:var(--text);line-height:1;padding:4px 8px}
   .toc-grid{display:none;flex-direction:column;align-items:stretch;gap:0;padding:0 0 12px}
   .toc-grid.open{display:flex}
   .toc-link{width:100%;text-align:left;padding:10px 8px;margin:0;border-bottom:1px solid var(--border);font-size:13px}
@@ -144,6 +144,7 @@ footer{text-align:center;padding:40px 20px;color:var(--muted);font-size:12px;bor
     <div class="toc-grid">
       <a href="#threat" class="toc-link">Threat Level</a>
       <a href="#metrics" class="toc-link">Key Metrics</a>
+      <a href="#social-sentiment" class="toc-link">Social Sentiment</a>
       <a href="#actual-threat" class="toc-link">The Threat</a>
       <a href="#addresses" class="toc-link">Address Types</a>
       <a href="#quantum-state" class="toc-link">Quantum State</a>
@@ -194,6 +195,71 @@ footer{text-align:center;padding:40px 20px;color:var(--muted);font-size:12px;bor
     </p>
     <div class="highlight wildcard" style="margin-top:16px">
       <strong>⚡ Wildcard Alert:</strong> Microsoft's Majorana 1 chip demonstrates topological qubits could dramatically accelerate timelines if they achieve scale. 8 qubits today, claiming path to 1M on palm-sized chip.
+    </div>
+  </div>
+</div>
+
+<!-- SOCIAL SENTIMENT -->
+<div class="meter-section" id="social-sentiment">
+  <div class="meter-card">
+    <div class="meter-title">💭 Bitcoin Community Social Sentiment</div>
+    <div class="meter-bar">
+      <div class="meter-zones">
+        <div class="meter-zone" style="width:20%;background:linear-gradient(90deg,#3b82f6,#60a5fa)"></div>
+        <div class="meter-zone" style="width:30%;background:linear-gradient(90deg,#60a5fa,#93c5fd)"></div>
+        <div class="meter-zone" style="width:30%;background:linear-gradient(90deg,#93c5fd,#fb923c)"></div>
+        <div class="meter-zone" style="width:20%;background:linear-gradient(90deg,#fb923c,#f97316)"></div>
+      </div>
+      <div class="meter-needle" style="left:37%">
+        <div class="meter-needle-label">SENTIMENT HERE</div>
+      </div>
+    </div>
+    <div class="meter-labels">
+      <span>Calm 😌</span>
+      <span>Aware 🤔</span>
+      <span>Concerned 😰</span>
+      <span>Panic 🚨</span>
+    </div>
+    <p style="text-align:center;font-style:italic;font-size:14px;color:var(--muted);margin:16px 0">
+      <em>The community recognizes quantum as a real but distant threat — active development is happening, but urgency remains low.</em>
+    </p>
+    
+    <!-- Sentiment Cards Grid -->
+    <div class="stats" style="margin-top:24px">
+      <div class="stat">
+        <div style="font-size:28px;margin-bottom:8px">🤔</div>
+        <div class="stat-value" style="color:var(--yellow)">60%</div>
+        <div class="stat-label" style="font-weight:600;margin-bottom:8px">Concerned but not panicking</div>
+        <div style="font-size:11px;color:var(--muted);font-style:italic">"Threat exists but timeline is distant"</div>
+      </div>
+      <div class="stat">
+        <div style="font-size:28px;margin-bottom:8px">😌</div>
+        <div class="stat-value" style="color:var(--green)">20%</div>
+        <div class="stat-label" style="font-weight:600;margin-bottom:8px">Not worried at all</div>
+        <div style="font-size:11px;color:var(--muted);font-style:italic">"They've said 5-10 years for a decade"</div>
+      </div>
+      <div class="stat">
+        <div style="font-size:28px;margin-bottom:8px">🔧</div>
+        <div class="stat-value" style="color:var(--accent)">15%</div>
+        <div class="stat-label" style="font-weight:600;margin-bottom:8px">Actively working on solutions</div>
+        <div style="font-size:11px;color:var(--muted);font-style:italic">"Building BIP-360, PQ wallets now"</div>
+      </div>
+      <div class="stat">
+        <div style="font-size:28px;margin-bottom:8px">🚨</div>
+        <div class="stat-value" style="color:var(--red)">5%</div>
+        <div class="stat-label" style="font-weight:600;margin-bottom:8px">Alarmist/FUD</div>
+        <div style="font-size:11px;color:var(--muted);font-style:italic">"Existential threat, price crash scenarios"</div>
+      </div>
+    </div>
+    
+    <!-- Sources and Date -->
+    <div style="text-align:center;margin-top:24px;padding-top:16px;border-top:1px solid var(--border)">
+      <div style="font-size:11px;color:var(--muted);margin-bottom:4px">
+        Sources: Hacker News, Bitcoin Magazine Pro, Substack, bitcoin-dev
+      </div>
+      <div style="font-size:10px;color:var(--muted);opacity:0.8">
+        Scraped: February 2026
+      </div>
     </div>
   </div>
 </div>
