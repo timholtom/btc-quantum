@@ -826,45 +826,56 @@ document.querySelectorAll('.toc-link').forEach(link => {
 </script>
 
 <script>
-function toggleChat(){document.getElementById('chatPanel').classList.toggle('open');document.getElementById('chatInput').focus()}
-const KB=[
-{k:['safe','my bitcoin','my btc','am i','worry','worried','concerned'],a:'For most users, yes — your Bitcoin is safe right now. Quantum computers need ~13 million+ qubits to break Bitcoin\'s encryption; the best today have ~1,500. That\'s 0.01% of the way there. If you use modern addresses (starting with bc1q) and never reuse them, you\'re protected against long-exposure attacks. The real risk is 10-30+ years away.'},
-{k:['bip-360','bip 360','p2mr','bc1z','merkle root'],a:'BIP-360 proposes a new address type called Pay-to-Merkle-Root (P2MR) using bc1z addresses. It removes the key path spend from Taproot, so your public key is never exposed on-chain. This protects against "long exposure" quantum attacks. Status: Draft v0.11.0 (Dec 2024), authored by Hunter Beast, Ethan Heilman, and Isabel Foxen Duke. It\'s a soft fork that doesn\'t require post-quantum signatures yet.'},
-{k:['when','timeline','how long','years','how soon','time'],a:'Most researchers estimate a cryptographically relevant quantum computer (CRQC) is 15-30+ years away. Some government agencies plan for worst-case by 2030-2035. Microsoft\'s topological qubit approach (Majorana 1) is a wildcard that could compress timelines if it scales. Nobody knows for sure — but Bitcoin has time to prepare if it starts now.'},
-{k:['vulnerable','how much','how many','at risk','exposed','satoshi'],a:'About 4 million BTC (~25% of supply) sit in vulnerable addresses. This includes ~1.1M BTC in Satoshi\'s P2PK addresses where the public key is permanently exposed on-chain. Taproot (bc1p) addresses are also vulnerable because they always expose a tweaked public key. P2PKH (1...) and P2WPKH (bc1q...) addresses are safe as long as they haven\'t been spent from.'},
-{k:['mining','sha-256','sha256','proof of work','pow','grover'],a:'Bitcoin mining (SHA-256) is NOT significantly threatened by quantum computers. Grover\'s algorithm only gives a quadratic speedup against hash functions, effectively halving security from 256-bit to 128-bit. 128-bit security is still considered safe by all standards. The real vulnerability is in Bitcoin\'s signature scheme (ECDSA/Schnorr), not its mining.'},
-{k:['taproot','p2tr','bc1p'],a:'Taproot (P2TR/bc1p) addresses are vulnerable to long-exposure quantum attacks because they always expose a tweaked public key on-chain. This was a concern noted when Taproot activated in 2021. BIP-360 (P2MR) was specifically designed to fix this — it removes the key path spend so no public key is ever revealed.'},
-{k:['willow','google','quantum echoes'],a:'Google\'s Willow chip (Dec 2024) has 105 qubits with breakthrough error correction — errors decrease as more qubits are added. In Oct 2025, they demonstrated "Quantum Echoes," the first verifiable quantum advantage algorithm (13,000x faster than supercomputers for molecular analysis). Important: neither achievement is relevant to breaking cryptography. Still far from the millions of qubits needed.'},
-{k:['majorana','microsoft','topological'],a:'Microsoft\'s Majorana 1 (Feb 2025) is the world\'s first topological qubit chip. Topological qubits are inherently more stable (error-resistant at hardware level) and Microsoft claims a clear path to 1 million qubits on a palm-sized chip. Currently has 8 qubits. Selected for DARPA\'s final phase. This is the biggest wildcard — if topological qubits work at scale, timelines could compress significantly.'},
-{k:['signature','size','sphincs','dilithium','ml-dsa','bloat'],a:'The biggest practical challenge: post-quantum signatures are massive. Current Schnorr signatures are 64 bytes. ML-DSA (Dilithium) is 2.4KB (37x larger), SLH-DSA (SPHINCS+) is 7.8-50KB (120-800x larger). This means fewer transactions per block, higher fees, and potential centralization pressure. Active research into aggregation and compression continues.'},
-{k:['address','type','p2pk','p2pkh','p2wpkh','which','check'],a:'P2PK (04...): VULNERABLE — public key always exposed. P2PKH (1...): Safe if never spent from. P2WPKH (bc1q...): Safe if never spent from. P2TR/Taproot (bc1p...): VULNERABLE — tweaked key always exposed. P2MR (bc1z... proposed): Quantum-resistant. Key rule: never reuse addresses, and your modern Bitcoin is safe from long-exposure attacks.'},
-{k:['sentiment','community','opinion','think','feel','people'],a:'Based on scraped data from HN, X, Substack, and bitcoin-dev (Feb 2026): ~60% are concerned but not panicking, ~20% aren\'t worried at all ("they\'ve said 5-10 years for a decade"), ~15% are actively building solutions (BIP-360, PQ wallets), and ~5% are alarmist. Overall: "cautiously aware" — the community recognizes it as real but distant.'},
-{k:['nist','standard','pqc','post-quantum','cnsa'],a:'NIST finalized three post-quantum cryptography standards in August 2024: ML-KEM (key exchange), ML-DSA (digital signatures), and SLH-DSA (hash-based signatures). The US government mandates PQ migration by 2030 for software, 2033 for browsers, and plans to disallow ECC entirely by 2035. The crypto building blocks are ready — Bitcoin just needs to adopt them.'},
-{k:['shor','algorithm','how','break','crack','attack','hack'],a:'Shor\'s Algorithm (1994) can solve the math problem that protects Bitcoin\'s signatures exponentially faster than classical computers. It could derive your private key from your public key. Two attack types: "Long exposure" (unlimited time to crack exposed keys on-chain) and "Short exposure" (crack keys in ~10 min while a transaction is unconfirmed). Long exposure attacks will be possible first.'},
-{k:['what','explain','simple','eli5','basics','overview'],a:'In simple terms: Bitcoin uses math puzzles to secure your money. Quantum computers could eventually solve these puzzles, but today\'s quantum computers are like calculators compared to the supercomputer needed. We\'re at ~0.01% of the way there. Bitcoin developers are already working on upgrades (BIP-360) to quantum-proof the network before it becomes a real threat. Most experts say we have 15-30+ years.'},
-];
-function findAnswer(q){
-  const ql=q.toLowerCase();
-  let best=null,bestScore=0;
-  for(const entry of KB){
-    let score=0;
-    for(const k of entry.k){if(ql.includes(k))score+=k.length}
-    if(score>bestScore){bestScore=score;best=entry}
-  }
-  return best&&bestScore>2?best.a:'That\'s a great question! I don\'t have a specific answer for that in my knowledge base. Try asking about: Bitcoin safety, BIP-360, timelines, vulnerable addresses, mining security, Taproot, Google Willow, Microsoft Majorana, signature sizes, or community sentiment.';
-}
-function sendChat(){
+function toggleChat(){document.getElementById('chatPanel').classList.toggle('open')}
+const GEMINI_KEY='AIzaSyCborpzi5WBUE3RIxH3zQ7MZ_xhfm-GQ1I';
+const SYSTEM_CTX=`You are a helpful assistant embedded on a Bitcoin vs Quantum Computing research page. Answer questions about:
+- Quantum computing threat to Bitcoin (Shor's algorithm, ECC vulnerability)
+- BIP-360 (P2MR) proposal - Draft v0.11.0, bc1z addresses, removes key path spend
+- Address vulnerability: P2PK (vulnerable), P2TR/Taproot (vulnerable), P2PKH/P2WPKH (safe if unused)
+- ~4M BTC (~25%) in vulnerable addresses including ~1.1M Satoshi coins
+- Current QC state: ~1,500 physical qubits, need 13M+ to break Bitcoin. ~12 logical qubits, need 4M+
+- Google Willow (105 qubits, Dec 2024), Quantum Echoes (Oct 2025, first verifiable quantum advantage, NOT crypto-relevant)
+- Microsoft Majorana 1 (Feb 2025, topological qubits, path to 1M qubits, wildcard)
+- NIST PQC standards finalized Aug 2024 (ML-KEM, ML-DSA, SLH-DSA)
+- CNSA 2.0 mandates: PQ by 2030 (software), 2033 (browsers), 2035 (ECC disallowed in US gov)
+- Signature size problem: Schnorr 64B vs ML-DSA 2.4KB vs SPHINCS+ 7.8-50KB
+- Timeline estimates: most researchers say 15-30+ years, some govs plan for 10 years
+- Social sentiment: 60% concerned not panicking, 20% not worried, 15% building solutions, 5% alarmist
+- SHA-256 mining is NOT threatened (Grover's gives only quadratic speedup, 128-bit still safe)
+Be concise, unbiased, cite specifics. If unsure, say so. Keep answers 2-4 sentences unless more detail requested. No financial advice.`;
+
+async function sendChat(){
   const input=document.getElementById('chatInput');
   const msg=input.value.trim();
   if(!msg)return;
   input.value='';
   const msgs=document.getElementById('chatMessages');
   msgs.innerHTML+=`<div class="chat-msg user">${escHtml(msg)}</div>`;
-  setTimeout(()=>{
-    const ans=findAnswer(msg);
-    msgs.innerHTML+=`<div class="chat-msg bot">${escHtml(ans)}</div>`;
-    msgs.scrollTop=msgs.scrollHeight;
-  },300);
+  const typing=document.createElement('div');
+  typing.className='chat-msg bot typing';
+  typing.textContent='Thinking...';
+  msgs.appendChild(typing);
+  msgs.scrollTop=msgs.scrollHeight;
+  document.getElementById('chatSend').disabled=true;
+  try{
+    const r=await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_KEY}`,{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        system_instruction:{parts:[{text:SYSTEM_CTX}]},
+        contents:[{parts:[{text:msg}]}],
+        generationConfig:{maxOutputTokens:500,temperature:0.3}
+      })
+    });
+    const d=await r.json();
+    const ans=d?.candidates?.[0]?.content?.parts?.[0]?.text||'Sorry, I couldn\'t process that. Try rephrasing?';
+    typing.className='chat-msg bot';
+    typing.innerHTML=escHtml(ans).replace(/\n/g,'<br>');
+  }catch(e){
+    typing.className='chat-msg bot';
+    typing.textContent='Connection error. Try again in a moment.';
+  }
+  document.getElementById('chatSend').disabled=false;
   msgs.scrollTop=msgs.scrollHeight;
 }
 function escHtml(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
