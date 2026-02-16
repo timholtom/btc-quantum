@@ -133,6 +133,15 @@ td{padding:10px 12px;border-bottom:1px solid var(--border);font-size:14px;transi
 .estimate-range{font-size:20px;font-weight:800;margin:8px 0}
 .estimate-source{font-size:11px;color:var(--muted)}
 
+/* Tweet grid */
+.tweet-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.tweet-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:12px;overflow:hidden;transition:all 0.3s ease}
+.tweet-card:hover{border-color:var(--accent);box-shadow:0 4px 20px rgba(99,102,241,0.1)}
+.tweet-card blockquote{margin:0 !important;border:none !important}
+.tweet-card .twitter-tweet{margin:0 !important}
+.tweet-card iframe{border-radius:12px !important}
+@media(max-width:768px){.tweet-grid{grid-template-columns:1fr}}
+
 /* Tweet tabs */
 .tweet-tab{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:8px 16px;color:var(--muted);font-size:13px;font-weight:600;cursor:pointer;transition:all 0.2s;font-family:inherit}
 .tweet-tab:hover{border-color:var(--accent);color:var(--text)}
@@ -768,9 +777,13 @@ footer{text-align:center;padding:40px 20px;color:var(--muted);font-size:12px;bor
   <h2>🐦 Trending on X</h2>
   <p>Curated tweets about Bitcoin and quantum computing, updated daily.</p>
   
-  <div class="twitter-embeds" style="max-width:550px">
-    <blockquote class="twitter-tweet" data-theme="dark"><a href="https://twitter.com/willywoo/status/2023258901379183029"></a></blockquote>
-    <blockquote class="twitter-tweet" data-theme="dark"><a href="https://twitter.com/willywoo/status/2023258908320760128"></a></blockquote>
+  <div class="tweet-grid">
+    <div class="tweet-card">
+      <blockquote class="twitter-tweet" data-theme="dark" data-conversation="none" data-dnt="true"><a href="https://twitter.com/willywoo/status/2023258901379183029"></a></blockquote>
+    </div>
+    <div class="tweet-card">
+      <blockquote class="twitter-tweet" data-theme="dark" data-conversation="none" data-dnt="true"><a href="https://twitter.com/willywoo/status/2023258908320760128"></a></blockquote>
+    </div>
   </div>
   
   <p style="font-size:11px;color:var(--muted);margin-top:16px">Updated daily • Curated from crypto researchers and analysts</p>
