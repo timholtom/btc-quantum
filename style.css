@@ -201,6 +201,7 @@ body.light .dashboard-card:hover{box-shadow:0 8px 24px rgba(0,0,0,0.08)}
 .dashboard-card-icon{font-size:32px;margin-bottom:12px}
 .dashboard-card-title{font-size:18px;font-weight:700;margin-bottom:8px;color:var(--accent)}
 .dashboard-card-desc{font-size:14px;color:var(--body-text);line-height:1.5}
+.dashboard-card-cta{margin-top:12px;font-size:14px;font-weight:600;color:var(--accent)}
 
 /* Mobile responsive */
 @media (max-width: 768px) {
