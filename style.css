@@ -32,15 +32,15 @@ nav{position:sticky;top:0;background:rgba(10,10,15,0.95);backdrop-filter:blur(10
 body.light nav{background:rgba(245,245,247,0.95)}
 .nav-container{max-width:1200px;margin:0 auto;padding:0 20px}
 .nav-header{display:flex;align-items:center;gap:16px;padding:12px 0}
-.nav-logo{font-size:18px;font-weight:800;color:var(--text);text-decoration:none}
-.nav-logo img{transition:filter 0.3s ease}
+.nav-logo{font-size:18px;font-weight:800;color:var(--text);text-decoration:none;display:flex;align-items:center}
+.nav-logo img{transition:filter 0.3s ease;display:block}
 body:not(.light) .nav-logo img{filter:brightness(0) invert(1)}
 .nav-logo:hover{text-decoration:none;color:var(--accent)}
 .nav-links{display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:center;flex:1}
 .nav-link{font-size:13px;color:var(--muted);padding:6px 12px;border-radius:6px;transition:all 0.3s ease;text-decoration:none}
 .nav-link:hover{color:var(--accent);background:rgba(99,102,241,0.1);text-decoration:none}
 .nav-link.active{color:var(--accent);background:rgba(99,102,241,0.1)}
-.nav-right{display:flex;align-items:center;gap:8px;line-height:1}
+.nav-right{display:flex;align-items:center;gap:4px;line-height:1;flex-shrink:0}
 .nav-hamburger{display:none;font-size:24px;color:var(--text);cursor:pointer;padding:4px;line-height:1}
 
 /* Hero */
