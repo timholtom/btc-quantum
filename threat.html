@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Quantum Threat to Bitcoin — BTC Quantum Research</title>
+<meta name="description" content="Understanding the quantum computing threat to Bitcoin: Shor's algorithm, current quantum hardware progress, and competing approaches to building quantum computers.">
+<meta name="keywords" content="Shor's algorithm, quantum computing threat, Bitcoin ECDSA, elliptic curve cryptography, Google Willow, Microsoft Majorana">
+
+<!-- Open Graph -->
+<meta property="og:title" content="The Quantum Threat to Bitcoin — BTC Quantum Research">
+<meta property="og:description" content="Understanding the quantum computing threat to Bitcoin: Shor's algorithm, current quantum hardware progress, and competing approaches to building quantum computers.">
+<meta property="og:url" content="https://timholtom.github.io/btc-quantum/threat.html">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://timholtom.github.io/btc-quantum/og-image.png">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Quantum Threat to Bitcoin — BTC Quantum Research">
+<meta name="twitter:description" content="Understanding the quantum computing threat to Bitcoin: Shor's algorithm, current quantum hardware progress, and competing approaches to building quantum computers.">
+<meta name="twitter:image" content="https://timholtom.github.io/btc-quantum/og-image.png">
+
+<!-- Canonical URL -->
+<link rel="canonical" href="https://timholtom.github.io/btc-quantum/threat.html">
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Navigation -->
+<nav>
+  <div class="nav-container">
+    <div class="nav-header">
+      <a href="index.html" class="nav-logo">🌐 BTC Quantum</a>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="threat.html" class="nav-link">Threat</a>
+        <a href="vulnerability.html" class="nav-link">Vulnerability</a>
+        <a href="timeline.html" class="nav-link">Timeline</a>
+        <a href="defense.html" class="nav-link">Defense</a>
+        <a href="community.html" class="nav-link">Community</a>
+        <a href="builders.html" class="nav-link">Builders</a>
+        <a href="sources.html" class="nav-link">Sources</a>
+      </div>
+      <div class="nav-right">
+        <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark/light mode">
+          <span class="theme-icon"></span>
+        </button>
+        <div class="nav-hamburger">☰</div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<main class="container">
+
+<header class="hero">
+  <h1>The Quantum Threat to Bitcoin</h1>
+  <p class="sub">Understanding how quantum computers could break Bitcoin's cryptography — and how far away we really are.</p>
+</header>
+
+<!-- WHAT IS THE THREAT -->
+<section>
+  <h2>What Exactly Is the Threat?</h2>
+  <p>Bitcoin uses <strong>Elliptic Curve Cryptography (ECDSA/Schnorr)</strong> to secure transactions. Your private key signs transactions; your public key verifies them. The security relies on the fact that deriving a private key from a public key is computationally infeasible for classical computers.</p>
+  <p><strong>Shor's Algorithm</strong> (1994) — running on a sufficiently powerful quantum computer — could solve this problem exponentially faster, potentially recovering private keys from public keys.</p>
+  
+  <h3>Two Types of Attack</h3>
+  <div class="highlight warn">
+    <strong>Long Exposure Attack</strong> — The easier one. Attacker has unlimited time to crack public keys already visible on the blockchain. Targets: P2PK addresses (Satoshi's coins), reused addresses, and Taproot (P2TR) outputs where the public key is always exposed.
+  </div>
+  <div class="highlight danger">
+    <strong>Short Exposure Attack</strong> — The harder one. Attacker must crack your key in the ~10 minutes between when you broadcast a transaction (revealing your public key) and when it's confirmed. Requires much faster quantum computers.
+  </div>
+
+  <h3>What's NOT Threatened</h3>
+  <div class="highlight safe">
+    <strong>SHA-256 (mining/hashing)</strong> — Grover's algorithm gives only a quadratic speedup against hash functions, effectively halving the security bits (256→128). 128-bit security is still considered safe. Bitcoin's proof-of-work is NOT the weak point.
+  </div>
+</section>
+
+<!-- STATE OF QUANTUM COMPUTING -->
+<section>
+  <h2>State of Quantum Computing (2026)</h2>
+  
+  <div class="stats">
+    <div class="stat"><div class="stat-value">1,500</div><div class="stat-label">Physical qubits<br>(typical leading systems)</div></div>
+    <div class="stat"><div class="stat-value">105</div><div class="stat-label">Google Willow qubits<br>(best error correction)</div></div>
+    <div class="stat"><div class="stat-value">8</div><div class="stat-label">Topological qubits<br>Microsoft Majorana 1</div></div>
+    <div class="stat"><div class="stat-value">4M+</div><div class="stat-label">Logical qubits needed<br>to break secp256k1</div></div>
+  </div>
+
+  <p>The gap between current capability and what's needed to threaten Bitcoin is enormous. Most estimates suggest a <strong>cryptographically relevant quantum computer (CRQC)</strong> is 10–30+ years away, though some government agencies plan for worst-case scenarios as early as 2030–2035.</p>
+
+  <div class="highlight">
+    <strong>Key reality check:</strong> Current quantum computers struggle with tasks that classical computers solve trivially. The jump from ~1,000 noisy physical qubits to millions of error-corrected logical qubits is not just a scaling problem — it requires fundamental breakthroughs in error correction, coherence, and architecture.
+  </div>
+
+  <div class="highlight wildcard" style="margin-top:16px">
+    <strong>⚡ Major Development:</strong> Google's Quantum Echoes (Oct 2025) achieved verifiable quantum advantage — Willow chip ran OTOC algorithm 13,000× faster than fastest classical supercomputer. While not crypto-relevant, it's the first real-world quantum advantage on hardware.
+  </div>
+</section>
+
+<!-- COMPETING APPROACHES -->
+<section>
+  <h2>Competing Quantum Computing Approaches</h2>
+  <p>Different companies are pursuing fundamentally different quantum hardware architectures, each with unique paths to scale:</p>
+  
+  <div class="approaches-grid">
+    <div class="approach-card">
+      <div class="approach-title">Superconducting Qubits</div>
+      <div class="approach-companies">Google, IBM, Rigetti</div>
+      <p style="font-size:13px;color:var(--body-text)">Most mature technology. Google Willow (105 qubits) achieved below-threshold error correction. IBM Condor reached 1,121 qubits. Requires dilution refrigeration (~mK). Path to scale: modular architecture, improved coherence.</p>
+    </div>
+    
+    <div class="approach-card">
+      <div class="approach-title">Topological Qubits</div>
+      <div class="approach-companies">Microsoft</div>
+      <p style="font-size:13px;color:var(--body-text)"> Microsoft Majorana 1: 8 topological qubits using topoconductors. Inherently error-resistant at hardware level. Claims path to 1M qubits on palm-sized chip. Could dramatically compress timelines if it works at scale.</p>
+    </div>
+    
+    <div class="approach-card">
+      <div class="approach-title">Trapped Ion</div>
+      <div class="approach-companies">Quantinuum, IonQ</div>
+      <p style="font-size:13px;color:var(--body-text)">Highest gate fidelities, any-to-any connectivity. Quantinuum H2 has 56 qubits. Slower gates but more precise. Path to scale: larger traps, improved lasers, parallel processing.</p>
+    </div>
+    
+    <div class="approach-card">
+      <div class="approach-title">Photonic</div>
+      <div class="approach-companies">Xanadu, PsiQuantum</div>
+      <p style="font-size:13px;color:var(--body-text)">Room temperature operation, network-native. PsiQuantum building 1M+ photonic qubit system. Challenges: probabilistic gates, photon loss. Path to scale: improved sources, detectors.</p>
+    </div>
+  </div>
+
+  <div class="highlight">
+    <strong>Why this matters:</strong> If any approach achieves a breakthrough (especially topological), it could accelerate quantum computing timelines significantly. Bitcoin's quantum preparedness must account for multiple potential paths to CRQC.
+  </div>
+</section>
+
+<section>
+  <h2>The Bottom Line</h2>
+  <p>The quantum threat to Bitcoin is real but not imminent. Current quantum computers are nowhere near the scale needed to break elliptic curve cryptography. However, the exponential nature of potential breakthroughs means the timeline could compress rapidly.</p>
+  
+  <p>The key question isn't whether quantum computers will eventually threaten Bitcoin — it's whether Bitcoin will be ready when they do. Microsoft's topological breakthrough and other advances show that multiple paths to quantum advantage exist, making preparedness essential.</p>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0">
+    <a href="vulnerability.html" class="highlight" style="text-decoration:none;color:inherit;border-left:4px solid var(--accent)">
+      <strong>Next: Bitcoin's Vulnerability →</strong><br>
+      <span style="font-size:13px;color:var(--muted)">Which Bitcoin addresses are at risk and how much BTC is exposed?</span>
+    </a>
+    <a href="timeline.html" class="highlight" style="text-decoration:none;color:inherit;border-left:4px solid var(--accent)">
+      <strong>Next: Timeline & Estimates →</strong><br>
+      <span style="font-size:13px;color:var(--muted)">Key events and expert predictions for quantum computers</span>
+    </a>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <p>BTC Quantum Research — Last updated February 2026</p>
+  <p><a href="https://github.com/timholtom/btc-quantum" target="_blank" rel="noopener">View on GitHub</a></p>
+  <p style="margin-top:8px;font-size:11px;opacity:0.8">This page presents publicly available information. Not financial or security advice. Do your own research.</p>
+</footer>
+
+<!-- CHATBOT -->
+<button class="chat-fab" onclick="toggleChat()" aria-label="Chat">
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M4.913 2.658c2.075-.27 4.19-.408 6.337-.408 2.147 0 4.262.139 6.337.408 1.922.25 3.291 1.861 3.405 3.727a4.403 4.403 0 00-1.032-.211 50.89 50.89 0 00-8.42 0c-2.358.196-4.04 2.19-4.04 4.434v4.286a4.47 4.47 0 002.433 3.984L7.28 21.53A.75.75 0 016 21v-4.03a48.527 48.527 0 01-1.087-.128C2.905 16.58 1.5 14.833 1.5 12.862V6.638c0-1.97 1.405-3.718 3.413-3.979z"/>
+    <path d="M15.75 7.5c-1.376 0-2.739.057-4.086.169C10.124 7.797 9 9.103 9 10.609v4.285c0 1.507 1.128 2.814 2.67 2.94 1.243.102 2.5.157 3.768.165l2.782 2.781a.75.75 0 001.28-.53v-2.39l.33-.026c1.542-.125 2.67-1.433 2.67-2.94v-4.286c0-1.505-1.125-2.811-2.664-2.94A49.392 49.392 0 0015.75 7.5z"/>
+  </svg>
+</button>
+<div class="chat-panel" id="chatPanel">
+  <div class="chat-head">
+    <span class="chat-head-title">🤖 Ask about BTC & Quantum</span>
+    <button class="chat-head-close" onclick="toggleChat()">✕</button>
+  </div>
+  <div class="chat-messages" id="chatMessages">
+    <div class="chat-msg bot">Hey! Ask me anything about Bitcoin's quantum threat, BIP-360, timelines, or anything on this page. I'll do my best. 🐱</div>
+  </div>
+  <div class="chat-input-row">
+    <input class="chat-input" id="chatInput" placeholder="e.g. How does Shor's algorithm work?" onkeydown="if(event.key==='Enter')sendChat()">
+    <button class="chat-send" id="chatSend" onclick="sendChat()">➤</button>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
