@@ -44,7 +44,7 @@ body:not(.light) .nav-logo img{filter:brightness(0) invert(1)}
 .nav-hamburger{display:none;font-size:24px;color:var(--text);cursor:pointer;padding:4px}
 
 /* Hero */
-.hero{text-align:center;padding:60px 20px 40px;background:linear-gradient(180deg,#0f0f1a 0%,var(--bg) 100%);position:relative;border:none;box-shadow:none}
+.hero{text-align:center;padding:60px 20px 40px;background:transparent;position:relative;border:none;box-shadow:none}
 .hero h1{font-size:clamp(28px,5vw,48px);font-weight:800;background:linear-gradient(135deg,#818cf8,#6366f1,#a78bfa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:8px}
 .hero .sub{color:var(--muted);font-size:16px;max-width:600px;margin:0 auto 20px}
 .last-updated{color:var(--muted);font-size:12px;margin-top:16px;opacity:0.8}
