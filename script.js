@@ -15,7 +15,7 @@ function toggleTheme(){
 }
 
 function initTheme(){
-  if(localStorage.getItem('theme')==='light') document.body.classList.add('light');
+  if(localStorage.getItem('theme')!=='dark') document.body.classList.add('light');
   setThemeIcon();
 }
 
