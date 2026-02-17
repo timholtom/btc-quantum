@@ -46,7 +46,7 @@
         <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark/light mode">
           <span class="theme-icon"></span>
         </button>
-        <div class="nav-hamburger">☰</div>
+        <div class="nav-hamburger"></div>
       </div>
     </div>
   </div>
@@ -208,22 +208,22 @@
   <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin:20px 0">
     
     <div class="highlight safe" style="border-left:4px solid var(--green)">
-      <strong>🏗️ BIP-360 Implementation</strong><br>
+      <strong> BIP-360 Implementation</strong><br>
       <span style="font-size:13px;color:var(--body-text)">Core developers working on P2MR implementation and consensus activation. Reference implementation in progress.</span>
     </div>
     
     <div class="highlight" style="border-left:4px solid var(--accent)">
-      <strong>🔬 PQ Signature Research</strong><br>
+      <strong> PQ Signature Research</strong><br>
       <span style="font-size:13px;color:var(--body-text)">Chaincode Labs and academic researchers studying integration of NIST standards into Bitcoin script.</span>
     </div>
     
     <div class="highlight" style="border-left:4px solid var(--yellow)">
-      <strong>📱 Wallet-Layer Solutions</strong><br>
+      <strong> Wallet-Layer Solutions</strong><br>
       <span style="font-size:13px;color:var(--body-text)">Independent developers like Emiliano Solazzi building hybrid wallets with dual signing (classical + PQ).</span>
     </div>
     
     <div class="highlight" style="border-left:4px solid var(--orange)">
-      <strong>🧪 Testnet Experiments</strong><br>
+      <strong> Testnet Experiments</strong><br>
       <span style="font-size:13px;color:var(--body-text)">Bitcoin Cash has post-quantum vaults running on testnet (QuantumRoot). Real-world testing of PQ approaches.</span>
     </div>
     
@@ -281,15 +281,15 @@
 </button>
 <div class="chat-panel" id="chatPanel">
   <div class="chat-head">
-    <span class="chat-head-title">🤖 Ask about BTC & Quantum</span>
-    <button class="chat-head-close" onclick="toggleChat()">✕</button>
+    <span class="chat-head-title"> Ask about BTC & Quantum</span>
+    <button class="chat-head-close" onclick="toggleChat()"></button>
   </div>
   <div class="chat-messages" id="chatMessages">
-    <div class="chat-msg bot">Hey! Ask me anything about Bitcoin's quantum threat, BIP-360, timelines, or anything on this page. I'll do my best. 🐱</div>
+    <div class="chat-msg bot">Hey! Ask me anything about Bitcoin's quantum threat, BIP-360, timelines, or anything on this page. I'll do my best. </div>
   </div>
   <div class="chat-input-row">
     <input class="chat-input" id="chatInput" placeholder="e.g. How does BIP-360 work?" onkeydown="if(event.key==='Enter')sendChat()">
-    <button class="chat-send" id="chatSend" onclick="sendChat()">➤</button>
+    <button class="chat-send" id="chatSend" onclick="sendChat()"></button>
   </div>
 </div>
 

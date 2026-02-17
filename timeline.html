@@ -46,7 +46,7 @@
         <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark/light mode">
           <span class="theme-icon"></span>
         </button>
-        <div class="nav-hamburger">☰</div>
+        <div class="nav-hamburger"></div>
       </div>
     </div>
   </div>
@@ -63,43 +63,43 @@
   <h2>Timeline of Key Events</h2>
   <div class="timeline">
     <div class="tl-item">
-      <div class="tl-dot done">✓</div>
+      <div class="tl-dot done"></div>
       <div class="tl-date">1994</div>
       <div class="tl-title">Shor's Algorithm Published</div>
       <div class="tl-desc">Peter Shor shows quantum computers could break RSA and ECC. The theoretical threat to public-key crypto begins.</div>
     </div>
     <div class="tl-item">
-      <div class="tl-dot done">✓</div>
+      <div class="tl-dot done"></div>
       <div class="tl-date">2009</div>
       <div class="tl-title">Bitcoin Launches</div>
       <div class="tl-desc">Satoshi uses ECDSA (secp256k1). Early coins use P2PK — public keys directly exposed on-chain.</div>
     </div>
     <div class="tl-item">
-      <div class="tl-dot done">✓</div>
+      <div class="tl-dot done"></div>
       <div class="tl-date">2019</div>
       <div class="tl-title">Google Claims Quantum Supremacy</div>
       <div class="tl-desc">53-qubit Sycamore processor completes a specific task in 200 seconds that would take classical supercomputers ~10,000 years. Not relevant to cryptography, but a milestone.</div>
     </div>
     <div class="tl-item">
-      <div class="tl-dot done">✓</div>
+      <div class="tl-dot done"></div>
       <div class="tl-date">2021</div>
       <div class="tl-title">Taproot Activates on Bitcoin</div>
       <div class="tl-desc">P2TR addresses expose a tweaked public key, making them vulnerable to long exposure quantum attacks — a concern noted by researchers.</div>
     </div>
     <div class="tl-item">
-      <div class="tl-dot done">✓</div>
+      <div class="tl-dot done"></div>
       <div class="tl-date">Aug 2024</div>
       <div class="tl-title">NIST Finalizes Post-Quantum Standards</div>
       <div class="tl-desc">FIPS 203 (ML-KEM), FIPS 204 (ML-DSA), FIPS 205 (SLH-DSA) — first official post-quantum cryptography standards. Ready for use.</div>
     </div>
     <div class="tl-item">
-      <div class="tl-dot done">✓</div>
+      <div class="tl-dot done"></div>
       <div class="tl-date">Dec 2024</div>
       <div class="tl-title">BIP-360: Pay-to-Merkle-Root (P2MR) Proposed</div>
       <div class="tl-desc">Hunter Beast, Ethan Heilman, Isabel Foxen Duke propose P2MR — a new output type resistant to long exposure quantum attacks. Uses bc1z addresses. Status: Draft.</div>
     </div>
     <div class="tl-item">
-      <div class="tl-dot done">✓</div>
+      <div class="tl-dot done"></div>
       <div class="tl-date">Dec 2024</div>
       <div class="tl-title">Google Willow Chip</div>
       <div class="tl-desc">105 qubits with breakthrough error correction — errors decrease as more qubits are added (below threshold). Still far from cryptographic relevance.</div>
@@ -302,15 +302,15 @@
 </button>
 <div class="chat-panel" id="chatPanel">
   <div class="chat-head">
-    <span class="chat-head-title">🤖 Ask about BTC & Quantum</span>
-    <button class="chat-head-close" onclick="toggleChat()">✕</button>
+    <span class="chat-head-title"> Ask about BTC & Quantum</span>
+    <button class="chat-head-close" onclick="toggleChat()"></button>
   </div>
   <div class="chat-messages" id="chatMessages">
-    <div class="chat-msg bot">Hey! Ask me anything about Bitcoin's quantum threat, BIP-360, timelines, or anything on this page. I'll do my best. 🐱</div>
+    <div class="chat-msg bot">Hey! Ask me anything about Bitcoin's quantum threat, BIP-360, timelines, or anything on this page. I'll do my best. </div>
   </div>
   <div class="chat-input-row">
     <input class="chat-input" id="chatInput" placeholder="e.g. When will quantum break Bitcoin?" onkeydown="if(event.key==='Enter')sendChat()">
-    <button class="chat-send" id="chatSend" onclick="sendChat()">➤</button>
+    <button class="chat-send" id="chatSend" onclick="sendChat()"></button>
   </div>
 </div>
 
