@@ -138,7 +138,7 @@ td{padding:10px 12px;border-bottom:1px solid var(--border);font-size:14px;transi
 .tweet-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:20px 24px;transition:all 0.2s ease;cursor:pointer;text-decoration:none;display:block;color:inherit}
 .tweet-card:hover{box-shadow:0 8px 30px rgba(0,0,0,0.12);transform:translateY(-2px)}
 .tweet-card-header{display:flex;align-items:center;gap:12px;margin-bottom:14px}
-.tweet-avatar{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,#6366f1,#8b5cf6);display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:700;color:white;flex-shrink:0}
+.tweet-avatar{width:44px;height:44px;border-radius:50%;flex-shrink:0;object-fit:cover}
 .tweet-author{flex:1;min-width:0}
 .tweet-author-name{font-weight:700;font-size:14px;color:var(--text);display:flex;align-items:center;gap:4px}
 .tweet-author-handle{font-size:13px;color:var(--muted)}
@@ -950,7 +950,7 @@ footer{text-align:center;padding:40px 20px;color:var(--muted);font-size:12px;bor
   <div class="tweet-grid">
     <a class="tweet-card" href="https://x.com/willywoo/status/2023258901379183029" target="_blank" rel="noopener">
       <div class="tweet-card-header">
-        <div class="tweet-avatar">W</div>
+        <img class="tweet-avatar" src="https://unavatar.io/x/willywoo" alt="Willy Woo" loading="lazy">
         <div class="tweet-author">
           <div class="tweet-author-name">Willy Woo</div>
           <div class="tweet-author-handle">@willywoo</div>
@@ -962,7 +962,7 @@ footer{text-align:center;padding:40px 20px;color:var(--muted);font-size:12px;bor
     </a>
     <a class="tweet-card" href="https://x.com/willywoo/status/2023258908320760128" target="_blank" rel="noopener">
       <div class="tweet-card-header">
-        <div class="tweet-avatar">W</div>
+        <img class="tweet-avatar" src="https://unavatar.io/x/willywoo" alt="Willy Woo" loading="lazy">
         <div class="tweet-author">
           <div class="tweet-author-name">Willy Woo</div>
           <div class="tweet-author-handle">@willywoo</div>
