@@ -6,7 +6,7 @@ body.light p{color:#3a3a4a}
 body.light h3{color:#4f46e5}
 body.light .tl-desc{color:#4a4a5c}
 body.light th{background:#eeeef2}
-body.light .hero{background:linear-gradient(180deg,#f0f0f6 0%,var(--bg) 100%)}
+body.light .hero{background:transparent}
 body.light .toc{background:rgba(245,245,247,0.95)}
 
 *{margin:0;padding:0;box-sizing:border-box}
