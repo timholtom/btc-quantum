@@ -298,6 +298,49 @@
   </div>
 </div>
 
+<!-- PREPAREDNESS SECTION -->
+<div class="meter-section" id="preparedness">
+  <div class="meter-card">
+    <div class="meter-title"> Bitcoin's Quantum Preparedness</div>
+    <p style="text-align:center;font-size:13px;color:var(--muted);margin-bottom:24px">What's being done to protect Bitcoin before quantum computers become a threat?</p>
+    
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:20px"><span style="font-size:10px;color:var(--muted);white-space:nowrap">Nothing</span><div class="progress-track" style="flex:1"><div class="progress-marker" style="left:15%"></div></div><span style="font-size:10px;color:var(--green);white-space:nowrap">Fully Quantum-Proof</span></div>
+
+    <div class="progress-item" style="margin-bottom:20px">
+      <div style="display:flex;align-items:baseline;gap:8px;margin-bottom:6px">
+        <div>
+          <div style="font-weight:600;font-size:14px">NIST Post-Quantum Standards Finalized</div>
+          <div style="font-size:12px;color:var(--muted)">August 2024 — The cryptographic building blocks are ready</div>
+        </div>
+      </div>
+      <div style="font-size:12px;color:var(--body-text);padding-left:0">Three quantum-proof encryption standards are now official (ML-KEM, ML-DSA, SLH-DSA). These are the replacement algorithms Bitcoin could adopt. The US government is already mandating their use by 2030–2035.</div>
+    </div>
+
+    <div class="progress-item" style="margin-bottom:20px">
+      <div style="display:flex;align-items:baseline;gap:8px;margin-bottom:6px">
+        <div>
+          <div style="font-weight:600;font-size:14px">BIP-360: Pay-to-Merkle-Root (P2MR) Drafted</div>
+          <div style="font-size:12px;color:var(--muted)">December 2024 — First concrete Bitcoin proposal, currently in review</div>
+        </div>
+      </div>
+      <div style="font-size:12px;color:var(--body-text);padding-left:0">Creates new <code style="background:var(--border);padding:2px 5px;border-radius:3px;font-size:11px">bc1z</code> addresses that never expose your public key on-chain. Status: <strong>Draft v0.11.0</strong>, under community review.</div>
+    </div>
+
+    <div class="progress-item" style="margin-bottom:20px">
+      <div style="display:flex;align-items:baseline;gap:8px;margin-bottom:6px">
+        <div>
+          <div style="font-weight:600;font-size:14px">PQ-PSBT Wallet Layer (Independent Dev)</div>
+          <div style="font-size:12px;color:var(--muted)">February 2026 — Wallet-level quantum insurance, working today</div>
+        </div>
+      </div>
+      <div style="font-size:12px;color:var(--body-text);padding-left:0">Developer Emiliano Solazzi built a hybrid wallet that dual-signs transactions with both classical (Schnorr) and post-quantum (ML-DSA/Falcon) keys. 136 tests passing, 0.5ms overhead.</div>
+    </div>
+
+  </div>
+</div>
+
+
+
 <script src="script.js?v=4"></script>
 </body>
 </html>
