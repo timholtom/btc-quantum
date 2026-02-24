@@ -282,3 +282,36 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
+// Tweet Carousel
+let carouselIndex = 0;
+function carouselMove(dir) {
+  const track = document.querySelector('.carousel-track');
+  if (!track) return;
+  const slides = track.querySelectorAll('.carousel-slide');
+  const isMobile = window.innerWidth <= 768;
+  const perView = isMobile ? 1 : 2;
+  const maxIndex = slides.length - perView;
+  carouselIndex = Math.max(0, Math.min(maxIndex, carouselIndex + dir));
+  updateCarousel();
+}
+function carouselGoTo(i) {
+  carouselIndex = i;
+  updateCarousel();
+}
+function updateCarousel() {
+  const track = document.querySelector('.carousel-track');
+  if (!track) return;
+  const slides = track.querySelectorAll('.carousel-slide');
+  const isMobile = window.innerWidth <= 768;
+  const slideWidth = isMobile ? 100 : 50;
+  const gapPx = isMobile ? 0 : 16;
+  const offset = carouselIndex * (slideWidth) + (carouselIndex * gapPx / track.parentElement.offsetWidth * 100);
+  track.style.transform = `translateX(calc(-${carouselIndex * slideWidth}% - ${carouselIndex * gapPx}px))`;
+  document.querySelectorAll('.carousel-dot').forEach((d, i) => d.classList.toggle('active', i === carouselIndex));
+}
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.carousel-dot').forEach(d => {
+    d.addEventListener('click', () => carouselGoTo(parseInt(d.dataset.index)));
+  });
+  window.addEventListener('resize', updateCarousel);
+});
