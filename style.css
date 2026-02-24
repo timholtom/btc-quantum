@@ -255,3 +255,4 @@ body.light .dashboard-card:hover{box-shadow:0 8px 24px rgba(0,0,0,0.08)}
 .tweet-collage .tweet-card{break-inside:avoid;margin-bottom:24px;display:block}
 @media(max-width:1024px){.tweet-collage{columns:2}}
 @media(max-width:768px){.tweet-collage{columns:1}}
+.tweet-collage{width:100vw;position:relative;left:50%;transform:translateX(-50%);padding:0 40px;box-sizing:border-box}
