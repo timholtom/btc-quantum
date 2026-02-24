@@ -45,7 +45,7 @@
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="manifest" href="site.webmanifest">
 <meta name="theme-color" content="#6366f1">
-<link rel="stylesheet" href="style.css?v=5">
+<link rel="stylesheet" href="style.css?v=6">
 </head>
 <body>
 
@@ -107,6 +107,50 @@
       Breaking Bitcoin's elliptic curve crypto requires an estimated <strong>13 million+ logical qubits</strong><br>
       operating coherently — we're roughly <strong>0.01%</strong> of the way there.
     </p>
+    <details style="margin-top:20px;cursor:pointer">
+      <summary style="color:var(--accent);font-size:14px;font-weight:600;text-decoration:underline;list-style:none;text-align:center">See breakdown</summary>
+      <div style="margin-top:20px">
+    <p style="text-align:center;font-size:13px;color:var(--muted);margin-bottom:24px">Each bar shows how far quantum computing has progressed toward the threshold needed to crack Bitcoin's encryption. All bars full = Bitcoin is broken.</p>
+    
+    <div class="progress-item">
+      <div class="progress-header">
+        <span class="progress-label"> Physical Qubits <span style="font-weight:400;font-size:12px;color:var(--muted)">— raw processing units</span></span>
+        <span class="progress-value">~1,500 today · need 13M+</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px"><span style="font-size:10px;color:var(--muted);white-space:nowrap">Now</span><div class="progress-track" style="flex:1"><div class="progress-marker" style="left:2%"></div></div><span style="font-size:10px;color:var(--red);white-space:nowrap">BTC Broken</span></div>
+      <div style="font-size:11px;color:var(--muted);margin-top:4px">Like having 1,500 workers when you need 13 million. Not even close.</div>
+    </div>
+
+    <div class="progress-item">
+      <div class="progress-header">
+        <span class="progress-label"> Logical Qubits <span style="font-weight:400;font-size:12px;color:var(--muted)">— error-free computing units</span></span>
+        <span class="progress-value">~12 today · need 4M+</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px"><span style="font-size:10px;color:var(--muted);white-space:nowrap">Now</span><div class="progress-track" style="flex:1"><div class="progress-marker" style="left:1.5%"></div></div><span style="font-size:10px;color:var(--red);white-space:nowrap">BTC Broken</span></div>
+      <div style="font-size:11px;color:var(--muted);margin-top:4px">Physical qubits are noisy. You need thousands of them to make one reliable "logical" qubit. We have ~12.</div>
+    </div>
+
+    <div class="progress-item">
+      <div class="progress-header">
+        <span class="progress-label"> Error Rate <span style="font-weight:400;font-size:12px;color:var(--muted)">— how often qubits make mistakes</span></span>
+        <span class="progress-value">~0.1–1% today · need 0.0001%</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px"><span style="font-size:10px;color:var(--muted);white-space:nowrap">Now</span><div class="progress-track" style="flex:1"><div class="progress-marker" style="left:5%"></div></div><span style="font-size:10px;color:var(--red);white-space:nowrap">BTC Broken</span></div>
+      <div style="font-size:11px;color:var(--muted);margin-top:4px">Current qubits fail 1 in 100–1,000 operations. Breaking Bitcoin needs them to fail 1 in 1,000,000. Best progress so far.</div>
+    </div>
+
+    <div class="progress-item">
+      <div class="progress-header">
+        <span class="progress-label"> Coherence Time <span style="font-weight:400;font-size:12px;color:var(--muted)">— how long qubits stay stable</span></span>
+        <span class="progress-value">~100μs today · need hours</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px"><span style="font-size:10px;color:var(--muted);white-space:nowrap">Now</span><div class="progress-track" style="flex:1"><div class="progress-marker" style="left:1.5%"></div></div><span style="font-size:10px;color:var(--red);white-space:nowrap">BTC Broken</span></div>
+      <div style="font-size:11px;color:var(--muted);margin-top:4px">Qubits currently survive ~0.0001 seconds. Cracking Bitcoin's keys would take hours of sustained computation.</div>
+    </div>
+
+  
+      </div>
+    </details>
   </div>
 </div>
 
@@ -152,51 +196,6 @@
       <p style="margin:0 0 16px;font-size:14px;color:var(--body-text);line-height:1.5">BlackRock updated its iShares Bitcoin ETF (IBIT) registration statement to flag quantum computing as a potential risk to the Bitcoin network's integrity. This marked the first time a major institutional Bitcoin product explicitly acknowledged the quantum threat in regulatory filings, signaling that quantum risks are transitioning from academic curiosity to legitimate institutional concern.</p>
       <a href="timeline/blackrock-flags-quantum-risk-2026.html" style="color:var(--accent);text-decoration:none;font-size:14px;font-weight:500">Read more →</a>
     </div>
-  </div>
-</div>
-
-<!-- PROGRESS BARS -->
-<div class="progress-section" id="metrics">
-  <div class="meter-card">
-    <div class="meter-title"> How Close Are Quantum Computers to Breaking Bitcoin?</div>
-    <p style="text-align:center;font-size:13px;color:var(--muted);margin-bottom:24px">Each bar shows how far quantum computing has progressed toward the threshold needed to crack Bitcoin's encryption. All bars full = Bitcoin is broken.</p>
-    
-    <div class="progress-item">
-      <div class="progress-header">
-        <span class="progress-label"> Physical Qubits <span style="font-weight:400;font-size:12px;color:var(--muted)">— raw processing units</span></span>
-        <span class="progress-value">~1,500 today · need 13M+</span>
-      </div>
-      <div style="display:flex;align-items:center;gap:8px"><span style="font-size:10px;color:var(--muted);white-space:nowrap">Now</span><div class="progress-track" style="flex:1"><div class="progress-marker" style="left:2%"></div></div><span style="font-size:10px;color:var(--red);white-space:nowrap">BTC Broken</span></div>
-      <div style="font-size:11px;color:var(--muted);margin-top:4px">Like having 1,500 workers when you need 13 million. Not even close.</div>
-    </div>
-
-    <div class="progress-item">
-      <div class="progress-header">
-        <span class="progress-label"> Logical Qubits <span style="font-weight:400;font-size:12px;color:var(--muted)">— error-free computing units</span></span>
-        <span class="progress-value">~12 today · need 4M+</span>
-      </div>
-      <div style="display:flex;align-items:center;gap:8px"><span style="font-size:10px;color:var(--muted);white-space:nowrap">Now</span><div class="progress-track" style="flex:1"><div class="progress-marker" style="left:1.5%"></div></div><span style="font-size:10px;color:var(--red);white-space:nowrap">BTC Broken</span></div>
-      <div style="font-size:11px;color:var(--muted);margin-top:4px">Physical qubits are noisy. You need thousands of them to make one reliable "logical" qubit. We have ~12.</div>
-    </div>
-
-    <div class="progress-item">
-      <div class="progress-header">
-        <span class="progress-label"> Error Rate <span style="font-weight:400;font-size:12px;color:var(--muted)">— how often qubits make mistakes</span></span>
-        <span class="progress-value">~0.1–1% today · need 0.0001%</span>
-      </div>
-      <div style="display:flex;align-items:center;gap:8px"><span style="font-size:10px;color:var(--muted);white-space:nowrap">Now</span><div class="progress-track" style="flex:1"><div class="progress-marker" style="left:5%"></div></div><span style="font-size:10px;color:var(--red);white-space:nowrap">BTC Broken</span></div>
-      <div style="font-size:11px;color:var(--muted);margin-top:4px">Current qubits fail 1 in 100–1,000 operations. Breaking Bitcoin needs them to fail 1 in 1,000,000. Best progress so far.</div>
-    </div>
-
-    <div class="progress-item">
-      <div class="progress-header">
-        <span class="progress-label"> Coherence Time <span style="font-weight:400;font-size:12px;color:var(--muted)">— how long qubits stay stable</span></span>
-        <span class="progress-value">~100μs today · need hours</span>
-      </div>
-      <div style="display:flex;align-items:center;gap:8px"><span style="font-size:10px;color:var(--muted);white-space:nowrap">Now</span><div class="progress-track" style="flex:1"><div class="progress-marker" style="left:1.5%"></div></div><span style="font-size:10px;color:var(--red);white-space:nowrap">BTC Broken</span></div>
-      <div style="font-size:11px;color:var(--muted);margin-top:4px">Qubits currently survive ~0.0001 seconds. Cracking Bitcoin's keys would take hours of sustained computation.</div>
-    </div>
-
   </div>
 </div>
 
