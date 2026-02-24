@@ -226,11 +226,11 @@ body.light .dashboard-card:hover{box-shadow:0 8px 24px rgba(0,0,0,0.08)}
 .tweet-sentiment{margin-top:8px;font-size:12px;font-weight:600}
 .tweet-carousel{position:relative;overflow:hidden}
 .carousel-track{display:flex;gap:16px;transition:transform 0.3s ease}
-.carousel-slide{min-width:calc(50% - 8px);flex-shrink:0}
+.carousel-slide{min-width:calc(50% - 8px);max-width:calc(50% - 8px);flex-shrink:0;overflow:hidden;box-sizing:border-box}
 .carousel-controls{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:16px}
 .carousel-arrow{background:var(--card);border:1px solid var(--border);border-radius:50%;width:36px;height:36px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--text);transition:all 0.2s}
 .carousel-arrow:hover{border-color:var(--accent);color:var(--accent)}
 .carousel-dots{display:flex;gap:6px}
 .carousel-dot{width:8px;height:8px;border-radius:50%;border:none;background:var(--border);cursor:pointer;padding:0;transition:all 0.2s}
 .carousel-dot.active{background:var(--accent);width:20px;border-radius:4px}
-@media(max-width:768px){.carousel-slide{min-width:100%}}
+@media(max-width:768px){.carousel-slide{min-width:100%;max-width:100%}}
