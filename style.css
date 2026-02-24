@@ -50,7 +50,7 @@ body:not(.light) .nav-logo img{filter:brightness(0) invert(1)}
 .last-updated{color:var(--muted);font-size:12px;margin-top:16px;opacity:0.8}
 
 /* Threat Meter */
-.meter-section{max-width:700px;margin:0 auto 50px;padding:0 20px}
+.meter-section{max-width:800px;margin:0 auto 50px;padding:0 20px}
 .meter-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:30px;transition:all 0.3s ease}
 .meter-title{font-size:18px;font-weight:700;margin-bottom:20px;text-align:center}
 .meter-bar{position:relative;height:32px;background:#1a1a2e;border-radius:16px;overflow:hidden;margin-bottom:8px;transition:all 0.3s ease}
