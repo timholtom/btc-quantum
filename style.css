@@ -251,7 +251,7 @@ body.light .dashboard-card:hover{box-shadow:0 8px 24px rgba(0,0,0,0.08)}
 .comm-carousel .carousel-slide .tweet-card{box-sizing:border-box;width:100%;height:100%;display:flex;flex-direction:column}
 .comm-carousel .carousel-slide .tweet-body{flex:1}
 @media(max-width:768px){.comm-carousel .carousel-slide{min-width:100%;max-width:100%}}
-.tweet-collage{columns:3;column-gap:48px;width:100vw;position:relative;left:50%;transform:translateX(-50%);padding:0 40px;box-sizing:border-box}
-.tweet-collage .tweet-card{break-inside:avoid;display:inline-block;width:100%;margin-bottom:48px}
+.tweet-collage{columns:3;column-gap:36px;width:100vw;position:relative;left:50%;transform:translateX(-50%);padding:0 40px;box-sizing:border-box}
+.tweet-collage .tweet-card{break-inside:avoid;display:inline-block;width:100%;margin-bottom:36px}
 @media(max-width:1024px){.tweet-collage{columns:2}}
 @media(max-width:768px){.tweet-collage{columns:1}}
