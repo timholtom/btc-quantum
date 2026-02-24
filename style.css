@@ -235,3 +235,9 @@ body.light .dashboard-card:hover{box-shadow:0 8px 24px rgba(0,0,0,0.08)}
 .carousel-dot{width:8px;height:8px;border-radius:50%;border:none;background:var(--border);cursor:pointer;padding:0;transition:all 0.2s}
 .carousel-dot.active{background:var(--accent);width:20px;border-radius:4px}
 @media(max-width:768px){.carousel-slide{min-width:100%;max-width:100%}}
+.sentiment-tabs{display:flex;justify-content:center;gap:8px;margin-bottom:20px}
+.sentiment-tab{padding:8px 20px;border-radius:20px;border:1px solid var(--border);background:transparent;color:var(--muted);font-size:13px;font-weight:600;cursor:pointer;transition:all 0.2s}
+.sentiment-tab.active{background:var(--accent);color:white;border-color:var(--accent)}
+.sentiment-tab:hover:not(.active){border-color:var(--accent);color:var(--accent)}
+.sentiment-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+@media(max-width:768px){.sentiment-grid{grid-template-columns:1fr}}
