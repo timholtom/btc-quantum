@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BIP-360: Pay-to-Merkle-Root Proposed (Dec 2024) — BTC Quantum Research</title>
+<meta name="description" content="Hunter Beast, Ethan Heilman, and Isabel Foxen Duke propose BIP-360, Bitcoin's first concrete quantum resistance upgrade using bc1z addresses.">
+<meta name="keywords" content="BIP-360, Pay-to-Merkle-Root, P2MR, bc1z addresses, Bitcoin quantum resistance, Hunter Beast, Ethan Heilman">
+
+<!-- Open Graph -->
+<meta property="og:title" content="BIP-360: Pay-to-Merkle-Root Proposed (Dec 2024)">
+<meta property="og:description" content="Hunter Beast, Ethan Heilman, and Isabel Foxen Duke propose BIP-360, Bitcoin's first concrete quantum resistance upgrade using bc1z addresses.">
+<meta property="og:url" content="https://timholtom.github.io/btc-quantum/timeline/bip-360-proposed-2024.html">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://timholtom.github.io/btc-quantum/og-image.png">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="BIP-360: Pay-to-Merkle-Root Proposed (Dec 2024)">
+<meta name="twitter:description" content="Hunter Beast, Ethan Heilman, and Isabel Foxen Duke propose BIP-360, Bitcoin's first concrete quantum resistance upgrade using bc1z addresses.">
+<meta name="twitter:image" content="https://timholtom.github.io/btc-quantum/og-image.png">
+
+<!-- Canonical URL -->
+<link rel="canonical" href="https://timholtom.github.io/btc-quantum/timeline/bip-360-proposed-2024.html">
+
+<link rel="stylesheet" href="../style.css?v=5">
+</head>
+<body>
+
+<!-- Navigation -->
+<nav>
+  <div class="nav-container">
+    <div class="nav-header">
+      <a href="../index.html" class="nav-logo"><img src="../logo.png" alt="BTC Quantum" style="height:36px;vertical-align:middle"></a>
+      <div class="nav-links">
+        <a href="../index.html" class="nav-link">Home</a>
+        <a href="../threat.html" class="nav-link">Threat</a>
+        <a href="../vulnerability.html" class="nav-link">Vulnerability</a>
+        <a href="../timeline.html" class="nav-link">Timeline</a>
+        <a href="../defense.html" class="nav-link">Defense</a>
+        <a href="../community.html" class="nav-link">Community</a>
+        <a href="../builders.html" class="nav-link">Builders</a>
+        <a href="../sources.html" class="nav-link">Sources</a>
+      </div>
+      <div class="nav-right">
+        <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark/light mode">
+          <span class="theme-icon"></span>
+        </button>
+        <div class="nav-hamburger"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<main class="container">
+
+<header class="hero">
+  <h1>BIP-360: Pay-to-Merkle-Root Proposed</h1>
+  <p class="sub">December 2024 — Bitcoin's first concrete quantum resistance proposal introduces bc1z addresses that never expose public keys.</p>
+  <p style="text-align:center;margin-top:16px"><a href="../timeline.html" style="color:var(--accent);text-decoration:none;font-size:14px">← Back to Timeline</a></p>
+</header>
+
+<section>
+  <h2>What Happened</h2>
+  <p>Hunter Beast, Ethan Heilman, and Isabel Foxen Duke formally proposed BIP-360, introducing Pay-to-Merkle-Root (P2MR) as Bitcoin's first concrete quantum resistance mechanism. The proposal outlined a new output type using bc1z addresses that protects against long-exposure quantum attacks by never revealing public keys on the blockchain.</p>
+
+  <p>The BIP emerged after months of research and development, building on years of theoretical work on post-quantum Bitcoin defenses. The authors identified a critical vulnerability in existing address types: even unused Bitcoin addresses become vulnerable to quantum attacks once their public keys are exposed during spending, creating a time window for quantum computers to derive private keys.</p>
+
+  <p>P2MR solves this by hiding the actual public key inside a Merkle tree commitment, only revealing it at the moment of spending while simultaneously providing a quantum-resistant proof that the spender controls the private key. The proposal included detailed specifications for implementing bc1z addresses as a new Bech32m address format, complete with activation mechanisms and backward compatibility considerations.</p>
+
+  <h2>Technical Innovation</h2>
+  <p>The core innovation of BIP-360 lies in its commitment-reveal scheme. Instead of directly committing to a public key, P2MR commits to the root of a Merkle tree containing both the public key and a post-quantum signature. When spending, the user reveals both the public key and a proof that it was committed to in the original transaction, along with a post-quantum signature proving ownership.</p>
+
+  <p>This approach provides protection against long-exposure quantum attacks (where public keys sit exposed on-chain for extended periods) while maintaining compatibility with Bitcoin's existing UTXO model. The quantum-resistant signatures used in P2MR come from NIST's newly standardized post-quantum cryptography schemes, particularly ML-DSA (Module-Lattice-Based Digital Signature Algorithm).</p>
+
+  <p>The proposal cleverly works within Bitcoin's existing OP_SUCCESSx framework, allowing activation without requiring a hard fork. This technical approach reflected lessons learned from previous Bitcoin upgrades like Taproot, prioritizing implementability and consensus-building over theoretical perfection.</p>
+
+  <h2>Community Reception and Implications</h2>
+  <p>BIP-360's announcement marked a watershed moment for Bitcoin's quantum preparedness discussions. For the first time, the community had a concrete, implementable proposal to evaluate rather than abstract theoretical concerns. The proposal immediately sparked intense technical review and philosophical debate about Bitcoin's quantum future.</p>
+
+  <p>The timing proved fortuitous, coinciding with NIST's finalization of post-quantum standards and growing institutional awareness of quantum threats. Major Bitcoin wallet developers began experimental implementations, while mining pools and exchanges started evaluating the operational implications of supporting bc1z addresses.</p>
+
+  <p>However, the proposal also highlighted Bitcoin's quantum challenge's complexity. While P2MR addresses long-exposure attacks, it doesn't solve the harder problem of short-exposure attacks during transaction broadcast. Critics argued that partial quantum resistance might create a false sense of security, though supporters countered that incremental progress was better than waiting for perfect solutions.</p>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:32px 0">
+    <a href="nist-post-quantum-standards-2024.html" class="highlight" style="text-decoration:none;color:inherit;border-left:4px solid var(--accent)">
+      <strong>← NIST PQ Standards</strong><br>
+      <span style="font-size:13px;color:var(--muted)">The cryptographic foundation that made BIP-360 possible</span>
+    </a>
+    <a href="bip-360-review-community-discussion-2026.html" class="highlight" style="text-decoration:none;color:inherit;border-left:4px solid var(--accent)">
+      <strong>Community Discussion →</strong><br>
+      <span style="font-size:13px;color:var(--muted)">How the Bitcoin community responded to BIP-360</span>
+    </a>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <p>BTC Quantum Research — Last updated February 2026</p>
+  <p style="margin-top:8px;font-size:11px;opacity:0.8">This page presents publicly available information. Not financial or security advice. Do your own research.</p>
+</footer>
+
+<!-- CHATBOT -->
+<button class="chat-fab" onclick="toggleChat()" aria-label="Chat">
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M4.913 2.658c2.075-.27 4.19-.408 6.337-.408 2.147 0 4.262.139 6.337.408 1.922.25 3.291 1.861 3.405 3.727a4.403 4.403 0 00-1.032-.211 50.89 50.89 0 00-8.42 0c-2.358.196-4.04 2.19-4.04 4.434v4.286a4.47 4.47 0 002.433 3.984L7.28 21.53A.75.75 0 016 21v-4.03a48.527 48.527 0 01-1.087-.128C2.905 16.58 1.5 14.833 1.5 12.862V6.638c0-1.97 1.405-3.718 3.413-3.979z"/>
+    <path d="M15.75 7.5c-1.376 0-2.739.057-4.086.169C10.124 7.797 9 9.103 9 10.609v4.285c0 1.507 1.128 2.814 2.67 2.94 1.243.102 2.5.157 3.768.165l2.782 2.781a.75.75 0 001.28-.53v-2.39l.33-.026c1.542-.125 2.67-1.433 2.67-2.940v-4.286c0-1.505-1.125-2.811-2.664-2.94A49.392 49.392 0 0015.75 7.5z"/>
+  </svg>
+</button>
+<div class="chat-panel" id="chatPanel">
+  <div class="chat-head">
+    <span class="chat-head-title"> Ask about BTC & Quantum</span>
+    <button class="chat-head-close" onclick="toggleChat()"></button>
+  </div>
+  <div class="chat-messages" id="chatMessages">
+    <div class="chat-msg bot">Hey! Ask me anything about Bitcoin's quantum threat, BIP-360, timelines, or anything on this page. I'll do my best. </div>
+  </div>
+  <div class="chat-input-row">
+    <input class="chat-input" id="chatInput" placeholder="e.g. How does P2MR work?" onkeydown="if(event.key==='Enter')sendChat()">
+    <button class="chat-send" id="chatSend" onclick="sendChat()"></button>
+  </div>
+</div>
+
+<script src="../script.js?v=4"></script>
+</body>
+</html>
