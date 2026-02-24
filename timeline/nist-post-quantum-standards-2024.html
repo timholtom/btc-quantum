@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NIST Finalizes Post-Quantum Standards (August 2024) — BTC Quantum Research</title>
+<meta name="description" content="NIST publishes first official post-quantum cryptography standards: FIPS 203 (ML-KEM), FIPS 204 (ML-DSA), and FIPS 205 (SLH-DSA), setting the foundation for quantum-resistant systems.">
+<meta name="keywords" content="NIST post-quantum cryptography, FIPS 203, ML-KEM, ML-DSA, SLH-DSA, quantum-resistant algorithms, CNSA 2.0">
+
+<!-- Open Graph -->
+<meta property="og:title" content="NIST Finalizes Post-Quantum Standards (August 2024)">
+<meta property="og:description" content="NIST publishes first official post-quantum cryptography standards: FIPS 203 (ML-KEM), FIPS 204 (ML-DSA), and FIPS 205 (SLH-DSA), setting the foundation for quantum-resistant systems.">
+<meta property="og:url" content="https://timholtom.github.io/btc-quantum/timeline/nist-post-quantum-standards-2024.html">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://timholtom.github.io/btc-quantum/og-image.png">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="NIST Finalizes Post-Quantum Standards (August 2024)">
+<meta name="twitter:description" content="NIST publishes first official post-quantum cryptography standards: FIPS 203 (ML-KEM), FIPS 204 (ML-DSA), and FIPS 205 (SLH-DSA), setting the foundation for quantum-resistant systems.">
+<meta name="twitter:image" content="https://timholtom.github.io/btc-quantum/og-image.png">
+
+<!-- Canonical URL -->
+<link rel="canonical" href="https://timholtom.github.io/btc-quantum/timeline/nist-post-quantum-standards-2024.html">
+
+<link rel="stylesheet" href="../style.css?v=5">
+</head>
+<body>
+
+<!-- Navigation -->
+<nav>
+  <div class="nav-container">
+    <div class="nav-header">
+      <a href="../index.html" class="nav-logo"><img src="../logo.png" alt="BTC Quantum" style="height:36px;vertical-align:middle"></a>
+      <div class="nav-links">
+        <a href="../index.html" class="nav-link">Home</a>
+        <a href="../threat.html" class="nav-link">Threat</a>
+        <a href="../vulnerability.html" class="nav-link">Vulnerability</a>
+        <a href="../timeline.html" class="nav-link">Timeline</a>
+        <a href="../defense.html" class="nav-link">Defense</a>
+        <a href="../community.html" class="nav-link">Community</a>
+        <a href="../builders.html" class="nav-link">Builders</a>
+        <a href="../sources.html" class="nav-link">Sources</a>
+      </div>
+      <div class="nav-right">
+        <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark/light mode">
+          <span class="theme-icon"></span>
+        </button>
+        <div class="nav-hamburger"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<main class="container">
+
+<header class="hero">
+  <h1>NIST Finalizes Post-Quantum Standards</h1>
+  <p class="sub">August 2024 — First official quantum-resistant cryptography standards published, establishing the foundation for post-quantum security.</p>
+  <p style="text-align:center;margin-top:16px"><a href="../timeline.html" style="color:var(--accent);text-decoration:none;font-size:14px">← Back to Timeline</a></p>
+</header>
+
+<section>
+  <h2>What Happened</h2>
+  <p>The National Institute of Standards and Technology (NIST) published the first official post-quantum cryptography standards on August 13, 2024. After an eight-year standardization process involving global cryptographic experts, NIST finalized three Federal Information Processing Standards (FIPS) that define quantum-resistant algorithms for widespread adoption.</p>
+
+  <p>The standards represent the culmination of NIST's Post-Quantum Cryptography Standardization project, which began in 2016 to identify and standardize cryptographic systems secure against both quantum and classical computers. The finalized algorithms underwent extensive analysis and multiple rounds of evaluation to ensure their security and practicality.</p>
+
+  <p>This milestone provided the first official guidance for organizations and governments preparing for the quantum computing threat, establishing a foundation for migrating critical systems to quantum-resistant cryptography well before quantum computers become capable of breaking current encryption.</p>
+
+  <h2>The Three Standards</h2>
+  <p><strong>FIPS 203: Module-Lattice-Based Key-Encapsulation Mechanism (ML-KEM):</strong> Based on the CRYSTALS-Kyber algorithm, ML-KEM provides quantum-resistant key encapsulation for establishing shared secrets between parties. This replaces RSA and elliptic curve key exchange mechanisms that quantum computers can break.</p>
+
+  <p>ML-KEM comes in three security levels (512, 768, and 1024 bits) corresponding to different classical security strengths. The algorithm relies on the difficulty of solving lattice problems, which remain hard even for quantum computers. It's designed for high-performance applications requiring secure key exchange.</p>
+
+  <p><strong>FIPS 204: Module-Lattice-Based Digital Signature Algorithm (ML-DSA):</strong> Based on CRYSTALS-Dilithium, ML-DSA provides quantum-resistant digital signatures to replace RSA and ECDSA signatures. Like ML-KEM, it relies on lattice cryptography and offers multiple security levels.</p>
+
+  <p>ML-DSA signatures are larger than classical signatures but provide equivalent security against quantum attacks. The algorithm balances signature size, verification speed, and security strength, making it suitable for most digital signature applications in a post-quantum world.</p>
+
+  <p><strong>FIPS 205: Stateless Hash-Based Digital Signature Algorithm (SLH-DSA):</strong> Based on SPHINCS+, SLH-DSA provides an alternative digital signature scheme using only hash functions. Unlike lattice-based schemes, hash-based signatures rely on well-understood cryptographic primitives with strong security guarantees.</p>
+
+  <p>SLH-DSA signatures are significantly larger than ML-DSA signatures but offer conservative security based solely on hash function security. This provides a backup option if lattice-based cryptography faces unexpected cryptanalytic breakthroughs.</p>
+
+  <h2>Impact on Bitcoin's Future</h2>
+  <p>The NIST standards provide the cryptographic building blocks that Bitcoin will likely use in its post-quantum transition. While Bitcoin cannot directly adopt these algorithms without protocol changes, they establish the foundation for quantum-resistant Bitcoin implementations:</p>
+
+  <p><strong>Key Exchange:</strong> ML-KEM could be used in post-quantum Bitcoin protocols for establishing secure communication channels between wallets and nodes, or for implementing quantum-resistant payment channels and Lightning Network connections.</p>
+
+  <p><strong>Digital Signatures:</strong> Both ML-DSA and SLH-DSA represent potential replacements for Bitcoin's current ECDSA and Schnorr signatures. However, their larger signature sizes would require careful protocol design to maintain Bitcoin's efficiency and scalability.</p>
+
+  <p><strong>Hash-Based Security:</strong> SLH-DSA's hash-only approach aligns with Bitcoin's existing reliance on hash functions (SHA-256) for proof-of-work and address generation, making it a natural fit for Bitcoin's security model.</p>
+
+  <h2>Government Migration Timeline</h2>
+  <p>Alongside the standards publication, the US government announced the Commercial National Security Algorithm (CNSA 2.0) policy, mandating federal agencies transition to post-quantum cryptography by 2030-2035:</p>
+
+  <p><strong>2025-2030:</strong> Federal agencies must inventory their cryptographic systems and begin planning post-quantum migrations. New systems should prefer quantum-resistant algorithms where practical.</p>
+
+  <p><strong>2030-2035:</strong> Complete migration of all federal systems to NIST-approved post-quantum algorithms. Legacy quantum-vulnerable systems must be retired or upgraded.</p>
+
+  <p><strong>Private Sector Impact:</strong> While not legally binding for private companies, the federal timeline creates strong market incentives for adopting post-quantum cryptography. Organizations serving government clients or handling sensitive data are expected to follow similar timelines.</p>
+
+  <h2>Acceleration of Quantum Research</h2>
+  <p>The standards finalization paradoxically accelerated both post-quantum cryptography adoption and quantum computer development. With clear migration targets established, organizations began serious post-quantum planning, creating market demand for quantum-resistant solutions.</p>
+
+  <p>Simultaneously, the concrete threat timeline implied by the standards spurred increased investment in quantum computing research. If governments were mandating post-quantum adoption by 2030-2035, it suggested that cryptographically relevant quantum computers might emerge within that timeframe.</p>
+
+  <p>The standards also enabled new research directions, as cryptographers could now focus on optimizing implementations and exploring hybrid classical-quantum systems rather than continuing the basic algorithm selection process.</p>
+
+  <h2>Challenges for Implementation</h2>
+  <p>Despite their official status, the NIST standards present several challenges for real-world deployment, particularly for resource-constrained systems like Bitcoin:</p>
+
+  <p><strong>Size Overhead:</strong> Post-quantum signatures and keys are significantly larger than classical equivalents. ML-DSA signatures range from 2-5KB compared to ~70 bytes for Bitcoin's current signatures, creating blockchain size and bandwidth concerns.</p>
+
+  <p><strong>Performance Impact:</strong> While optimized implementations perform well, post-quantum algorithms generally require more computational resources than classical cryptography, potentially affecting transaction validation speed and energy efficiency.</p>
+
+  <p><strong>Migration Complexity:</strong> Transitioning existing systems like Bitcoin requires careful protocol design to maintain backward compatibility while introducing quantum resistance, creating complex engineering challenges.</p>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:32px 0">
+    <a href="taproot-activates-2021.html" class="highlight" style="text-decoration:none;color:inherit;border-left:4px solid var(--accent)">
+      <strong>← Taproot Activation</strong><br>
+      <span style="font-size:13px;color:var(--muted)">Bitcoin's quantum vulnerability expands</span>
+    </a>
+    <a href="darpa-quantum-benchmarking-2025.html" class="highlight" style="text-decoration:none;color:inherit;border-left:4px solid var(--accent)">
+      <strong>DARPA Initiative →</strong><br>
+      <span style="font-size:13px;color:var(--muted)">US government accelerates quantum development</span>
+    </a>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <p>BTC Quantum Research — Last updated February 2026</p>
+  <p style="margin-top:8px;font-size:11px;opacity:0.8">This page presents publicly available information. Not financial or security advice. Do your own research.</p>
+</footer>
+
+<!-- CHATBOT -->
+<button class="chat-fab" onclick="toggleChat()" aria-label="Chat">
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M4.913 2.658c2.075-.27 4.19-.408 6.337-.408 2.147 0 4.262.139 6.337.408 1.922.25 3.291 1.861 3.405 3.727a4.403 4.403 0 00-1.032-.211 50.89 50.89 0 00-8.42 0c-2.358.196-4.04 2.19-4.04 4.434v4.286a4.47 4.47 0 002.433 3.984L7.28 21.53A.75.75 0 016 21v-4.03a48.527 48.527 0 01-1.087-.128C2.905 16.58 1.5 14.833 1.5 12.862V6.638c0-1.97 1.405-3.718 3.413-3.979z"/>
+    <path d="M15.75 7.5c-1.376 0-2.739.057-4.086.169C10.124 7.797 9 9.103 9 10.609v4.285c0 1.507 1.128 2.814 2.67 2.94 1.243.102 2.5.157 3.768.165l2.782 2.781a.75.75 0 001.28-.53v-2.39l.33-.026c1.542-.125 2.67-1.433 2.67-2.940v-4.286c0-1.505-1.125-2.811-2.664-2.940A49.392 49.392 0 0015.75 7.5z"/>
+  </svg>
+</button>
+<div class="chat-panel" id="chatPanel">
+  <div class="chat-head">
+    <span class="chat-head-title"> Ask about BTC & Quantum</span>
+    <button class="chat-head-close" onclick="toggleChat()"></button>
+  </div>
+  <div class="chat-messages" id="chatMessages">
+    <div class="chat-msg bot">Hey! Ask me anything about Bitcoin's quantum threat, BIP-360, timelines, or anything on this page. I'll do my best. </div>
+  </div>
+  <div class="chat-input-row">
+    <input class="chat-input" id="chatInput" placeholder="e.g. What is ML-KEM?" onkeydown="if(event.key==='Enter')sendChat()">
+    <button class="chat-send" id="chatSend" onclick="sendChat()"></button>
+  </div>
+</div>
+
+<script src="../script.js?v=4"></script>
+</body>
+</html>

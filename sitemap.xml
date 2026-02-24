@@ -61,10 +61,28 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://timholtom.github.io/btc-quantum/timeline/google-quantum-supremacy-2019.html</loc>
+    <lastmod>2026-02-24</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://timholtom.github.io/btc-quantum/timeline/taproot-activates-2021.html</loc>
+    <lastmod>2026-02-24</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://timholtom.github.io/btc-quantum/timeline/bip-360-proposed-2024.html</loc>
     <lastmod>2026-02-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://timholtom.github.io/btc-quantum/timeline/nist-post-quantum-standards-2024.html</loc>
+    <lastmod>2026-02-24</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
   </url>
   <url>
     <loc>https://timholtom.github.io/btc-quantum/timeline/google-willow-chip-2024.html</loc>
@@ -80,6 +98,12 @@
   </url>
   <url>
     <loc>https://timholtom.github.io/btc-quantum/timeline/google-quantum-echoes-2025.html</loc>
+    <lastmod>2026-02-24</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://timholtom.github.io/btc-quantum/timeline/darpa-quantum-benchmarking-2025.html</loc>
     <lastmod>2026-02-24</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
