@@ -246,7 +246,7 @@ body.light .dashboard-card:hover{box-shadow:0 8px 24px rgba(0,0,0,0.08)}
 /* Community Carousel Specific Styles */
 .comm-carousel{position:relative;overflow:hidden}
 .comm-carousel .carousel-viewport{overflow:hidden}
-.comm-carousel .carousel-track{display:flex;gap:16px;transition:transform 0.3s ease}
+.comm-carousel .carousel-track{display:flex;gap:16px;transition:transform 0.3s ease;align-items:flex-start}
 .comm-carousel .carousel-slide{min-width:calc(50% - 8px);max-width:calc(50% - 8px);flex-shrink:0;box-sizing:border-box}
 .comm-carousel .carousel-slide .tweet-card{box-sizing:border-box;width:100%}
 @media(max-width:768px){.comm-carousel .carousel-slide{min-width:100%;max-width:100%}}
