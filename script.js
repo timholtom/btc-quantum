@@ -287,3 +287,20 @@ function showSentiment(s) {
   document.querySelectorAll('.sentiment-grid').forEach(g => g.style.display = g.dataset.sentiment === s ? 'grid' : 'none');
   document.querySelectorAll('.sentiment-tab').forEach(t => t.classList.toggle('active', t.dataset.sentiment === s));
 }
+
+// Community Carousel Functionality
+const commCarousels = {};
+function commCarousel(id, dir) {
+  if (!commCarousels[id]) commCarousels[id] = 0;
+  const el = document.querySelector(`[data-carousel="${id}"]`);
+  const track = el.querySelector('.carousel-track');
+  const slides = track.querySelectorAll('.carousel-slide');
+  const isMobile = window.innerWidth <= 768;
+  const perView = isMobile ? 1 : 2;
+  const maxIdx = slides.length - perView;
+  commCarousels[id] = Math.max(0, Math.min(maxIdx, commCarousels[id] + dir));
+  const gap = 16;
+  const pct = isMobile ? 100 : 50;
+  track.style.transform = `translateX(calc(-${commCarousels[id] * pct}% - ${commCarousels[id] * gap}px))`;
+  el.querySelectorAll('.carousel-dot').forEach((d,i) => d.classList.toggle('active', i === commCarousels[id]));
+}
