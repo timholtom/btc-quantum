@@ -57,8 +57,9 @@ body:not(.light) .nav-logo img{filter:brightness(0) invert(1)}
 body.light .meter-bar{background:#e0e0e8}
 .meter-fill{height:100%;border-radius:16px;transition:width 1.5s ease}
 .meter-labels{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);padding:0 4px}
-.meter-needle{position:absolute;top:-6px;width:4px;height:44px;background:white;border-radius:2px;transition:left 1.5s ease;z-index:5;box-shadow:0 0 8px rgba(255,255,255,.5)}
-.meter-needle-label{position:absolute;top:-26px;left:50%;transform:translateX(-50%);white-space:nowrap;font-size:11px;font-weight:700;color:white;background:var(--accent);padding:2px 8px;border-radius:4px}
+.meter-needle{position:absolute;top:-8px;width:0;height:0;transition:left 1.5s ease;z-index:5;border-left:8px solid transparent;border-right:8px solid transparent;border-top:14px solid var(--accent);margin-left:-8px;filter:drop-shadow(0 2px 4px rgba(0,0,0,0.3))}
+.meter-needle::after{content:'';position:absolute;top:14px;left:-1px;width:2px;height:30px;background:var(--accent);border-radius:1px}
+.meter-needle-label{position:absolute;top:-28px;left:50%;transform:translateX(-50%);white-space:nowrap;font-size:10px;font-weight:700;color:white;background:var(--accent);padding:3px 10px;border-radius:6px}
 .meter-zones{display:flex;height:100%;position:absolute;inset:0}
 .meter-zone{height:100%}
 
