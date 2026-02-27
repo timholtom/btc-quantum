@@ -74,7 +74,7 @@ if (progressSection) {
 }
 
 // CHATBOT FUNCTIONALITY
-const GEMINI_KEY='AIzaSyBNecNQyEMM5UDnjaCVDH2ZT93f5jmFysA';
+const GEMINI_KEY='AIzaSyCIUHsV2CszfJWp7CzhaRDsJXg8R-XW9Xw';
 const SYSTEM_CTX=`You are a helpful assistant embedded on a Bitcoin vs Quantum Computing research page. Answer questions about:
 - Quantum computing threat to Bitcoin (Shor's algorithm, ECC vulnerability)
 - BIP-360 (P2MR) proposal - Draft v0.11.0, bc1z addresses, removes key path spend
