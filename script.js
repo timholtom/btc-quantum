@@ -5,17 +5,17 @@ const MOON_ICON='<svg width="24" height="24" viewBox="0 0 24 24" fill="currentCo
 function setThemeIcon(){
   const icon=document.querySelector('.theme-icon');
   // In dark mode show sun (switch to light), in light mode show moon (switch to dark)
-  icon.innerHTML=document.body.classList.contains('light')?MOON_ICON:SUN_ICON;
+  icon.innerHTML=document.body.classList.contains('dark')?SUN_ICON:MOON_ICON;
 }
 
 function toggleTheme(){
-  document.body.classList.toggle('light');
-  localStorage.setItem('theme',document.body.classList.contains('light')?'light':'dark');
+  document.body.classList.toggle('dark');
+  localStorage.setItem('theme',document.body.classList.contains('dark')?'dark':'light');
   setThemeIcon();
 }
 
 function initTheme(){
-  if(localStorage.getItem('theme')!=='dark') document.body.classList.add('light');
+  if(localStorage.getItem('theme')==='dark') document.body.classList.add('dark');
   setThemeIcon();
 }
 
