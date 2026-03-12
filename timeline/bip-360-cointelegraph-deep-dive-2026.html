@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cointelegraph BIP-360 Deep Dive: What P2MR Actually Changes (Mar 2026) — BTC Quantum Research</title>
+<meta name="description" content="Cointelegraph publishes comprehensive BIP-360 analysis explaining Pay-to-Merkle-Root (P2MR), how it reduces quantum exposure by eliminating Taproot key path spending, and why it's not yet full post-quantum security.">
+<meta name="keywords" content="BIP-360, P2MR, Pay-to-Merkle-Root, Cointelegraph, quantum resistance, Taproot, Bitcoin">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Cointelegraph BIP-360 Deep Dive: What P2MR Actually Changes (Mar 2026)">
+<meta property="og:description" content="Major analysis of BIP-360's Pay-to-Merkle-Root approach to reducing Bitcoin's quantum exposure. Multiple outlets cover the story.">
+<meta property="og:url" content="https://timholtom.github.io/btc-quantum/timeline/bip-360-cointelegraph-deep-dive-2026.html">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://timholtom.github.io/btc-quantum/og-image.png">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Cointelegraph BIP-360 Deep Dive: What P2MR Actually Changes (Mar 2026)">
+<meta name="twitter:description" content="Major analysis of BIP-360's Pay-to-Merkle-Root approach to reducing Bitcoin's quantum exposure. Multiple outlets cover the story.">
+<meta name="twitter:image" content="https://timholtom.github.io/btc-quantum/og-image.png">
+
+<!-- Canonical URL -->
+<link rel="canonical" href="https://timholtom.github.io/btc-quantum/timeline/bip-360-cointelegraph-deep-dive-2026.html">
+
+<link rel="icon" href="../favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<link rel="manifest" href="../site.webmanifest">
+<meta name="theme-color" content="#6366f1">
+<link rel="stylesheet" href="../style.css?v=38">
+</head>
+<body>
+
+<!-- Navigation -->
+<nav>
+  <div class="nav-container">
+    <div class="nav-header">
+      <a href="../index.html" class="nav-logo"><img src="../logo.png" alt="BTC Quantum" style="height:36px;vertical-align:middle"></a>
+      <div class="nav-links">
+        <a href="../index.html" class="nav-link">Home</a>
+        <a href="../threat.html" class="nav-link">Threat</a>
+        <a href="../vulnerability.html" class="nav-link">Vulnerability</a>
+        <a href="../timeline.html" class="nav-link">Timeline</a>
+        <a href="../defense.html" class="nav-link">Defense</a>
+        <a href="../community.html" class="nav-link">Community</a>
+        <a href="../sources.html" class="nav-link">Sources</a>
+      </div>
+      <div class="nav-right">
+        <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark/light mode">
+          <span class="theme-icon"></span>
+        </button>
+        <div class="nav-hamburger"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<main class="container">
+
+<header class="hero">
+  <h1>Cointelegraph BIP-360 Deep Dive: What P2MR Actually Changes</h1>
+  <p class="sub">March 10, 2026 — Cointelegraph publishes a comprehensive technical analysis of BIP-360, sparking a wave of mainstream coverage. Multiple outlets break down how Pay-to-Merkle-Root reduces Bitcoin's quantum exposure without delivering full post-quantum security.</p>
+  <p style="text-align:center;margin-top:16px"><a href="../timeline.html" style="color:var(--accent);text-decoration:none;font-size:14px">← Back to Timeline</a></p>
+</header>
+
+<section>
+  <h2>What Happened</h2>
+  <p>On March 10, 2026, Cointelegraph published a major feature article titled "Bitcoin's Quantum Defense Plan: What BIP-360 Actually Changes," providing the most detailed mainstream technical breakdown of BIP-360 to date. The article was quickly picked up and analyzed by CryptoResearch Report, Bitget, SunCrypto Academy, and WorldToday, creating the largest wave of BIP-360 coverage since the proposal was first introduced.</p>
+
+  <p>The coverage marked a shift in narrative — from vague "quantum threat" fear-mongering to substantive technical discussion of what Bitcoin's developers are actually building and what limitations remain.</p>
+
+  <h2>Key Technical Details from the Coverage</h2>
+  <ul style="padding-left:20px;margin-bottom:14px;color:var(--body-text)">
+    <li><strong>P2MR removes key path spending entirely:</strong> Unlike Taproot which offers both a key path (exposing a tweaked public key) and a script path, P2MR commits solely to the Merkle root of a script tree. No public key-based spending route exists at all.</li>
+    <li><strong>All spends go through script paths:</strong> To spend a P2MR output, users reveal a script leaf and provide a Merkle proof showing it belongs to the committed root.</li>
+    <li><strong>Hash-based commitments replace ECC exposure:</strong> This shifts security from elliptic curve assumptions to hash-based methods, which are far more resilient to quantum attacks.</li>
+    <li><strong>Smart contracts unaffected:</strong> P2MR fully supports multisig, timelocks, conditional payments, inheritance schemes, and advanced custody — all via Tapscript Merkle trees.</li>
+    <li><strong>Not full post-quantum security:</strong> BIP-360 is explicitly described as an incremental step. It reduces the attack surface significantly but does not make Bitcoin fully quantum-proof.</li>
+  </ul>
+
+  <h2>Three Vulnerability Classes Identified</h2>
+  <p>The Cointelegraph article clearly categorized Bitcoin's quantum vulnerabilities in 2026:</p>
+  <ol style="padding-left:20px;margin-bottom:14px;color:var(--body-text)">
+    <li><strong>Reused addresses:</strong> Spending reveals the public key onchain, leaving it exposed to a future CRQC.</li>
+    <li><strong>Legacy P2PK outputs:</strong> Early Bitcoin transactions directly embedded public keys in transaction outputs (includes Satoshi's coins).</li>
+    <li><strong>Taproot key path spends:</strong> The key path exposes a tweaked public key on spend — the main theoretical weak point BIP-360 addresses.</li>
+  </ol>
+
+  <h2>Concurrent Coverage: St. Petersburg University</h2>
+  <p>On the same day, St. Petersburg State University published an episode of "The Boson of Meaning" featuring Professor Alexey Kavokin (Head of the Spin Optics Laboratory), who discussed quantum computing timelines and crypto vulnerability. Professor Kavokin noted that up to 25% of crypto wallets could become vulnerable and that modern encryption could become obsolete in minutes once sufficiently powerful quantum computers arrive — while emphasizing that quantum security systems are also evolving in parallel.</p>
+
+  <h2>Why It Matters</h2>
+  <p>This wave of coverage is significant for several reasons:</p>
+  <ul style="padding-left:20px;margin-bottom:14px;color:var(--body-text)">
+    <li><strong>First mainstream technical deep-dive:</strong> Previous coverage focused on fear or dismissal. This is the first major wave of substantive BIP-360 technical analysis in mainstream crypto media.</li>
+    <li><strong>Formal roadmap acknowledgment:</strong> Cointelegraph explicitly states BIP-360 "formally puts quantum resistance on Bitcoin's road map for the first time."</li>
+    <li><strong>Nuanced framing:</strong> Coverage emphasizes both what BIP-360 achieves and what it doesn't — a marked improvement over typical binary "safe/doomed" narratives.</li>
+    <li><strong>Broad reach:</strong> Syndication across Cointelegraph, CryptoResearch Report, Bitget, SunCrypto Academy, and WorldToday means millions of readers exposed to the technical details.</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Sources</h2>
+  <ul style="padding-left:20px;color:var(--body-text)">
+    <li><a href="https://cointelegraph.com/features/bitcoin-s-quantum-upgrade-path-what-bip-360-changes-and-what-it-does-not" target="_blank" rel="noopener" style="color:var(--accent)">Cointelegraph — Bitcoin's Quantum Defense Plan: What BIP-360 Actually Changes</a> (March 10, 2026)</li>
+    <li><a href="https://cryptoresearch.report/crypto-research/bitcoin-introduces-bip-360-for-quantum-resistance/" target="_blank" rel="noopener" style="color:var(--accent)">CryptoResearch Report — Bitcoin Introduces BIP-360 for Quantum Resistance</a> (March 10, 2026)</li>
+    <li><a href="https://academy.suncrypto.in/quantum-computing-risk/" target="_blank" rel="noopener" style="color:var(--accent)">SunCrypto Academy — Bitcoin's Quantum Computing Risk: How Can BIP-360 Help?</a> (March 11, 2026)</li>
+    <li><a href="https://english.spbu.ru/news-events/news/st-petersburg-state-university-scientist-explains-when-quantum-computer-will-spell" target="_blank" rel="noopener" style="color:var(--accent)">St. Petersburg State University — Quantum Computer & Bitcoin (Boson of Meaning)</a> (March 12, 2026)</li>
+  </ul>
+</section>
+
+</main>
+
+<footer>
+  <p>BTC Quantum Research — Last updated March 2026</p>
+  <p style="margin-top:8px;font-size:11px;opacity:0.8">This page presents publicly available information. Not financial or security advice.</p>
+</footer>
+
+<script src="../script.js?v=9"></script>
+</body>
+</html>

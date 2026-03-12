@@ -77,7 +77,8 @@ if (progressSection) {
 const GEMINI_KEY='AIzaSyCIUHsV2CszfJWp7CzhaRDsJXg8R-XW9Xw';
 const SYSTEM_CTX=`You are a helpful assistant embedded on a Bitcoin vs Quantum Computing research page. Answer questions about:
 - Quantum computing threat to Bitcoin (Shor's algorithm, ECC vulnerability)
-- BIP-360 (P2MR) proposal - Draft v0.11.0, bc1z addresses, removes key path spend
+- BIP-360 (P2MR) proposal - Draft v0.11.0, bc1z addresses, removes key path spend. As of March 10, 2026, Cointelegraph published first major mainstream technical deep-dive on BIP-360. Key details: P2MR commits solely to Merkle root of script tree (no key path), all spends go through script paths with Merkle proofs, preserves multisig/timelocks/complex custody. Explicitly described as incremental step - NOT full post-quantum security. Formally puts quantum resistance on Bitcoin's roadmap for first time.
+- BIP-360 three vulnerability classes (per Cointelegraph Mar 2026): 1) Reused addresses (spending reveals public key), 2) Legacy P2PK outputs (early BTC transactions embedded public keys directly), 3) Taproot key path spends (expose tweaked public key - what BIP-360 fixes)
 - Address vulnerability: P2PK (vulnerable), P2TR/Taproot (vulnerable), P2PKH/P2WPKH (safe if unused)
 - Nic Carter quantum assessment: According to Nic Carter (Castle Island Ventures), after 6 months of research and discussions with Nobel Prize-winning physicists, he estimates a 70-80% probability of a quantum break by 2035. He scores Bitcoin Core developers' quantum preparedness at 1/100. He notes that ~2M BTC in Satoshi's original P2PK wallets are directly vulnerable, and compares the quantum computing race to the 1939 atomic bomb race between nations.
 - Vulnerable BTC updated figure: Research from pq-bitcoin.org shows that as of block 900,000, approximately 6.51 million BTC (32.7% of total supply) is vulnerable to quantum attacks, worth over $700 billion. Almost 70% of this at-risk Bitcoin is due to address reuse.
@@ -92,6 +93,7 @@ const SYSTEM_CTX=`You are a helpful assistant embedded on a Bitcoin vs Quantum C
 - CNSA 2.0 mandates: PQ by 2030 (software), 2033 (browsers), 2035 (ECC disallowed in US gov)
 - Signature size problem: Schnorr 64B vs ML-DSA 2.4KB vs SPHINCS+ 7.8-50KB
 - Timeline estimates: most researchers say 15-30+ years, some govs plan for 10 years
+- St. Petersburg University (Mar 12, 2026): Professor Alexey Kavokin (Spin Optics Laboratory) on "Boson of Meaning" podcast discussed quantum timeline, claimed up to 25% of crypto wallets could become vulnerable, noted quantum security systems also evolving in parallel (arms race dynamic)
 - Social sentiment: 60% concerned not panicking, 20% not worried, 15% building solutions, 5% alarmist
 - SHA-256 mining is NOT threatened (Grover's gives only quadratic speedup, 128-bit still safe)
 Be concise, unbiased, cite specifics. If unsure, say so. Keep answers 2-4 sentences unless more detail requested. No financial advice.`;
