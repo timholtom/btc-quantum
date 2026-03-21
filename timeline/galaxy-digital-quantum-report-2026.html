@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Galaxy Digital Quantum Risk Report (Mar 2026) — BTC Quantum Research</title>
+<meta name="description" content="Galaxy Digital publishes quantum risk analysis concluding Bitcoin's quantum threat is real but far from an existential crisis. Most wallets not directly exposed.">
+<meta name="keywords" content="Galaxy Digital, Alex Thorn, Will Owens, Bitcoin quantum risk, quantum computing threat, institutional analysis, ECDSA vulnerability">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Galaxy Digital Quantum Risk Report (Mar 2026)">
+<meta property="og:description" content="Galaxy Digital publishes quantum risk analysis concluding Bitcoin's quantum threat is real but far from an existential crisis. Most wallets not directly exposed.">
+<meta property="og:url" content="https://timholtom.github.io/btc-quantum/timeline/galaxy-digital-quantum-report-2026.html">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://timholtom.github.io/btc-quantum/og-image.png">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Galaxy Digital Quantum Risk Report (Mar 2026)">
+<meta name="twitter:description" content="Galaxy Digital publishes quantum risk analysis concluding Bitcoin's quantum threat is real but far from an existential crisis. Most wallets not directly exposed.">
+<meta name="twitter:image" content="https://timholtom.github.io/btc-quantum/og-image.png">
+
+<!-- Canonical URL -->
+<link rel="canonical" href="https://timholtom.github.io/btc-quantum/timeline/galaxy-digital-quantum-report-2026.html">
+
+<link rel="icon" href="../favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<link rel="manifest" href="../site.webmanifest">
+<meta name="theme-color" content="#6366f1">
+<link rel="stylesheet" href="../style.css?v=38">
+</head>
+<body>
+
+<!-- Navigation -->
+<nav>
+  <div class="nav-container">
+    <div class="nav-header">
+      <a href="../index.html" class="nav-logo"><img src="../logo.png" alt="BTC Quantum" style="height:36px;vertical-align:middle"></a>
+      <div class="nav-links">
+        <a href="../index.html" class="nav-link">Home</a>
+        <a href="../threat.html" class="nav-link">Threat</a>
+        <a href="../vulnerability.html" class="nav-link">Vulnerability</a>
+        <a href="../timeline.html" class="nav-link">Timeline</a>
+        <a href="../defense.html" class="nav-link">Defense</a>
+        <a href="../community.html" class="nav-link">Community</a>
+        <a href="../sources.html" class="nav-link">Sources</a>
+      </div>
+      <div class="nav-right">
+        <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark/light mode">
+          <span class="theme-icon"></span>
+        </button>
+        <div class="nav-hamburger"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<main class="container">
+
+<header class="hero">
+  <h1>Galaxy Digital: Bitcoin's Quantum Threat "Real But Far From Existential"</h1>
+  <p class="sub">March 19, 2026 — Galaxy Digital's research team publishes institutional analysis concluding most Bitcoin wallets aren't directly exposed to quantum risks, with vulnerabilities limited to addresses where public keys have been revealed on-chain.</p>
+  <p style="text-align:center;margin-top:16px"><a href="../timeline.html" style="color:var(--accent);text-decoration:none;font-size:14px">← Back to Timeline</a></p>
+</header>
+
+<section>
+  <h2>What Happened</h2>
+  <p>On March 19, 2026, Galaxy Digital — one of the largest crypto-focused institutional firms — published a comprehensive quantum risk analysis for Bitcoin. The report, led by head of research Alex Thorn and researcher Will Owens, concluded that while the quantum threat to Bitcoin is real, it is "far from an existential crisis." The analysis provided a detailed breakdown of which Bitcoin address types are actually vulnerable and argued that investors shouldn't mistake a long-term challenge for an immediate threat.</p>
+
+  <p>The report's key finding was that most crypto wallets aren't directly exposed to quantum risks. Vulnerabilities are limited to cases where public keys have been revealed on-chain — primarily early Pay-to-Public-Key (P2PK) addresses and addresses that have been reused after spending. Modern wallet practices that generate fresh addresses for each transaction significantly reduce quantum exposure, since hashed public keys (P2PKH, P2SH, P2WPKH) don't reveal the actual public key until a transaction is signed and broadcast.</p>
+
+  <p>Galaxy's analysis also emphasized that Bitcoin developers are already actively working to address quantum risks. The report highlighted proposals like BIP-360 (P2MR) and the ongoing community discussion around post-quantum signature schemes as evidence that defensive measures are being developed well in advance of any credible quantum threat materializing.</p>
+
+  <h2>Key Findings</h2>
+  <div class="highlight">
+    <ul style="margin:0;padding-left:20px;font-size:14px">
+      <li><strong>Most wallets not exposed:</strong> Only addresses with revealed public keys are vulnerable — modern wallet practices mitigate risk</li>
+      <li><strong>Long exposure vs. short exposure:</strong> The real risk is "long exposure" attacks on static addresses with visible public keys, not transaction interception</li>
+      <li><strong>Developers already working:</strong> BIP-360, post-quantum signature research, and community consensus-building are underway</li>
+      <li><strong>Not an imminent threat:</strong> Current quantum hardware is orders of magnitude away from breaking ECDSA</li>
+      <li><strong>Broader internet at risk first:</strong> Banking, TLS, and government systems use the same cryptographic primitives — they'd be affected before Bitcoin</li>
+      <li><strong>Gradual, not sudden:</strong> Quantum breakthroughs would emerge through visible milestones over years, providing warning time</li>
+    </ul>
+  </div>
+
+  <h2>Why This Matters</h2>
+  <p>Galaxy Digital manages billions in digital assets and is led by Mike Novogratz, one of crypto's most prominent institutional figures. Their research team's analysis carries significant weight with institutional investors and fund managers who look to Galaxy for crypto risk assessment.</p>
+
+  <p>This report is notable for its focus on practical wallet-level exposure rather than theoretical protocol-level vulnerability. By distinguishing between addresses where public keys are visible (vulnerable) versus those where only hashes are exposed (not directly vulnerable), Galaxy provides actionable risk assessment that investors can apply to their own holdings.</p>
+
+  <p>The report lands just one week after Ark Invest published its own quantum risk assessment (March 12), and follows BlackRock's ETF filing quantum risk disclosure (February 2026) and Jefferies strategist Christopher Wood's decision to swap Bitcoin for gold over quantum concerns (January 2026). The emerging pattern shows quantum risk becoming a standard component of institutional Bitcoin due diligence.</p>
+
+  <h2>Institutional Consensus Forming</h2>
+  <p>Across the major institutional analyses published in early 2026, a rough consensus is emerging:</p>
+
+  <div class="highlight safe">
+    <ul style="margin:0;padding-left:20px;font-size:14px">
+      <li><strong>Ark Invest (Mar 12):</strong> "Real but distant" — ~35% of supply theoretically vulnerable, but threat is years away</li>
+      <li><strong>Galaxy Digital (Mar 19):</strong> "Real but far from existential" — most wallets not directly exposed</li>
+      <li><strong>BlackRock (Feb 2026):</strong> Flagged quantum as a risk factor in ETF filing — first major product to do so</li>
+      <li><strong>Benchmark (Jan 2026):</strong> "Real but distant" — Bitcoin has ample time to evolve</li>
+      <li><strong>Jefferies (Jan 2026):</strong> Swapped BTC for gold — the outlier bearish view</li>
+    </ul>
+  </div>
+
+  <p>The consensus: quantum is a real long-term risk that warrants monitoring and preparation, but not panic. The outlier is Jefferies' Christopher Wood, who took the more aggressive step of actually reducing Bitcoin exposure. Most institutional voices are treating quantum as a risk to manage, not a reason to exit.</p>
+
+  <h2>Context</h2>
+  <p>Galaxy CEO Mike Novogratz had previously downplayed quantum risks in early February 2026, and the research team's report provides the detailed analysis backing that position. Meanwhile, onchain analyst Willy Woo has argued that markets are beginning to price in quantum risk, putting pressure on Bitcoin's valuation relative to gold. Bitcoin developer Matt Carallo has pushed back against quantum fear narratives, suggesting Bitcoiners are looking to "blame something" for sluggish price action.</p>
+
+  <p>The debate reflects a broader tension in the Bitcoin community between those who see quantum preparation as urgent and those who view current quantum fears as overblown. Galaxy's report attempts to chart a middle course: take it seriously, but don't panic.</p>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:32px 0">
+    <a href="../vulnerability.html" class="highlight" style="text-decoration:none;color:inherit;border-left:4px solid var(--accent)">
+      <strong>Bitcoin's Vulnerability →</strong><br>
+      <span style="font-size:13px;color:var(--muted)">Deep dive into which addresses are at risk and how much BTC is exposed.</span>
+    </a>
+    <a href="../defense.html" class="highlight" style="text-decoration:none;color:inherit;border-left:4px solid var(--accent)">
+      <strong>Bitcoin's Defense →</strong><br>
+      <span style="font-size:13px;color:var(--muted)">What's being built to protect Bitcoin from quantum threats?</span>
+    </a>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <p>BTC Quantum Research — Last updated March 2026</p>
+  <p style="margin-top:8px;font-size:11px;opacity:0.8">This page presents publicly available information. Not financial or security advice. Do your own research.</p>
+</footer>
+
+<!-- CHATBOT -->
+<button class="chat-fab" onclick="toggleChat()" aria-label="Chat">
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M4.913 2.658c2.075-.27 4.19-.408 6.337-.408 2.147 0 4.262.139 6.337.408 1.922.25 3.291 1.861 3.405 3.727a4.403 4.403 0 00-1.032-.211 50.89 50.89 0 00-8.42 0c-2.358.196-4.04 2.19-4.04 4.434v4.286a4.47 4.47 0 002.433 3.984L7.28 21.53A.75.75 0 016 21v-4.03a48.527 48.527 0 01-1.087-.128C2.905 16.58 1.5 14.833 1.5 12.862V6.638c0-1.97 1.405-3.718 3.413-3.979z"/>
+    <path d="M15.75 7.5c-1.376 0-2.739.057-4.086.169C10.124 7.797 9 9.103 9 10.609v4.285c0 1.507 1.128 2.814 2.67 2.94 1.243.102 2.5.157 3.768.165l2.782 2.781a.75.75 0 001.28-.53v-2.39l.33-.026c1.542-.125 2.67-1.433 2.67-2.94v-4.286c0-1.505-1.125-2.811-2.664-2.94A49.392 49.392 0 0015.75 7.5z"/>
+  </svg>
+</button>
+<div class="chat-panel" id="chatPanel">
+  <div class="chat-head">
+    <span class="chat-head-title"> Ask about BTC & Quantum</span>
+    <button class="chat-head-close" onclick="toggleChat()"></button>
+  </div>
+  <div class="chat-messages" id="chatMessages">
+    <div class="chat-msg bot">Hey! Ask me anything about Bitcoin's quantum threat, BIP-360, timelines, or anything on this page. I'll do my best. </div>
+  </div>
+  <div class="chat-input-row">
+    <input class="chat-input" id="chatInput" placeholder="e.g. What does this mean for Bitcoin?" onkeydown="if(event.key==='Enter')sendChat()">
+    <button class="chat-send" id="chatSend" onclick="sendChat()"></button>
+  </div>
+</div>
+
+<script src="../script.js?v=9"></script>
+</body>
+</html>
