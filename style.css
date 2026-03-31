@@ -1,7 +1,7 @@
 /* BTC Quantum Research — Clean Data-Driven Research Aesthetic */
 /* Inspired by bpi-agent-study.onrender.com */
 
-@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Manrope:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
 
 :root{--bg:#ffffff;--card:#ffffff;--border:#e5e7eb;--text:#111827;--muted:#6b7280;--body-text:#374151;--accent:#6366f1;--green:#16a34a;--yellow:#ca8a04;--red:#dc2626;--orange:#ea580c;--card-shadow:0 1px 3px rgba(0,0,0,0.08),0 1px 2px rgba(0,0,0,0.04);--card-shadow-hover:0 10px 25px rgba(0,0,0,0.08),0 4px 10px rgba(0,0,0,0.04);--section-bg:#f9fafb}
 
@@ -15,7 +15,7 @@ body.dark .hero{background:transparent}
 body.dark .toc{background:rgba(15,23,42,0.95)}
 
 *{margin:0;padding:0;box-sizing:border-box}
-body{background:var(--bg);color:var(--text);font-family:'Manrope',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;line-height:1.7;overflow-x:hidden;transition:background-color 0.3s ease,color 0.3s ease}
+body{background:var(--bg);color:var(--text);font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;line-height:1.7;overflow-x:hidden;transition:background-color 0.3s ease,color 0.3s ease}
 a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
 
 /* Scroll animations */
@@ -48,7 +48,7 @@ body.dark .nav-logo img{filter:brightness(0) invert(1)}
 
 /* Hero */
 .hero{text-align:center;padding:80px 24px 48px;background:transparent;position:relative;border:none;box-shadow:none;max-width:800px;margin:0 auto}
-.hero h1{font-size:clamp(32px,5vw,56px);font-weight:800;font-family:'Syne',sans-serif;color:var(--text);margin-bottom:16px;line-height:1.1;letter-spacing:-0.02em}
+.hero h1{font-size:clamp(32px,5vw,56px);font-weight:900;color:var(--text);margin-bottom:16px;line-height:1.1;letter-spacing:-0.03em}
 body.dark .hero h1{background:linear-gradient(135deg,#818cf8,#6366f1,#a78bfa);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 .hero .sub{color:var(--muted);font-size:18px;max-width:640px;margin:0 auto 20px;line-height:1.6;font-weight:400}
 .last-updated{color:var(--muted);font-size:13px;margin-top:16px;opacity:0.7;font-weight:500}
@@ -56,7 +56,7 @@ body.dark .hero h1{background:linear-gradient(135deg,#818cf8,#6366f1,#a78bfa);-w
 /* Threat Meter */
 .meter-section{max-width:900px;margin:0 auto 48px;padding:0 24px}
 .meter-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:36px;box-shadow:var(--card-shadow);transition:all 0.3s ease}
-.meter-title{font-size:20px;font-weight:700;font-family:'Syne',sans-serif;margin-bottom:24px;text-align:center;letter-spacing:-0.01em}
+.meter-title{font-size:20px;font-weight:700;margin-bottom:24px;text-align:center;letter-spacing:-0.02em}
 .meter-bar{position:relative;height:36px;background:var(--section-bg);border-radius:18px;overflow:visible;margin-bottom:10px;transition:all 0.3s ease}
 .meter-zones{border-radius:18px;overflow:hidden}
 .meter-fill{height:100%;border-radius:18px;transition:width 1.5s ease}
@@ -83,8 +83,8 @@ body.dark .progress-marker{border-color:#1e293b}
 /* Sections & Container */
 .container{max-width:900px;margin:0 auto;padding:0 24px}
 section{margin-bottom:56px}
-h2{font-size:24px;font-weight:700;font-family:'Syne',sans-serif;margin-bottom:20px;padding-bottom:12px;border-bottom:2px solid var(--border);letter-spacing:-0.01em}
-h3{font-size:17px;font-weight:600;font-family:'Syne',sans-serif;margin:24px 0 10px;color:var(--accent);letter-spacing:-0.01em}
+h2{font-size:24px;font-weight:800;margin-bottom:20px;padding-bottom:12px;border-bottom:2px solid var(--border);letter-spacing:-0.02em}
+h3{font-size:17px;font-weight:600;margin:24px 0 10px;color:var(--accent);letter-spacing:-0.01em}
 p{margin-bottom:14px;color:var(--body-text);line-height:1.7}
 
 /* Highlight cards */
@@ -104,7 +104,7 @@ p{margin-bottom:14px;color:var(--body-text);line-height:1.7}
 .tl-dot.future{border-color:var(--muted);background:var(--bg)}
 .tl-dot.new{border-color:var(--accent);background:var(--bg)}
 .tl-date{font-size:12px;color:var(--muted);font-weight:600;letter-spacing:0.02em;text-transform:uppercase}
-.tl-title{font-size:16px;font-weight:700;font-family:'Syne',sans-serif;letter-spacing:-0.01em}
+.tl-title{font-size:16px;font-weight:700;letter-spacing:-0.01em}
 .tl-desc{font-size:13px;color:var(--body-text);line-height:1.6}
 .new-badge{display:inline-block;background:var(--accent);color:white;font-size:9px;padding:2px 8px;border-radius:4px;margin-left:6px;font-weight:700;letter-spacing:0.03em;text-transform:uppercase}
 
@@ -168,7 +168,7 @@ body.dark .tag-partial{background:rgba(234,179,8,0.15)}
 .tweet-tab:hover{border-color:var(--accent);color:var(--text)}
 .tweet-tab.active{background:var(--accent);border-color:var(--accent);color:white}
 .sentiment-tabs{display:flex;justify-content:center;gap:8px;margin-bottom:20px;flex-wrap:nowrap}
-.sentiment-tab{padding:10px 24px;border-radius:100px;border:1px solid var(--border);background:transparent;color:var(--muted);font-size:13px;font-weight:600;cursor:pointer;transition:all 0.2s;white-space:nowrap;font-family:'Manrope',sans-serif}
+.sentiment-tab{padding:10px 24px;border-radius:100px;border:1px solid var(--border);background:transparent;color:var(--muted);font-size:13px;font-weight:600;cursor:pointer;transition:all 0.2s;white-space:nowrap;font-family:'Inter',sans-serif}
 .sentiment-tab.active{background:var(--accent);color:white;border-color:var(--accent)}
 .sentiment-tab:hover:not(.active){border-color:var(--accent);color:var(--accent)}
 .sentiment-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
