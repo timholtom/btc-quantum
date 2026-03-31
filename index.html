@@ -35,7 +35,7 @@
     "@type": "Organization",
     "name": "BTC Quantum Research"
   },
-  "dateModified": "2026-03-30"
+  "dateModified": "2026-03-31"
 }
 </script>
 
@@ -90,7 +90,7 @@
         <div class="meter-zone" style="width:25%;background:linear-gradient(90deg,#eab308,#f97316)"></div>
         <div class="meter-zone" style="width:25%;background:linear-gradient(90deg,#f97316,#ef4444)"></div>
       </div>
-      <div class="meter-needle" style="left:3%">
+      <div class="meter-needle" style="left:22%">
         <div class="meter-needle-label">WE ARE HERE</div>
       </div>
     </div>
@@ -103,8 +103,8 @@
     </div>
     <p style="text-align:center;font-size:13px;color:var(--muted);margin-top:16px">
       Current quantum computers have ~1,500 physical qubits.<br>
-      Breaking Bitcoin's elliptic curve crypto requires an estimated <strong>13 million+ logical qubits</strong><br>
-      operating coherently — we're roughly <strong>0.01%</strong> of the way there.
+      Google's latest research (Mar 2026) shows breaking Bitcoin's elliptic curve crypto requires ~<strong>500,000 physical qubits</strong> (~1,200 logical)<br>
+      — a 20× reduction from prior estimates. We're roughly <strong>0.3%</strong> of the way there in raw hardware, but the threat is now confirmed with a 2029 deadline.
     </p>
     <details style="margin-top:20px;cursor:pointer">
       <summary style="color:var(--accent);font-size:14px;font-weight:600;text-decoration:underline;list-style:none;text-align:center;cursor:pointer" onclick="this.textContent=this.parentElement.open?'See breakdown':'Show less'">See breakdown</summary>
@@ -114,19 +114,19 @@
     <div class="progress-item">
       <div class="progress-header">
         <span class="progress-label"> Physical Qubits <span style="font-weight:400;font-size:12px;color:var(--muted)">— raw processing units</span></span>
-        <span class="progress-value">~1,500 today · need 13M+</span>
+        <span class="progress-value">~1,500 today · need ~500K</span>
       </div>
-      <div style="display:flex;align-items:center;gap:8px"><span style="font-size:10px;color:var(--muted);white-space:nowrap">Now</span><div class="progress-track" style="flex:1"><div class="progress-marker" style="left:2%"></div></div><span style="font-size:10px;color:var(--red);white-space:nowrap">BTC Broken</span></div>
-      <div style="font-size:11px;color:var(--muted);margin-top:4px">Like having 1,500 workers when you need 13 million. Not even close.</div>
+      <div style="display:flex;align-items:center;gap:8px"><span style="font-size:10px;color:var(--muted);white-space:nowrap">Now</span><div class="progress-track" style="flex:1"><div class="progress-marker" style="left:3%"></div></div><span style="font-size:10px;color:var(--red);white-space:nowrap">BTC Broken</span></div>
+      <div style="font-size:11px;color:var(--muted);margin-top:4px">Google's latest paper cut the estimate from 13M to ~500K. The goalpost moved 20× closer, but we still need ~330× more qubits.</div>
     </div>
 
     <div class="progress-item">
       <div class="progress-header">
         <span class="progress-label"> Logical Qubits <span style="font-weight:400;font-size:12px;color:var(--muted)">— error-free computing units</span></span>
-        <span class="progress-value">~12 today · need 4M+</span>
+        <span class="progress-value">~12 today · need ~1,200</span>
       </div>
-      <div style="display:flex;align-items:center;gap:8px"><span style="font-size:10px;color:var(--muted);white-space:nowrap">Now</span><div class="progress-track" style="flex:1"><div class="progress-marker" style="left:1.5%"></div></div><span style="font-size:10px;color:var(--red);white-space:nowrap">BTC Broken</span></div>
-      <div style="font-size:11px;color:var(--muted);margin-top:4px">Physical qubits are noisy. You need thousands of them to make one reliable "logical" qubit. We have ~12.</div>
+      <div style="display:flex;align-items:center;gap:8px"><span style="font-size:10px;color:var(--muted);white-space:nowrap">Now</span><div class="progress-track" style="flex:1"><div class="progress-marker" style="left:3%"></div></div><span style="font-size:10px;color:var(--red);white-space:nowrap">BTC Broken</span></div>
+      <div style="font-size:11px;color:var(--muted);margin-top:4px">Physical qubits are noisy. You need hundreds of them to make one reliable "logical" qubit. Google's paper needs ~1,200 — we have ~12.</div>
     </div>
 
     <div class="progress-item">
