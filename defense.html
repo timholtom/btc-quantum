@@ -284,6 +284,7 @@
     <ul style="margin:12px 0 0 20px;font-size:13px">
       <li><strong>ML-DSA (Dilithium):</strong> NIST standard, ~2.4KB signatures, lattice-based</li>
       <li><strong>SLH-DSA (SPHINCS+):</strong> Conservative choice, 7.8-50KB signatures, hash-based</li>
+      <li><strong>SHRIMPS:</strong> New (March 2026) — 2.5KB hash-based sigs across multiple devices, 3× smaller than SLH-DSA. Combines SHRINCS (~324B single-device) with multi-device support via stateful signing</li>
       <li><strong>Hybrid approaches:</strong> Classical + post-quantum for belt-and-suspenders security</li>
     </ul>
   </div>
@@ -298,6 +299,7 @@
   <div class="stats">
     <div class="stat"><div class="stat-value">64B</div><div class="stat-label">Schnorr signature<br>(current Bitcoin)</div></div>
     <div class="stat"><div class="stat-value">2.4KB</div><div class="stat-label">ML-DSA (Dilithium)<br>NIST standard</div></div>
+    <div class="stat"><div class="stat-value">2.5KB</div><div class="stat-label">SHRIMPS<br>hash-based, multi-device</div></div>
     <div class="stat"><div class="stat-value">7.8KB</div><div class="stat-label">SLH-DSA (SPHINCS+)<br>hash-based, conservative</div></div>
     <div class="stat"><div class="stat-value">~50KB</div><div class="stat-label">Some SPHINCS+ variants<br>highest security level</div></div>
   </div>
@@ -351,6 +353,13 @@
       <span style="font-size:13px;color:var(--body-text)">Chaincode Labs and academic researchers studying integration of NIST standards into Bitcoin script.</span>
     </div>
     
+    <div class="highlight safe" style="border-left:4px solid var(--green)">
+      <strong>🦐 SHRIMPS (March 2026)</strong><br>
+      <span style="font-size:13px;color:var(--body-text)">Jonas Nick's breakthrough: 2.5KB hash-based post-quantum signatures across multiple devices. Combines SHRINCS (~324B single-device) with multi-device support — primary device signs at ~324 bytes, backup devices at ~2.5KB. Both from the same static seed backup. 3× smaller than SLH-DSA.</span><br>
+      <a href="https://delvingbitcoin.org/t/shrimps-2-5-kb-post-quantum-signatures-across-multiple-stateful-devices/2355" target="_blank" style="font-size:12px;color:var(--accent)">Delving Bitcoin →</a>
+      <a href="https://x.com/n1ckler/status/2038695067754328095" target="_blank" style="font-size:12px;color:var(--accent);margin-left:12px">Announcement →</a>
+    </div>
+    
     <div class="highlight" style="border-left:4px solid var(--yellow)">
       <strong> Wallet-Layer Solutions</strong><br>
       <span style="font-size:13px;color:var(--body-text)">Independent developers like Emiliano Solazzi building hybrid wallets with dual signing (classical + PQ).</span>
@@ -401,7 +410,7 @@
 </main>
 
 <footer>
-  <p>BTC Quantum Research — Last updated February 2026</p>
+  <p>BTC Quantum Research — Last updated April 2026</p>
   <p style="margin-top:8px;font-size:11px;opacity:0.8">This page presents publicly available information. Not financial or security advice. Do your own research.</p>
 </footer>
 
