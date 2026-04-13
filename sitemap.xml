@@ -203,4 +203,10 @@
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://timholtom.github.io/btc-quantum/timeline/coinbase-armstrong-quantum-coalition-2026.html</loc>
+    <lastmod>2026-04-13</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>
