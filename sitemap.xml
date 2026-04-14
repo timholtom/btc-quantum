@@ -209,4 +209,10 @@
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://timholtom.github.io/btc-quantum/timeline/nobel-physicist-bitcoin-warning-2026.html</loc>
+    <lastmod>2026-04-14</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>
